@@ -1,6 +1,6 @@
 {
     "name": "takielias/tablar-kit",
-    "description": "Blade Component for TabLar. The elegance of Tablar",
+    "description": "The Elegance of Tablar Dashboard",
     "license": "MIT",
     "authors": [
         {
@@ -12,6 +12,7 @@
     "homepage": "https://github.com/takielias/tablar-kit",
     "keywords": [
         "Laravel",
+        "Tablar",
         "TablarKit"
     ],
     "minimum-stability": "stable",
