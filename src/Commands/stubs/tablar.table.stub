@@ -1,0 +1,22 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedUserModel }};
+use Illuminate\Http\Request;
+use Takielias\TablarKit\DataTable\DataTable;
+
+class {{ class }} extends DataTable
+{
+    /**
+     * Create a new instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->setDataSource({{ tableModel }}::query())
+            ->paginate(10);
+    }
+
+}
