@@ -2,10 +2,6 @@
     background-color: transparent !important;
 }
 
-.dXhZSB {
-    background-color: #2962ff;
-}
-
 .FIE_root * {
     font-family: inherit !important;
 }
@@ -14,7 +10,11 @@
     font-family: inherit !important;
 }
 
-.jpHEiD {
+.FIE_save-modal{
+    width: auto !important;
+}
+
+.SfxMenu-root {
     font-family: inherit !important;
 }
 
@@ -26,11 +26,6 @@
     z-index: 999;
 }
 
-.dAEuRT {
+.FIE_topbar {
     justify-content: start;
 }
-
-.cLktZn {
-    width: auto !important;
-}
-
