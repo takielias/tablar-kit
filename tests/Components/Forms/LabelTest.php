@@ -14,7 +14,8 @@ class LabelTest extends ComponentTestCase
     {
         $expected = <<<'HTML'
             <label for="first_name" class="form-label">
-                First name </label>
+                First name
+            </label>
             HTML;
 
         $this->assertComponentRenders($expected, '<x-label for="first_name"/>');
