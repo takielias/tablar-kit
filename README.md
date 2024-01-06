@@ -1,6 +1,6 @@
 ![Tablar Kit](https://github.com/takielias/tablar/assets/38932580/c210b485-e105-4c6e-8d7a-32286f43a9f6)
 
-## The Elegance of Tablar Dashboard
+## The Elegance of Laravel Tablar Dashboard
 
 [![Latest Version](https://img.shields.io/packagist/v/takielias/tablar-kit?color=blue&label=release&style=for-the-badge)](https://packagist.org/packages/takielias/tablar-kit)
 [![Stars](https://img.shields.io/github/stars/takielias/tablar-kit?color=rgb%2806%20189%20248%29&label=stars&style=for-the-badge)](https://packagist.org/packages/takielias/tablar-kit)
