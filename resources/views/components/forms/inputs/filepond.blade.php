@@ -30,6 +30,7 @@
                 allowMultiple: false,
                 credits: false,
                 storeAsFile: true,
+                @if($image_manipulation)
                 imageEditEditor: {
                     open: (file, instructions) => {
                         console.log('Open editor', file, instructions);
@@ -48,6 +49,7 @@
                         handleImageEditClose();
                     }
                 }
+                @endif
             });
 
             function openFileRobotImageEditor(file, instructions) {
