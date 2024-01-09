@@ -16,6 +16,9 @@ class FilePond extends TablarComponent
     /** @var boolean */
     public bool $chunk_upload = false;
 
+    /** @var boolean */
+    public bool $image_manipulation = true;
+
     /** @var string */
     public string $id;
 
@@ -30,6 +33,7 @@ class FilePond extends TablarComponent
         string  $id = null,
         string  $type = 'file',
         bool    $chunkUpload = false,
+        bool    $imageManipulation = true,
         ?string $value = '',
     )
     {
@@ -38,6 +42,7 @@ class FilePond extends TablarComponent
         $this->type = $type;
         $this->value = old($name, $value ?? '');
         $this->chunk_upload = $chunkUpload;
+        $this->image_manipulation = $imageManipulation;
     }
 
     public function render(): View
