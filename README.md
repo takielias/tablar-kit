@@ -1,4 +1,4 @@
-![tablar-kit](https://github.com/takielias/tablar-kit/assets/38932580/f6448ee6-2d61-4c2c-ae5e-ea939f166463)
+![Tablar Kit](https://github.com/takielias/tablar-kit/assets/38932580/01368611-4a55-4a32-be32-7f4d8ccfe6fe)
 
 ## The Elegance of Laravel Tablar Dashboard
 
