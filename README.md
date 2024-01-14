@@ -28,6 +28,10 @@ Introducing Tablar Kit, designed to enhance your [Laravel Tablar](https://github
 components, making your dashboard more visually appealing and user-friendly. It's all about simplicity and enhancing
 your experience with Laravel Tablar.
 
+### Tablar Installation : Setting Up Laravel Tablar in Minutes
+
+[![Tablar](https://img.youtube.com/vi/ka26mSdmvIQ/0.jpg)](https://www.youtube.com/watch?v=ka26mSdmvIQ)
+
 ### Installation
 
 ```shell
