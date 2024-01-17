@@ -49,7 +49,7 @@ tablar@ebuz.xyz
 
 ## Documentation
 
-For step-by-step instructions on installation and usage, check out the [documentation](https://tablar.ebuz.xyz/docs/tablar-kit)
+For step-by-step instructions on installation and usage, check out the [documentation](https://tablar.ebuz.xyz/docs/4.0/tablar-kit)
 
 <br>
 
