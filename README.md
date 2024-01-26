@@ -32,6 +32,8 @@ your experience with Laravel Tablar.
 
 [![Tablar](https://img.youtube.com/vi/ka26mSdmvIQ/0.jpg)](https://www.youtube.com/watch?v=ka26mSdmvIQ)
 
+### [Demo Project](https://github.com/takielias/tablar-demo-project)
+
 ### Installation
 
 ```shell
