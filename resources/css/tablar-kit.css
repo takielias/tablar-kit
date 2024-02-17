@@ -10,7 +10,7 @@
     font-family: inherit !important;
 }
 
-.FIE_save-modal{
+.FIE_save-modal {
     width: auto !important;
 }
 
@@ -36,27 +36,53 @@
     color: #000;
 }
 
-.tabulator{
-    background-color:  var(--tblr-bg-forms) !important;
+.tabulator {
+    background-color: var(--tblr-bg-surface) !important;
 }
 
 .tabulator .tabulator-header {
-    background-color:  var(--tblr-bg-forms) !important;
-}
-.tabulator-col{
-    background-color:  var(--tblr-bg-forms) !important;
+    background-color: var(--tblr-bg-surface) !important;
 }
 
-.tabulator-cell{
-    background-color: var(--tblr-bg-forms) !important;
+.tabulator-col {
+    background-color: var(--tblr-bg-surface) !important;
+}
+
+.tabulator-cell {
+    background-color: var(--tblr-bg-surface) !important;
+}
+
+.tabulator-footer {
+    background-color: var(--tblr-bg-surface) !important;
+}
+
+.tabulator .tabulator-header {
+    border-top: 1px solid var(--tblr-dark-mode-border-color-translucent) !important;
+    border-bottom: 1px solid var(--tblr-dark-mode-border-color-translucent) !important;
 }
 
 .tabulator-row {
-    background-color: var(--tblr-bg-forms) !important;
+    background-color: var(--tblr-bg-surface) !important;
+    border-bottom: 1px solid var(--tblr-dark-mode-border-color-translucent) !important;
 }
 
-.tabulator-footer{
-    background-color: var(--tblr-bg-forms) !important;
+.tabulator .tabulator-footer {
+    border-top: none !important;
 }
 
+.tabulator .tabulator-footer .tabulator-page {
+    border: 1px solid var(--tblr-bg-surface) !important;
+    border-radius: var(--tblr-border-radius) !important;
+}
+
+.tabulator .tabulator-footer .tabulator-page.active {
+    color: var(--tblr-pagination-active-color);
+    background-color: var(--tblr-pagination-active-bg);
+    border-color: var(--tblr-pagination-active-border-color);
+}
+
+.tabulator .tabulator-footer .tabulator-page-size {
+    border: 1px solid var(--tblr-bg-surface) !important;
+    border-radius: 3px;
+}
 
