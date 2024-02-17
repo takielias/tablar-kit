@@ -86,3 +86,23 @@
     border-radius: 3px;
 }
 
+
+/*Fix Editor Dark Mode*/
+
+.jodit-container:not(.jodit_inline) .jodit-workplace {
+    background-color: var(--tblr-bg-surface) !important
+}
+
+.jodit-toolbar-editor-collection_mode_horizontal {
+    background-color: var(--tblr-bg-surface) !important;
+}
+
+.jodit-icon {
+    display: block;
+    fill: var(--tblr-body-color);
+}
+
+.jodit-workplace + .jodit-status-bar:not(:empty), .jodit-status-bar-link {
+    background-color: var(--tblr-bg-surface) !important;
+    color: var(--tblr-body-color) !important;
+}
