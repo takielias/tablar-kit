@@ -30,7 +30,15 @@ class InstallTablarKit extends Command
         self::updatePackages();
         self::updateTablarJs();
         self::scaffoldConfig();
-        $this->info('Tablar kit has been imported successfully. run npm i && npm run dev');
+        $this->newLine();
+        $this->comment('Tablar kit is now installed 🚀');
+        $this->newLine();
+        $this->comment('Run "npm install" first. Once the installation is done, run "npm run dev"');
+        $this->newLine();
+        $this->line('Please Show your support ❤️ for Tablar kit by giving us a star on GitHub ⭐️');
+        $this->info('https://github.com/takielias/tablar-kit');
+        $this->newLine(2);
+
     }
 
     protected static function updatePackageArray(array $packages, array $requiredPackages): array
