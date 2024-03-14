@@ -17,15 +17,15 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "illuminate/filesystem": "^10.0",
-        "illuminate/support": "^10.0",
-        "illuminate/view": "^10.0",
+        "illuminate/filesystem": "^10.0|^11.0",
+        "illuminate/support": "^10.0|^11.0",
+        "illuminate/view": "^10.0|^11.0",
         "nesbot/carbon": "^2.38",
         "takielias/tablar": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "~9.0",
-        "orchestra/testbench": "~8",
+        "orchestra/testbench": "~9",
         "gajus/dindent": "^2.0",
         "league/commonmark": "^1.4|^2.0",
         "lorisleiva/cron-translator": "^0.1.1"
