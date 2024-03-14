@@ -25,9 +25,10 @@ abstract class ComponentTestCase extends TestCase
     protected function flashOld(array $input): void
     {
         session()->flashInput($input);
-
-        request()->setLaravelSession(session());
+        $sessionStore = session()->driver();
+        request()->setLaravelSession($sessionStore);
     }
+
 
     protected function getPackageProviders($app): array
     {
@@ -44,7 +45,7 @@ abstract class ComponentTestCase extends TestCase
         $indenter->setElementType('h1', Indenter::ELEMENT_TYPE_INLINE);
         $indenter->setElementType('del', Indenter::ELEMENT_TYPE_INLINE);
 
-        $blade = (string) $this->blade($template, $data);
+        $blade = (string)$this->blade($template, $data);
         $indented = $indenter->indent($blade);
         $cleaned = str_replace(
             [' >', "\n/>", ' </div>', '> ', "\n>"],
