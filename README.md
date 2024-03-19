@@ -28,6 +28,11 @@ Introducing Tablar Kit, designed to enhance your [Laravel Tablar](https://github
 components, making your dashboard more visually appealing and user-friendly. It's all about simplicity and enhancing
 your experience with Laravel Tablar.
 
+## Featured on Laravel News!
+![image](https://github.com/takielias/tablar-kit/assets/38932580/bf7bec96-950f-4989-ba9d-8a7c43e318be)
+
+Get it [here](https://laravel-news.com/tablar-kit)
+
 ### Tablar Installation : Setting Up Laravel Tablar in Minutes
 
 [![Tablar](https://img.youtube.com/vi/ka26mSdmvIQ/0.jpg)](https://www.youtube.com/watch?v=ka26mSdmvIQ)
