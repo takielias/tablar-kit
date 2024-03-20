@@ -4,14 +4,9 @@ namespace Takielias\TablarKit;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\File;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use RahulHaque\Filepond\Models\Filepond;
-use RahulHaque\Filepond\Models\Filepond as FilepondModel;
-use Symfony\Component\Mime\MimeTypes;
 
 class TablarKit
 {
@@ -98,14 +93,6 @@ class TablarKit
     {
         $item = $eloquentBuilder->find($request->id);
         return view('tablar-kit::components.pos.pos-item', compact('item'));
-    }
-
-    public function moveFile_Old(string $storePath, string $filePath)
-    {
-        return Storage::putFile(
-            path: $storePath,
-            file: new File(Storage::path($filePath))
-        );
     }
 
     /**
