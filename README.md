@@ -1,4 +1,4 @@
-![Tablar Kit](https://github.com/takielias/tablar-kit/assets/38932580/01368611-4a55-4a32-be32-7f4d8ccfe6fe)
+![Laravel Tablar Kit](https://github.com/takielias/tablar-kit/assets/38932580/aeee400c-5d31-419a-b864-d12c6902e009)
 
 ## The Elegance of Laravel Tablar Dashboard
 
@@ -28,6 +28,11 @@ Introducing Tablar Kit, designed to enhance your [Laravel Tablar](https://github
 components, making your dashboard more visually appealing and user-friendly. It's all about simplicity and enhancing
 your experience with Laravel Tablar.
 
+## Featured on Laravel News!
+![image](https://github.com/takielias/tablar-kit/assets/38932580/bf7bec96-950f-4989-ba9d-8a7c43e318be)
+
+Get it [here](https://laravel-news.com/tablar-kit)
+
 ### Tablar Installation : Setting Up Laravel Tablar in Minutes
 
 [![Tablar](https://img.youtube.com/vi/ka26mSdmvIQ/0.jpg)](https://www.youtube.com/watch?v=ka26mSdmvIQ)
@@ -37,7 +42,7 @@ your experience with Laravel Tablar.
 ### Installation
 
 ```shell
-composer require takielias/tablar-kit
+composer require takielias/tablar-kit:"^10"
 ```
 
 ### Demo
