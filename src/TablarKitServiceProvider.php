@@ -13,7 +13,6 @@ use Takielias\TablarKit\Rules\FilepondRule;
 
 class TablarKitServiceProvider extends ServiceProvider
 {
-
     /**
      * Perform post-registration booting of services.
      *
@@ -26,11 +25,6 @@ class TablarKitServiceProvider extends ServiceProvider
         $this->bootResources();
         $this->bootBladeComponents();
         $this->bootPublishing();
-
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'takielias');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'takielias');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         $this->commands([
             InstallTablarKit::class,
