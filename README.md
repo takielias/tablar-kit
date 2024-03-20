@@ -41,9 +41,10 @@ Get it [here](https://laravel-news.com/tablar-kit)
 
 ### Installation
 
-```shell
-composer require takielias/tablar-kit
-```
+|Version|Branch|
+|:-:|:-:|
+|Laravel 11|[11.x branch](../../tree/11.x/README.md)|
+|Laravel 10|[10.x branch](../../tree/10.x/README.md)|
 
 ### Demo
 
