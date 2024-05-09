@@ -1,3 +1,5 @@
+import '../../css/tablar-kit.css';
+
 window.generateFilename = (baseName, extension) => {
     const now = new Date();
     const year = now.getFullYear();
