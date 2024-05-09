@@ -72,22 +72,14 @@ class TablarKit
     public static function searchItem(Builder $eloquentBuilder, array $attributes = []): Collection|array
     {
         $eloquentBuilder->limit(10);
-
-        $selectFields = array_map(function ($attribute, $alias) {
-            return "{$attribute} as {$alias}";
-        }, array_values($attributes), array_keys($attributes));
-
-        $eloquentBuilder->select($selectFields);
-
         $q = \request('q');
         if (is_numeric($q)) {
-            $eloquentBuilder->where($attributes['item_code'], 'LIKE', "%{$q}%");
+            $eloquentBuilder->where($attributes['item_id'], 'LIKE', "%{$q}%");
         } else {
             $eloquentBuilder->where($attributes['item_name'], 'LIKE', "%{$q}%");
         }
         return $eloquentBuilder->get();
     }
-
 
     public static function getSingleItem(Builder $eloquentBuilder, Request $request)
     {
