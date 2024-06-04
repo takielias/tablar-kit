@@ -25,7 +25,7 @@ class DataTable
 
     protected array $callbacks;
 
-    protected int $limit;
+    protected int $limit = 10;
 
     public function __construct()
     {
