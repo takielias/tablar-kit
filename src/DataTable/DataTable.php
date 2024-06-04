@@ -184,10 +184,9 @@ class DataTable
         $this->limit = $limit;
     }
 
-
-    protected function getPaginate(): Paginator
+    protected function getPaginate($limit): Paginator
     {
-        return $this->dataSource->paginate($this->limit);
+        return $this->dataSource->paginate($limit);
     }
 
     /**
@@ -196,11 +195,11 @@ class DataTable
      */
     public function getData(Request $request)
     {
-        $limit = $request->limit ?? 10;
+        $limit = $request->limit ?? $this->limit;
         $paginator = $this
             ->search($request)
             ->sort($request)
-            ->getPaginate();
+            ->getPaginate($limit);
 
         return [
             'data' => $this->format($paginator->items()),
