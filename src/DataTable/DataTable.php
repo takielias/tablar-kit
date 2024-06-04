@@ -71,7 +71,7 @@ class DataTable
         return $this;
     }
 
-    public function column(string $name, string $title, $callback = null, string $formatter = 'plaintext', array $formatterParams = [], bool $search = false, ?string $width = '200'): self
+    public function column(string $name, string $title, $callback = null, string $formatter = 'plaintext', array $formatterParams = [], bool $search = false, ?string $width = '200', bool $download = true): self
     {
         $column = [
             'field' => $name,
@@ -80,6 +80,7 @@ class DataTable
             'search' => $search,
             'formatter' => $formatter,
             'headerMenu' => 'headerMenu',
+            'download' => $download,
         ];
 
         if (!empty($formatterParams)) {
@@ -186,6 +187,7 @@ class DataTable
             'total_rows' => round($paginator->total() / $limit),
             'currentPage' => $paginator->currentPage(),
             'search' => $request->search,
+            'download' => $request->download,
             'order' => $request->order,
             'dir' => $request->dir,
             'limit' => $paginator->perPage()
