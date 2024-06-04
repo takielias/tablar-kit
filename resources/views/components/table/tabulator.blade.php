@@ -106,7 +106,7 @@
             console.log(cols);
             let table_{{$id}} = new Tabulator("#{{$id}}", {
                 minHeight: 300,
-                paginationSizeSelector: [10, 50, 100, 500, 1000, 5000],
+                paginationSizeSelector: [10, 50, 100, 500, 1000],
                 paginationSize:@json($rows['limit']),
                 sortMode: "remote",
                 filterMode: "remote",
