@@ -40,7 +40,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "TakiElias\\TablarKit\\Tests\\": "tests/"
+            "Takielias\\TablarKit\\Tests\\": "tests/"
         },
         "classmap": [
             "tests/TestView.php",

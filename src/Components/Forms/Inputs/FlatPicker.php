@@ -28,7 +28,7 @@ class FlatPicker extends Input
     {
         $this->id = $id ?? 'id_' . uniqid();
 
-        parent::__construct($name, $id, 'text', $value);
+        parent::__construct($name, $this->id, 'text', $value);
 
         $this->format = $format;
         $this->placeholder = $placeholder ?? $format;
