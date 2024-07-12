@@ -21,14 +21,14 @@ class LitePicker extends Input
         string  $name,
         string  $id = null,
         ?string $value = '',
-        string  $format = 'Y-m-d H:i',
+        string  $format = 'YYYY-MM-DD',
         string  $placeholder = null,
         array   $options = []
     )
     {
         $this->id = $id ?? 'id_' . uniqid();
 
-        parent::__construct($name, $id, 'text', $value);
+        parent::__construct($name, $this->id, 'text', $value);
 
         $this->format = $format;
         $this->placeholder = $placeholder ?? $format;
@@ -38,9 +38,7 @@ class LitePicker extends Input
     public function options(): array
     {
         return array_merge([
-            'dateFormat' => $this->format,
-            'altInput' => true,
-            'enableTime' => true,
+            'format' => $this->format,
         ], $this->options);
     }
 
