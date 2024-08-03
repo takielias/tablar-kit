@@ -11,6 +11,6 @@ Route::group(['middleware' => config('tablar-kit.middleware', ['web', 'auth'])],
 
 
 Route::group(['middleware' => config('tablar-kit.middleware', ['web', 'auth'])], function () {
-    Route::post(config('tablar-kit.filepond.server.url', '/filepond'), [config('tablar-kit.filepond.controller', FilepondController::class), 'process'])->name('filepond-process');
-    Route::delete(config('tablar-kit.filepond.server.url', '/filepond'), [config('tablar-kit.filepond.controller', FilepondController::class), 'revert'])->name('filepond-revert');
+    Route::post(config('tablar-kit.filepond.server.url', '/filepond'), [config('tablar-kit.filepond.controller', FilepondController::class), 'process'])->name('upload-process');
+    Route::delete(config('tablar-kit.filepond.server.url', '/filepond'), [config('tablar-kit.filepond.controller', FilepondController::class), 'revert'])->name('upload-revert');
 });
