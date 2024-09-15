@@ -24,7 +24,7 @@
         "takielias/tablar": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "~9.0",
+        "phpunit/phpunit": "~10.0",
         "orchestra/testbench": "~9",
         "gajus/dindent": "^2.0",
         "league/commonmark": "^1.4|^2.0",
@@ -41,12 +41,7 @@
     "autoload-dev": {
         "psr-4": {
             "TakiElias\\TablarKit\\Tests\\": "tests/"
-        },
-        "classmap": [
-            "tests/TestView.php",
-            "tests/Components/ComponentTestCase.php",
-            "tests/InteractsWithViews.php"
-        ]
+        }
     },
     "extra": {
         "laravel": {
