@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Tests\Components\Forms\Inputs;
 
-use TakiElias\TablarKit\Tests\Components\ComponentTestCase;
+use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class LitePickerTest extends ComponentTestCase
 {
@@ -12,7 +12,7 @@ class LitePickerTest extends ComponentTestCase
     public function the_lite_picker_component_can_be_rendered()
     {
         $expected = <<<'HTML'
-            <input name="date" type="text" id="lite-picker" placeholder="Y-m-d H:i" class="form-control litepickr" />
+            <input name="date" type="text" id="lite-picker" placeholder="YYYY-MM-DD" class="form-control litepickr" />
             HTML;
 
         $this->assertComponentRenders($expected, '<x-lite-picker name="date" id="lite-picker"/>');
