@@ -101,13 +101,25 @@ class InstallTablarKit extends Command
         // File path to the 'tabler-init.js'
         $filePath = base_path('resources/js/tabler-init.js');
 
-        // Line to be added
-        $lineToAdd = "import '../../vendor/takielias/tablar-kit/resources/js/plugins/load.js';\n";
+        // Array of lines to be added
+        $linesToAdd = [
+            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/filepond.js';\n",
+            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/jodit-editor.js';\n",
+            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/tom-select.js';\n",
+            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/flat-picker.js';\n",
+            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/lite-picker.js';\n",
+            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/tabulator.js';\n",
+            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/xlsx.js';\n",
+            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/jspdf.js';\n",
+            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/common.js';\n",
+        ];
 
-        // Check if the import has already been added (using a more robust method)
-        if (!self::hasImportBeenAdded($filePath, $lineToAdd)) {
-            // Append the line if it does not exist
-            file_put_contents($filePath, $lineToAdd, FILE_APPEND);
+        foreach ($linesToAdd as $lineToAdd) {
+            // Check if the import has already been added (using a more robust method)
+            if (!self::hasImportBeenAdded($filePath, $lineToAdd)) {
+                // Append the line if it does not exist
+                file_put_contents($filePath, $lineToAdd, FILE_APPEND);
+            }
         }
     }
 
