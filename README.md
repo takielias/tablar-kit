@@ -10,7 +10,6 @@
 [![Linkedin](https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&color=rgba(235%2068%2050)&style=for-the-badge)](https://linkedin.com/in/takielias)
 
 
-
 <a href="https://www.buymeacoffee.com/takielias" target="_blank"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="takielias" /></a>
 
 <br/>
@@ -33,6 +32,7 @@ your experience with Laravel Tablar.
 
 Get it [here](https://laravel-news.com/tablar-kit)
 
+
 Please check the corresponding branch for the documentation.
 
 |Version|Branch|
@@ -46,7 +46,14 @@ Please check the corresponding branch for the documentation.
 
 ### [Demo Project](https://github.com/takielias/tablar-demo-project)
 
-### Demo
+
+### Installation
+
+```shell
+composer require takielias/tablar-kit
+```
+
+### Live Demo
 
 https://tablar.ebuz.xyz
 
