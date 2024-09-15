@@ -10,11 +10,13 @@ use Takielias\TablarKit\DataTable\DataSource\ArrayDataSource;
 use Takielias\TablarKit\DataTable\DataSource\CollectionDataSource;
 use Takielias\TablarKit\DataTable\DataSource\QueryDataSource;
 use Takielias\TablarKit\DataTable\DataSource\TableDataContract;
+use Takielias\TablarKit\Enums\BottomCalculationType;
 use Takielias\TablarKit\Enums\ExportType;
 
 class DataTable
 {
     protected Builder $query;
+
     protected TableDataContract $dataSource;
 
     public array $columns;
@@ -22,6 +24,8 @@ class DataTable
     public array $exportTypes;
 
     protected array $callbacks;
+
+    protected int $limit = 10;
 
     public function __construct()
     {
@@ -71,7 +75,16 @@ class DataTable
         return $this;
     }
 
-    public function column(string $name, string $title, $callback = null, string $formatter = 'plaintext', array $formatterParams = [], bool $search = false, ?string $width = '200'): self
+    public function column(string                $name,
+                           string                $title,
+                                                 $callback = null,
+                           string                $formatter = 'plaintext',
+                           array                 $formatterParams = [],
+                           bool                  $search = false,
+                           ?string               $width = '200',
+                           bool                  $download = true,
+                           BottomCalculationType $bottomCalc = null
+    ): self
     {
         $column = [
             'field' => $name,
@@ -80,6 +93,8 @@ class DataTable
             'search' => $search,
             'formatter' => $formatter,
             'headerMenu' => 'headerMenu',
+            'download' => $download,
+            'bottomCalc' => $bottomCalc?->value,
         ];
 
         if (!empty($formatterParams)) {
@@ -163,7 +178,13 @@ class DataTable
         return $this;
     }
 
-    protected function paginate($limit): Paginator
+
+    protected function paginate($limit): void
+    {
+        $this->limit = $limit;
+    }
+
+    protected function getPaginate($limit): Paginator
     {
         return $this->dataSource->paginate($limit);
     }
@@ -174,18 +195,19 @@ class DataTable
      */
     public function getData(Request $request)
     {
-
-        $limit = $request->limit ?? 10;
+        $limit = $request->limit ?? $this->limit;
         $paginator = $this
             ->search($request)
             ->sort($request)
-            ->paginate($limit);
+            ->getPaginate($limit);
 
         return [
             'data' => $this->format($paginator->items()),
             'total_rows' => round($paginator->total() / $limit),
             'currentPage' => $paginator->currentPage(),
             'search' => $request->search,
+            'download' => $request->download,
+            'bottomCalc' => $request->bottomCalc,
             'order' => $request->order,
             'dir' => $request->dir,
             'limit' => $paginator->perPage()

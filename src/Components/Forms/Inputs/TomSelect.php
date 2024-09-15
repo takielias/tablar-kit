@@ -49,7 +49,7 @@ class TomSelect extends Input
     {
         $this->id = $id ?? 'id_' . uniqid();
 
-        parent::__construct($name, $id, 'select', $value);
+        parent::__construct($name, $this->id, 'select', $value);
 
         $this->options = $options;
         $this->itemSearchRoute = $itemSearchRoute;

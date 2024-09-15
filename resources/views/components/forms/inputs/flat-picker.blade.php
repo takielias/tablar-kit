@@ -6,18 +6,10 @@
     @if($value) value="{{ $value }}" @endif
     {{ $attributes->merge(['class' => config('tablar-kit.default-class'). ' flatpickr']) }}
 />
-
-@once
-    @push('js')
-        <script type="module">
-            document.addEventListener('DOMContentLoaded', function () {
-                window.flatpickr(".flatpickr");
-            });
-        </script>
-    @endpush
-    @push('css')
-        <style>
-
-        </style>
-    @endpush
-@endonce
+@push('js')
+    <script type="module">
+        document.addEventListener('DOMContentLoaded', function () {
+            window.flatpickr("#{{$id}}", {!! $jsonOptions() !!})
+        });
+    </script>
+@endpush

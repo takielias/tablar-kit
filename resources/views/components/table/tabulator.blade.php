@@ -16,13 +16,13 @@
         <div class="mb-3">
             <label class="form-label">Type</label>
             <select class="form-control form-select" id="filter-type">
+                <option value="like">like</option>
                 <option value="=">=</option>
                 <option value="<"><</option>
                 <option value="<="><=</option>
                 <option value=">">></option>
                 <option value=">=">>=</option>
                 <option value="!=">!=</option>
-                <option value="like">like</option>
             </select>
         </div>
     </div>
@@ -105,7 +105,8 @@
             });
             console.log(cols);
             let table_{{$id}} = new Tabulator("#{{$id}}", {
-                paginationSizeSelector: [10, 50, 100, 500, 1000, 5000],
+                minHeight: 300,
+                paginationSizeSelector: [10, 50, 100, 500, 1000],
                 paginationSize:@json($rows['limit']),
                 sortMode: "remote",
                 filterMode: "remote",

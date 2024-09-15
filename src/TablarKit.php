@@ -4,14 +4,9 @@ namespace Takielias\TablarKit;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\File;
 use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use RahulHaque\Filepond\Models\Filepond;
-use RahulHaque\Filepond\Models\Filepond as FilepondModel;
-use Symfony\Component\Mime\MimeTypes;
 
 class TablarKit
 {
@@ -77,35 +72,19 @@ class TablarKit
     public static function searchItem(Builder $eloquentBuilder, array $attributes = []): Collection|array
     {
         $eloquentBuilder->limit(10);
-
-        $selectFields = array_map(function ($attribute, $alias) {
-            return "{$attribute} as {$alias}";
-        }, array_values($attributes), array_keys($attributes));
-
-        $eloquentBuilder->select($selectFields);
-
         $q = \request('q');
         if (is_numeric($q)) {
-            $eloquentBuilder->where($attributes['item_code'], 'LIKE', "%{$q}%");
+            $eloquentBuilder->where($attributes['item_id'], 'LIKE', "%{$q}%");
         } else {
             $eloquentBuilder->where($attributes['item_name'], 'LIKE', "%{$q}%");
         }
         return $eloquentBuilder->get();
     }
 
-
     public static function getSingleItem(Builder $eloquentBuilder, Request $request)
     {
         $item = $eloquentBuilder->find($request->id);
         return view('tablar-kit::components.pos.pos-item', compact('item'));
-    }
-
-    public function moveFile_Old(string $storePath, string $filePath)
-    {
-        return Storage::putFile(
-            path: $storePath,
-            file: new File(Storage::path($filePath))
-        );
     }
 
     /**
