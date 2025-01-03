@@ -6,8 +6,6 @@
     <testsuites>
         <testsuite name="Package">
             <directory suffix=".php">./tests/Components</directory>
-            <exclude>tests/Components/ComponentTestCase.php</exclude>
-
         </testsuite>
     </testsuites>
     <source>

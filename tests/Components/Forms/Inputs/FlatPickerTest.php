@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Tests\Components\Forms\Inputs;
 
-use TakiElias\TablarKit\Tests\Components\ComponentTestCase;
+use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class FlatPickerTest extends ComponentTestCase
 {

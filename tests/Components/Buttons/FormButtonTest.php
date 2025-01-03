@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TakiElias\TablarKit\Tests\Components\Buttons;
+namespace TakiElias\TablarKit\Tests\Components;
 
 use Illuminate\Support\Facades\Route;
-use TakiElias\TablarKit\Tests\Components\ComponentTestCase;
+use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class FormButtonTest extends ComponentTestCase
 {

@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace TakiElias\TablarKit\Tests\Components;
+namespace TakiElias\TablarKit\Tests;
 
 use Gajus\Dindent\Exception\InvalidArgumentException;
 use Gajus\Dindent\Exception\RuntimeException;
 use Gajus\Dindent\Indenter;
 use Orchestra\Testbench\TestCase;
 use Takielias\TablarKit\TablarKitServiceProvider;
-use TakiElias\TablarKit\Tests\InteractsWithViews;
 
 abstract class ComponentTestCase extends TestCase
 {

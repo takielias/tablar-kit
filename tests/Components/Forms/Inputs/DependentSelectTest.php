@@ -6,7 +6,7 @@ namespace TakiElias\TablarKit\Tests\Components\Forms\Inputs;
 
 
 use Illuminate\Support\Facades\Route;
-use TakiElias\TablarKit\Tests\Components\ComponentTestCase;
+use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class DependentSelectTest extends ComponentTestCase
 {
