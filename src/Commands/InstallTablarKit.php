@@ -31,7 +31,7 @@ class InstallTablarKit extends Command
         self::updateTablarJs();
         self::scaffoldConfig();
         $this->newLine();
-        $this->comment('Tablar kit is now installed 🚀');
+        $this->comment('Tablar kit has been installed successfully. 🚀');
         $this->newLine();
         $this->comment('Run "npm install" first. Once the installation is done, run "npm run dev"');
         $this->newLine();
@@ -103,14 +103,24 @@ class InstallTablarKit extends Command
 
         // Array of lines to be added
         $linesToAdd = [
-            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/filepond.js';\n",
-            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/jodit-editor.js';\n",
-            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/tom-select.js';\n",
-            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/flat-picker.js';\n",
-            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/lite-picker.js';\n",
-            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/tabulator.js';\n",
-            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/xlsx.js';\n",
-            "import '../../vendor/takielias/tablar-kit/resources/js/plugins/jspdf.js';\n",
+            "\n// Tablar Kit components' JavaScript dependencies.\n",
+            "// Uncomment the required dependencies and run npm run build to include them. \n",
+            "\n // Filepond components' JavaScript dependencies. \n",
+            "//import '../../vendor/takielias/tablar-kit/resources/js/plugins/filepond.js';\n",
+            "\n // Editor components' JavaScript dependencies. \n",
+            "//import '../../vendor/takielias/tablar-kit/resources/js/plugins/jodit-editor.js';\n",
+            "\n // Select/DropDown components' JavaScript dependencies. \n",
+            "//import '../../vendor/takielias/tablar-kit/resources/js/plugins/tom-select.js';\n",
+            "\n // Date & Time Picker components' JavaScript dependencies. \n",
+            "//import '../../vendor/takielias/tablar-kit/resources/js/plugins/flat-picker.js';\n",
+            "//import '../../vendor/takielias/tablar-kit/resources/js/plugins/lite-picker.js';\n",
+            "\n // Table components' JavaScript dependencies. \n",
+            "//import '../../vendor/takielias/tablar-kit/resources/js/plugins/tabulator.js';\n",
+            "//import '../../vendor/takielias/tablar-kit/resources/js/plugins/xlsx.js';\n",
+            "//import '../../vendor/takielias/tablar-kit/resources/js/plugins/jspdf.js';\n",
+            "\n // Modal components' JavaScript dependencies. \n",
+            "//import '../../vendor/takielias/tablar-kit/resources/js/plugins/modal.js';\n",
+            "\n // Common JavaScript dependencies. \n",
             "import '../../vendor/takielias/tablar-kit/resources/js/plugins/common.js';\n",
         ];
 
