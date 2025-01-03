@@ -29,6 +29,8 @@ return [
         'dependent-select' => Takielias\TablarKit\Components\Forms\Inputs\DependentSelect::class,
         'tom-select' => Takielias\TablarKit\Components\Forms\Inputs\TomSelect::class,
         'email' => Takielias\TablarKit\Components\Forms\Inputs\Email::class,
+        'modal' => Takielias\TablarKit\Components\Modals\Modal::class,
+        'modal-form' => Takielias\TablarKit\Components\Modals\ModalForm::class,
         'error' => Takielias\TablarKit\Components\Forms\Error::class,
         'lite-picker' => Takielias\TablarKit\Components\Forms\Inputs\LitePicker::class,
         'flat-picker' => Takielias\TablarKit\Components\Forms\Inputs\FlatPicker::class,
