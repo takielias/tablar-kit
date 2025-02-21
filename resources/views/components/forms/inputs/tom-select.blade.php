@@ -13,6 +13,11 @@
             let customTomSelectOptions = @json($tomSelectOptions);
 
             let tomSelectOptions = {
+                plugins: {
+                    remove_button:{
+                        title:'Remove this item',
+                    }
+                },
                 @if($remoteData)
                 load: function (query, callback) {
                     const url = '{{ route($itemSearchRoute) }}?q=' + encodeURIComponent(query);
