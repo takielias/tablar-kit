@@ -8,7 +8,6 @@ use Takielias\TablarKit\Http\Resources\PermissionsResource;
 
 class Permissions extends AbstractFileBrowserAction
 {
-
     public static function getActionName(): string
     {
         return 'permissions';

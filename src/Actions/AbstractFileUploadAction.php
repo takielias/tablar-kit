@@ -9,9 +9,7 @@ use Illuminate\Support\Str;
 
 abstract class AbstractFileUploadAction extends AbstractBasicAction implements FileBrowserAction
 {
-
     protected FileUploadDto $dto;
-
     public function __construct(FileUploadDto $dto)
     {
         parent::__construct();
