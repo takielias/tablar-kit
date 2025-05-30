@@ -48,7 +48,6 @@
                     this.close();
                 },
                 @endif
-                // ...other predefined options
             };
 
             // Merge customTomSelectOptions into tomSelectOptions
@@ -56,7 +55,7 @@
 
             // Initialize TomSelect with merged options
             if (window.TomSelect) {
-                new TomSelect(el, mergedOptions);
+                new window.TomSelect(el, mergedOptions);
             }
         });
     </script>
