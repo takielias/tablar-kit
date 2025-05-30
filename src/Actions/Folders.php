@@ -9,7 +9,6 @@ use Takielias\TablarKit\Http\Resources\DirectoryResource;
 
 class Folders extends AbstractFileBrowserAction
 {
-
     private FolderDto $folder;
 
     public static function getActionName(): string

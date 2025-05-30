@@ -11,7 +11,6 @@ use Illuminate\Support\Arr;
 
 class FileDto implements Arrayable
 {
-
     private string $fileName;
 
     private ?string $thumb;

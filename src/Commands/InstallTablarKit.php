@@ -68,9 +68,9 @@ class InstallTablarKit extends Command
             "jspdf-autotable" => "^3.8.1",
             "tabulator-tables" => "^5.5.2",
             "xlsx" => "^0.18.5",
-            "jodit" => "^3.24.5",
+            "jodit" => "^4.6.2",
             "litepicker" => "^2.0.12",
-            "tom-select" => "^2.2.2"
+            "tom-select" => "^2.4.3"
         ];
 
         // Combine existing dependencies and devDependencies

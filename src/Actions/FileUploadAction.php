@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class FileUploadAction extends AbstractFileUploadAction
 {
-
     private UploadedFilesInfoDto $uploadFilesInfo;
 
     public static function getActionName(): string

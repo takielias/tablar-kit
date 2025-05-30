@@ -8,7 +8,6 @@ use Takielias\TablarKit\Http\Resources\SuccessActionResource;
 
 class FolderRemove extends AbstractFileBrowserAction
 {
-
     public static function getActionName(): string
     {
         return 'folderRemove';

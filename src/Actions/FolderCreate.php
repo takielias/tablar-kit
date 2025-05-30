@@ -10,7 +10,6 @@ use Takielias\TablarKit\Validators\DirectoryNestingValidator;
 
 class FolderCreate extends AbstractFileBrowserAction
 {
-
     public static function getActionName(): string
     {
         return 'folderCreate';

@@ -9,14 +9,13 @@ use Exception;
 
 class FolderRename extends AbstractFileBrowserAction
 {
-
     public static function getActionName(): string
     {
         return 'folderRename';
     }
 
     /**
-     * @return $this|FileBrowserAction
+     * @return FileBrowserAction
      * @throws Exception
      */
     public function handle(): FileBrowserAction

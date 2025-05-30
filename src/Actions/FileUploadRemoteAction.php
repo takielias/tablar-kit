@@ -8,7 +8,6 @@ use Takielias\TablarKit\Http\Resources\FileUploadResource;
 
 class FileUploadRemoteAction extends AbstractFileUploadAction
 {
-
     private array $remoteFiles = [];
 
     public static function getActionName(): string

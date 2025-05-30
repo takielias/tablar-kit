@@ -76,16 +76,15 @@
 }
 
 .tabulator .tabulator-footer .tabulator-page.active {
-    color: var(--tblr-pagination-active-color);
-    background-color: var(--tblr-pagination-active-bg);
-    border-color: var(--tblr-pagination-active-border-color);
+    /*color: var(--tblr-pagination-active-color);*/
+    /*background-color: var(--tblr-pagination-active-bg);*/
+    /*border-color: var(--tblr-pagination-active-border-color);*/
 }
 
 .tabulator .tabulator-footer .tabulator-page-size {
     border: 1px solid var(--tblr-bg-surface) !important;
     border-radius: 3px;
 }
-
 
 /*Fix Editor Dark Mode*/
 
@@ -106,3 +105,25 @@
     background-color: var(--tblr-bg-surface) !important;
     color: var(--tblr-body-color) !important;
 }
+
+.jodit-toolbar-button__button {
+    background: var(--tblr-bg-surface-tertiary);
+}
+
+.jodit-toolbar-button__button:hover {
+    background: var(--tblr-bg-forms) !important;
+}
+
+.jodit-ui-button {
+    background: var(--tblr-bg-surface-tertiary);
+    color: var(--tblr-body-color) !important;
+}
+
+.jodit-file-browser-files_active_true {
+    background: var(--tblr-bg-forms) !important;
+}
+
+.jodit-toolbar-button__text {
+    color: var(--tblr-body-color) !important;
+}
+
