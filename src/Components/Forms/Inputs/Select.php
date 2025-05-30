@@ -30,4 +30,15 @@ class Select extends Input
         return $this->options;
     }
 
+    public function data(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'options' => $this->options,
+            'placeholder' => $this->placeholder,
+            'value' => $this->value,
+        ];
+    }
+
 }

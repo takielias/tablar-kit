@@ -34,4 +34,17 @@ class DependentSelect extends Input
         return $this->options;
     }
 
+    public function data(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'value' => $this->value,
+            'options' => $this->options,
+            'targetDropdown' => $this->targetDropdown,
+            'targetDataRoute' => $this->targetDataRoute,
+            'placeholder' => $this->placeholder,
+        ];
+    }
+
 }

@@ -20,7 +20,7 @@ class Input extends TablarComponent
     public string $type;
 
     /** @var string */
-    public $value;
+    public string $value;
     public function __construct(
         string  $name,
         string  $id = null,
@@ -38,4 +38,15 @@ class Input extends TablarComponent
     {
         return view('tablar-kit::components.forms.inputs.input');
     }
+
+    public function data(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'type' => $this->type,
+            'value' => $this->value,
+        ];
+    }
+
 }

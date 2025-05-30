@@ -15,11 +15,21 @@ class Checkbox extends Input
     {
         parent::__construct($name, $id, 'checkbox', $value);
 
-        $this->checked = (bool) old($name, $checked);
+        $this->checked = (bool)old($name, $checked);
     }
 
     public function render(): View
     {
         return view('tablar-kit::components.forms.inputs.checkbox');
+    }
+
+    public function data(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'checked' => $this->checked,
+            'value' => $this->value,
+        ];
     }
 }

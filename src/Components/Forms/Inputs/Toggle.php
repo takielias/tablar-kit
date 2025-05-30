@@ -25,4 +25,15 @@ class Toggle extends Input
         return view('tablar-kit::components.forms.inputs.toggle');
     }
 
+    public function data(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'checked' => $this->checked,
+            'value' => $this->value,
+            'label' => $this->label,
+        ];
+    }
+
 }

@@ -49,4 +49,16 @@ class FilePond extends TablarComponent
     {
         return view('tablar-kit::components.forms.inputs.filepond');
     }
+
+    public function data(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'type' => $this->type,
+            'value' => $this->value,
+            'chunk_upload' => $this->chunk_upload,
+            'image_manipulation' => $this->image_manipulation,
+        ];
+    }
 }
