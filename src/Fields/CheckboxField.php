@@ -34,14 +34,14 @@ class CheckboxField extends BaseField
         $isChecked = $fieldValue == $this->checkedValue;
         $attributes = $this->renderAttributes();
 
-        $component = new Checkbox(
+        $checkboxComponent = new Checkbox(
             name: $this->name,
             id: $this->attributes['id'] ?? null,
             checked: $isChecked,
             value: (string) $this->checkedValue
         );
 
-        return View::make($component->render()->name(), $component->data())
+        return View::make($checkboxComponent->render()->name(), $checkboxComponent->data())
             ->with([
                 'attributes' => new ComponentAttributeBag($attributes)
             ])

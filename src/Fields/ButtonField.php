@@ -27,13 +27,13 @@ class ButtonField extends BaseField
     {
         $attributes = $this->renderAttributes();
 
-        $component = new Button(
+        $buttonComponent = new Button(
             id: $this->attributes['id'] ?? null,
             type: $this->type,
             value: $this->text,
         );
 
-        return View::make($component->render()->name(), $component->data())
+        return View::make($buttonComponent->render()->name(), $buttonComponent->data())
             ->with([
                 'attributes' => new ComponentAttributeBag($attributes)
             ])

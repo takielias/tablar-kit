@@ -3,9 +3,6 @@
 namespace Takielias\TablarKit\Fields;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\View;
-use Illuminate\View\ComponentAttributeBag;
-use Takielias\TablarKit\Components\Cards\Card;
 
 class CardField extends BaseField
 {

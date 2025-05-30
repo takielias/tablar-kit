@@ -2,6 +2,10 @@
 
 namespace Takielias\TablarKit\Fields;
 
+use Illuminate\Support\Facades\View;
+use Illuminate\View\ComponentAttributeBag;
+use Takielias\TablarKit\Components\Editors\Jodit;
+
 class JoditField extends BaseField
 {
     protected array $editorConfig = [];
@@ -34,11 +38,18 @@ class JoditField extends BaseField
         $fieldValue = $this->getFieldValue($value);
         $attributes = $this->renderAttributes();
 
-        return view('tablar-kit::form-builder.fields.jodit', [
-            'field' => $this,
-            'value' => $fieldValue,
-            'attributes' => $attributes,
-            'config' => $this->editorConfig,
-        ])->render();
+        $jodit = new Jodit(
+            name: $this->name,
+            id: $this->getId(),
+            options: $this->editorConfig
+        );
+
+        return View::make($jodit->render()->name(), $jodit->data())
+            ->with([
+                'value' => $fieldValue,
+                'slot' => $fieldValue,
+                'attributes' => new ComponentAttributeBag($attributes)
+            ])
+            ->render();
     }
 }

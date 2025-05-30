@@ -45,7 +45,7 @@ class FlatPickerField extends BaseField
         $fieldValue = $this->getFieldValue($value);
         $attributes = $this->renderAttributes();
 
-        $flatPicker = new FlatPicker(
+        $flatPickerComponent = new FlatPicker(
             name: $this->name,
             id: $this->getId(),
             value: $fieldValue,
@@ -54,10 +54,10 @@ class FlatPickerField extends BaseField
             options: $this->pickerConfig
         );
 
-        return View::make($flatPicker->render()->name(), $flatPicker->data())
+        return View::make($flatPickerComponent->render()->name(), $flatPickerComponent->data())
             ->with([
                 'attributes' => new ComponentAttributeBag($attributes),
-                'jsonOptions' => $flatPicker->jsonOptions()
+                'jsonOptions' => $flatPickerComponent->jsonOptions()
             ])
             ->render();
     }

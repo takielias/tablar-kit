@@ -18,6 +18,8 @@ class Jodit extends TablarComponent
     /** @var array */
     public array $options;
 
+    public ?string $value = null;
+
     public function __construct(string $name, string $id = null, array $options = [])
     {
         $this->name = $name;
@@ -28,5 +30,15 @@ class Jodit extends TablarComponent
     public function render(): View
     {
         return view('tablar-kit::components.editors.jodit');
+    }
+
+    public function data(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'options' => $this->options,
+            'value' => $this->value ?? '',
+        ];
     }
 }

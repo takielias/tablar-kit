@@ -53,14 +53,14 @@ class InputField extends BaseField
         $fieldValue = $this->getFieldValue($value);
         $attributes = $this->renderAttributes();
 
-        $component = new Input(
+        $inputComponent = new Input(
             name: $this->name,
             id: $this->attributes['id'] ?? null,
             type: $this->type,
             value: $fieldValue
         );
 
-        return View::make($component->render()->name(), $component->data())
+        return View::make($inputComponent->render()->name(), $inputComponent->data())
             ->with([
                 'attributes' => new ComponentAttributeBag($attributes)
             ])

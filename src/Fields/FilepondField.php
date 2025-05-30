@@ -50,7 +50,7 @@ class FilepondField extends BaseField
         $fieldValue = $this->getFieldValue($value);
         $attributes = $this->renderAttributes();
 
-        $component = new FilePond(
+        $filepondComponent = new FilePond(
             name: $this->name,
             id: $this->attributes['id'] ?? null,
             type: 'file',
@@ -59,7 +59,7 @@ class FilepondField extends BaseField
             value: $fieldValue
         );
 
-        return View::make($component->render()->name(), $component->data())
+        return View::make($filepondComponent->render()->name(), $filepondComponent->data())
             ->with([
                 'config' => $this->filepondConfig,
                 'attributes' => new ComponentAttributeBag($attributes)

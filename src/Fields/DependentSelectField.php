@@ -51,7 +51,7 @@ class DependentSelectField extends BaseField
         $fieldValue = $this->getFieldValue($value);
         $attributes = $this->renderAttributes();
 
-        $component = new DependentSelect(
+        $dependentComponent = new DependentSelect(
             name: $this->name,
             targetDropdown: $this->targetDropdown,
             targetDataRoute: $this->targetDataRoute,
@@ -60,7 +60,7 @@ class DependentSelectField extends BaseField
             placeholder: $this->placeholder ?? ''
         );
 
-        return View::make($component->render()->name(), $component->data())
+        return View::make($dependentComponent->render()->name(), $dependentComponent->data())
             ->with([
                 'attributes' => new ComponentAttributeBag($attributes)
             ])

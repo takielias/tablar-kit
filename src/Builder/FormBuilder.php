@@ -334,6 +334,33 @@ class FormBuilder
         return $this;
     }
 
+    public function allowMultiple(bool $allow = true): self
+    {
+        $lastField = $this->fields->last();
+        if ($lastField && method_exists($lastField, 'allowMultiple')) {
+            $lastField->allowMultiple($allow);
+        }
+        return $this;
+    }
+
+    public function height(int $height): self
+    {
+        $lastField = $this->fields->last();
+        if ($lastField && method_exists($lastField, 'height')) {
+            $lastField->height($height);
+        }
+        return $this;
+    }
+
+    public function toolbar(array $toolbar): self
+    {
+        $lastField = $this->fields->last();
+        if ($lastField && method_exists($lastField, 'toolbar')) {
+            $lastField->toolbar($toolbar);
+        }
+        return $this;
+    }
+
     public function acceptedFileTypes(array $types): self
     {
         $lastField = $this->fields->last();

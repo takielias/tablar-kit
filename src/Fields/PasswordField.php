@@ -24,14 +24,14 @@ class PasswordField extends BaseField
         $fieldValue = $this->getFieldValue($value);
         $attributes = $this->renderAttributes();
 
-        $component = new Input(
+        $passwordComponent = new Input(
             name: $this->name,
             id: $this->attributes['id'] ?? null,
             type: 'password',
             value: $fieldValue
         );
 
-        return View::make($component->render()->name(), $component->data())
+        return View::make($passwordComponent->render()->name(), $passwordComponent->data())
             ->with([
                 'attributes' => new ComponentAttributeBag($attributes)
             ])

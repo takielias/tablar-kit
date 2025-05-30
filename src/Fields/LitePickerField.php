@@ -45,7 +45,7 @@ class LitePickerField extends BaseField
         $fieldValue = $this->getFieldValue($value);
         $attributes = $this->renderAttributes();
 
-        $litePicker = new LitePicker(
+        $litePickerComponent = new LitePicker(
             name: $this->name,
             id: $this->getId(),
             value: $fieldValue,
@@ -54,10 +54,10 @@ class LitePickerField extends BaseField
             options: $this->pickerConfig
         );
 
-        return View::make($litePicker->render()->name(), $litePicker->data())
+        return View::make($litePickerComponent->render()->name(), $litePickerComponent->data())
             ->with([
                 'attributes' => new ComponentAttributeBag($attributes),
-                'jsonOptions' => $litePicker->jsonOptions()
+                'jsonOptions' => $litePickerComponent->jsonOptions()
             ])
             ->render();
     }
