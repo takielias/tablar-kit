@@ -10,7 +10,7 @@
 @push('js')
     <script type="module">
         document.addEventListener('DOMContentLoaded', () => {
-            const optional_config = {!! $jsonOptions() !!};
+            const optional_config = @if(isset($jsonOptions)) {!! $jsonOptions !!}@endif;
             if (window.Litepicker) {
                 const default_config = {
                     element: document.getElementById('{{ $id }}'),

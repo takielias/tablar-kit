@@ -2,9 +2,14 @@
 
 namespace Takielias\TablarKit\Fields;
 
+use Illuminate\Support\Facades\View;
+use Illuminate\View\ComponentAttributeBag;
+use Takielias\TablarKit\Components\Forms\Inputs\LitePicker;
+
 class LitePickerField extends BaseField
 {
     protected array $pickerConfig = [];
+    protected ?string $placeholder = null;
 
     public function __construct(string $name, string $label = '', array $config = [])
     {
@@ -29,16 +34,31 @@ class LitePickerField extends BaseField
         return $this;
     }
 
+    public function placeholder(string $placeholder): self
+    {
+        $this->placeholder = $placeholder;
+        return $this;
+    }
+
     public function render($value = null, array $globalConfig = []): string
     {
         $fieldValue = $this->getFieldValue($value);
         $attributes = $this->renderAttributes();
 
-        return view('tablar-kit::form-builder.fields.lite-picker', [
-            'field' => $this,
-            'value' => $fieldValue,
-            'attributes' => $attributes,
-            'config' => $this->pickerConfig,
-        ])->render();
+        $litePicker = new LitePicker(
+            name: $this->name,
+            id: $this->getId(),
+            value: $fieldValue,
+            format: $this->pickerConfig['format'] ?? 'YYYY-MM-DD',
+            placeholder: $this->placeholder ?? null,
+            options: $this->pickerConfig
+        );
+
+        return View::make($litePicker->render()->name(), $litePicker->data())
+            ->with([
+                'attributes' => new ComponentAttributeBag($attributes),
+                'jsonOptions' => $litePicker->jsonOptions()
+            ])
+            ->render();
     }
 }

@@ -55,4 +55,18 @@ class LitePicker extends Input
     {
         return view('tablar-kit::components.forms.inputs.lite-picker');
     }
+
+    public function data(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'value' => $this->value,
+            'format' => $this->format,
+            'placeholder' => $this->placeholder,
+            'options' => $this->options,
+            'jsonOptions' => $this->jsonOptions(),
+        ];
+    }
+
 }

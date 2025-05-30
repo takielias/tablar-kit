@@ -171,6 +171,50 @@ class FormBuilder
         return $this;
     }
 
+    public function enableTime(bool $enable = true): self
+    {
+        $lastField = $this->fields->last();
+
+        if ($lastField && method_exists($lastField, 'enableTime')) {
+            $lastField->enableTime($enable);
+        }
+
+        return $this;
+    }
+
+    public function singleMode(bool $single = true): self
+    {
+        $lastField = $this->fields->last();
+
+        if ($lastField && method_exists($lastField, 'singleMode')) {
+            $lastField->singleMode($single);
+        }
+
+        return $this;
+    }
+
+    public function dateFormat(string $format): self
+    {
+        $lastField = $this->fields->last();
+
+        if ($lastField && method_exists($lastField, 'dateFormat')) {
+            $lastField->dateFormat($format);
+        }
+
+        return $this;
+    }
+
+    public function format(string $format): self
+    {
+        $lastField = $this->fields->last();
+
+        if ($lastField && method_exists($lastField, 'format')) {
+            $lastField->format($format);
+        }
+
+        return $this;
+    }
+
     public function itemSearchRoute(string $route): self
     {
         $lastField = $this->fields->last();
