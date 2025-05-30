@@ -2,6 +2,8 @@
 
 namespace Takielias\TablarKit\Fields;
 
+use Illuminate\View\ComponentAttributeBag;
+
 class FormButtonField extends BaseField
 {
     protected string $text;
@@ -21,7 +23,7 @@ class FormButtonField extends BaseField
         return view('tablar-kit::form-builder.form-button', [
             'text' => $this->text,
             'action' => $this->action,
-            'attributes' => $attributes,
+            'attributes' => new ComponentAttributeBag($attributes),
             'config' => $this->config,
         ])->render();
     }

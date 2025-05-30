@@ -17,6 +17,9 @@ abstract class BaseField extends TablarComponent
     protected ?string $help;
     protected ?string $placeholder;
     protected array $conditions;
+    protected ?int $columnWidth = null;
+
+    protected $max = null;
 
     public function __construct(string $name = '', string $label = '', array $config = [])
     {
@@ -180,6 +183,26 @@ abstract class BaseField extends TablarComponent
         return is_array($fieldValue) ? '' : (string) $fieldValue;
     }
 
+    public function getColumnWidth(): ?int
+    {
+        return $this->columnWidth ?? null;
+    }
+
+    public function columnWidth(int $width): self
+    {
+        $this->columnWidth = $width;
+        return $this;
+    }
+    public function max($max): self
+    {
+        $this->max = $max;
+        return $this;
+    }
+
+    public function getValidationMessages(): array
+    {
+        return [];
+    }
     public function toArray(): array
     {
         return [

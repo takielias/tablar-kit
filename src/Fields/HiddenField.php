@@ -2,6 +2,8 @@
 
 namespace Takielias\TablarKit\Fields;
 
+use Illuminate\View\ComponentAttributeBag;
+
 class HiddenField extends BaseField
 {
     public function __construct(string $name, $value = '', array $config = [])
@@ -18,7 +20,7 @@ class HiddenField extends BaseField
         return view('tablar-kit::form-builder.fields.hidden', [
             'field' => $this,
             'value' => $fieldValue,
-            'attributes' => $attributes,
+            'attributes' => new ComponentAttributeBag($attributes)
         ])->render();
     }
 }

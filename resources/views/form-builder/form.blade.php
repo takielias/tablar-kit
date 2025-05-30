@@ -15,7 +15,7 @@
                             data-bs-target="#tab-content-{{ $index }}"
                             type="button"
                             role="tab">
-                        {{ $tab->title }}
+                        {{ $tab->getTitle() }}
                     </button>
                 </li>
             @endforeach

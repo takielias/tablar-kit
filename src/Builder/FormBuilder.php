@@ -394,6 +394,23 @@ class FormBuilder
         return $this;
     }
 
+    public function max($max): self
+    {
+        $lastField = $this->fields->last();
+        if ($lastField && method_exists($lastField, 'max')) {
+            $lastField->max($max);
+        }
+        return $this;
+    }
+
+    public function help(string $helpText): self
+    {
+        $lastField = $this->fields->last();
+        if ($lastField && method_exists($lastField, 'help')) {
+            $lastField->help($helpText);
+        }
+        return $this;
+    }
     public function min(mixed $min): self
     {
         $lastField = $this->fields->last();
@@ -759,6 +776,15 @@ class FormBuilder
         }
 
         return $attributes;
+    }
+
+    public function value($value): self
+    {
+        $lastField = $this->fields->last();
+        if ($lastField && method_exists($lastField, 'value')) {
+            $lastField->value($value);
+        }
+        return $this;
     }
 
     public function getFields(): Collection

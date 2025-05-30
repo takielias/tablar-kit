@@ -2,6 +2,10 @@
 
 namespace Takielias\TablarKit\Fields;
 
+use Illuminate\Support\Facades\View;
+use Illuminate\View\ComponentAttributeBag;
+use Takielias\TablarKit\Components\Forms\Inputs\Radio;
+
 class RadioField extends BaseField
 {
     protected array $options;
@@ -20,14 +24,26 @@ class RadioField extends BaseField
 
     public function render($value = null, array $globalConfig = []): string
     {
-        $fieldValue = $value ?? $this->value ?? old($this->name);
+        $fieldValue = $this->getFieldValue($value);
         $attributes = $this->renderAttributes();
 
-        return view('tablar-kit::form-builder.fields.radio', [
-            'field' => $this,
-            'value' => $fieldValue,
-            'attributes' => $attributes,
-            'options' => $this->options,
-        ])->render();
+        $radioButtons = '';
+        foreach ($this->options as $optionValue => $optionLabel) {
+            $radio = new Radio(
+                name: $this->name,
+                id: $this->getId() . '_' . $optionValue,
+                checked: $fieldValue == $optionValue,
+                value: $optionValue
+            );
+
+            $radioButtons .= View::make($radio->render()->name(), $radio->data())
+                ->with([
+                    'label' => $optionLabel,
+                    'attributes' => new ComponentAttributeBag($attributes)
+                ])
+                ->render();
+        }
+
+        return $radioButtons;
     }
 }

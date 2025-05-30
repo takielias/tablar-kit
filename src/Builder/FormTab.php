@@ -23,6 +23,21 @@ class FormTab
         return $this;
     }
 
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function getFields(): Collection
+    {
+        return $this->fields;
+    }
+
+    public function getConfig(): array
+    {
+        return $this->config;
+    }
+
     public function render(array $globalConfig = []): string
     {
         return view('tablar-kit::form-builder.layouts.tab', [

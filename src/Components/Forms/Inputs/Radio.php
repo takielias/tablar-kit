@@ -22,4 +22,15 @@ class Radio extends Input
     {
         return view('tablar-kit::components.forms.inputs.radio');
     }
+
+    public function data(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'value' => $this->value,
+            'checked' => $this->checked,
+        ];
+    }
+
 }
