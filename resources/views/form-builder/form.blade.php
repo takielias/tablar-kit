@@ -1,9 +1,23 @@
-<form {!! collect($attributes)->map(fn($value, $key) => "{$key}=\"{$value}\"")->implode(' ') !!}>
-    @csrf
-    @if(in_array($attributes['method'] ?? 'POST', ['PUT', 'PATCH', 'DELETE']))
-        @method($attributes['method'])
-    @endif
+@php
+    if (!isset($attributes['method'])) {
+        $attributes['method'] = 'POST';
+    }
+    $originalMethod = $attributes['method'];
+    if (!in_array($originalMethod, ['PUT', 'PATCH', 'DELETE'])) {
+        $method = $originalMethod;
+    } else {
+        $method = 'POST';
+    }
+    unset($attributes['method']);
+@endphp
 
+
+<form {!! collect($attributes)->map(fn($value, $key) => "{$key}=\"{$value}\"")->implode(' ') !!}
+      method="{{$method}}">
+    @csrf
+    @if(in_array($originalMethod, ['PUT', 'PATCH', 'DELETE']))
+        @method($originalMethod)
+    @endif
     @if(count($tabs) > 0)
         {{-- Render tabs --}}
         <ul class="nav nav-tabs" role="tablist">
@@ -41,7 +55,21 @@
         {{-- Render regular fields --}}
         @foreach($fields as $field)
             @if(method_exists($field, 'render'))
+                @if($field->getLabel())
+                    <x-tablar-kit::forms.label :for="$field->getId()">
+                        {!! $field->getLabel() !!}
+                        @if($field->isRequired())
+                            <span class="text-danger">*</span>
+                        @endif
+                    </x-tablar-kit::forms.label>
+                @endif
                 {!! $field->render($data[$field->getName()] ?? null, $config) !!}
+                @if($field->getHelp())
+                    <div class="form-text">{{ $field->getHelp() }}</div>
+                @endif
+                @error($field->getName())
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
             @else
                 {!! $field !!}
             @endif

@@ -44,7 +44,7 @@ class FormBuilder
     public function __construct()
     {
         $this->fields = collect();
-        $this->attributes = ['class' => 'tablar-form'];
+        $this->attributes = ['class' => 'tablar-form space-y'];
         $this->data = [];
         $this->method = 'POST';
         $this->action = null;
@@ -411,6 +411,7 @@ class FormBuilder
         }
         return $this;
     }
+
     public function min(mixed $min): self
     {
         $lastField = $this->fields->last();
@@ -769,13 +770,18 @@ class FormBuilder
             $attributes['action'] = $this->action;
         }
 
-        $attributes['method'] = $this->method === 'GET' ? 'GET' : 'POST';
+        $attributes['method'] = $this->method;
 
         if ($this->multipart) {
             $attributes['enctype'] = 'multipart/form-data';
         }
 
         return $attributes;
+    }
+
+    public function getMethod(): string
+    {
+        return $this->method;
     }
 
     public function value($value): self

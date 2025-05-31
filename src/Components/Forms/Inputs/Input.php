@@ -10,17 +10,13 @@ use Illuminate\Contracts\View\View;
 
 class Input extends TablarComponent
 {
-    /** @var string */
     public string $name;
 
-    /** @var string */
     public string $id;
 
-    /** @var string */
     public string $type;
 
-    /** @var string */
-    public string $value;
+    public ?string $value;
     public function __construct(
         string  $name,
         string  $id = null,

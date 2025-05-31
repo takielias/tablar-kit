@@ -38,13 +38,17 @@ trait HandlesTablarForms
     /**
      * Handle form submission with validation
      */
-    protected function handleFormSubmission(Request $request, string $formClass, callable $callback)
+    protected function handleFormSubmission(Request $request, string|AbstractForm $form, callable $callback)
     {
-        $form = $this->makeForm($formClass);
+        if ($form instanceof AbstractForm) {
+            $formInstance = $form;
+        } else {
+            $formInstance = $this->makeForm($form);
+        }
 
         try {
-            $validated = $this->validateForm($request, $form);
-            return $callback($validated, $form);
+            $validated = $this->validateForm($request, $formInstance);
+            return $callback($validated, $formInstance);
         } catch (ValidationException $e) {
             return back()->withErrors($e->errors())->withInput();
         }

@@ -1,13 +1,4 @@
 <div class="mb-3">
-    @if($field->getLabel())
-        <label for="{{ $field->getId() }}" class="form-label">
-            {{ $field->getLabel() }}
-            @if($field->isRequired())
-                <span class="text-danger">*</span>
-            @endif
-        </label>
-    @endif
-
     <input type="file"
            name="{{ $field->getName() }}{{ $multiple ? '[]' : '' }}"
            id="{{ $field->getId() }}"
