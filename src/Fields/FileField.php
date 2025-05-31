@@ -2,6 +2,8 @@
 
 namespace Takielias\TablarKit\Fields;
 
+use Illuminate\View\ComponentAttributeBag;
+
 class FileField extends BaseField
 {
     protected array $acceptedTypes = [];
@@ -10,6 +12,9 @@ class FileField extends BaseField
 
     public function __construct(string $name, string $label = '', array $config = [])
     {
+        if (empty($label)) {
+            $label = ucwords(str_replace(['_', '-'], ' ', $name));
+        }
         parent::__construct($name, $label, $config);
     }
 
@@ -31,16 +36,28 @@ class FileField extends BaseField
         return $this;
     }
 
+    public function acceptedFileTypes(array $types): self
+    {
+        $this->attributes['accept'] = implode(',', $types);
+        return $this;
+    }
+
+    public function maxFileSize(string $size): self
+    {
+        // This is typically handled by validation, not HTML attributes
+        return $this;
+    }
+
     public function render($value = null, array $globalConfig = []): string
     {
         $attributes = $this->renderAttributes();
 
         return view('tablar-kit::form-builder.fields.file', [
             'field' => $this,
-            'attributes' => $attributes,
             'acceptedTypes' => $this->acceptedTypes,
             'maxSize' => $this->maxSize,
             'multiple' => $this->multiple,
+            'attributes' => new ComponentAttributeBag($attributes)
         ])->render();
     }
 }

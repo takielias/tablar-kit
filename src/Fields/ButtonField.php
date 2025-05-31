@@ -11,9 +11,13 @@ class ButtonField extends BaseField
     protected string $text;
     protected string $type = 'submit';
 
-    public function __construct(string $text = 'Click', array $config = [])
+    public function __construct(string $text = 'Click', string $label = 'Button', array $config = [])
     {
-        parent::__construct('', '', $config);
+        if (empty($label)) {
+            $label = ucwords(str_replace(['_', '-'], ' ', $text));
+        }
+
+        parent::__construct('', $label, $config);
         $this->text = $text;
     }
 

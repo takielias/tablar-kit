@@ -12,6 +12,9 @@ class TextareaField extends BaseField
 
     public function __construct(string $name, string $label = '', array $config = [])
     {
+        if (empty($label)) {
+            $label = ucwords(str_replace(['_', '-'], ' ', $name));
+        }
         parent::__construct($name, $label, $config);
     }
 

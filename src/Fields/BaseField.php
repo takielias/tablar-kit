@@ -51,6 +51,16 @@ abstract class BaseField extends TablarComponent
         }
     }
 
+    // In BaseField class
+    public static function make(string $name, string $label = '', array $config = []): static
+    {
+        if (empty($label)) {
+            $label = ucwords(str_replace(['_', '-'], ' ', $name));
+        }
+
+        return new static($name, $label, $config);
+    }
+
     // Fluent interface methods
     public function label(string $label): self
     {
@@ -130,7 +140,7 @@ abstract class BaseField extends TablarComponent
         if (is_string($rules)) {
             $rules = explode('|', $rules);
         }
-        $this->validationRules = array_merge($this->validationRules, (array) $rules);
+        $this->validationRules = array_merge($this->validationRules, (array)$rules);
         return $this;
     }
 
@@ -162,6 +172,11 @@ abstract class BaseField extends TablarComponent
 
     abstract public function render($value = null, array $globalConfig = []): string;
 
+    public function getHelp(): ?string
+    {
+        return $this->help ?? null;
+    }
+
     protected function renderAttributes(): array
     {
         $attributes = $this->attributes;
@@ -173,14 +188,16 @@ abstract class BaseField extends TablarComponent
 
         return $attributes;
     }
+
     public function getId(): string
     {
         return $this->id ?? $this->name . '_' . uniqid();
     }
+
     protected function getFieldValue($value = null): string
     {
         $fieldValue = $value ?? $this->value ?? old($this->name) ?? '';
-        return is_array($fieldValue) ? '' : (string) $fieldValue;
+        return is_array($fieldValue) ? '' : (string)$fieldValue;
     }
 
     public function getColumnWidth(): ?int
@@ -193,6 +210,7 @@ abstract class BaseField extends TablarComponent
         $this->columnWidth = $width;
         return $this;
     }
+
     public function max($max): self
     {
         $this->max = $max;
@@ -203,6 +221,7 @@ abstract class BaseField extends TablarComponent
     {
         return [];
     }
+
     public function toArray(): array
     {
         return [
