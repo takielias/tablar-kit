@@ -18,6 +18,7 @@
     @if(in_array($originalMethod, ['PUT', 'PATCH', 'DELETE']))
         @method($originalMethod)
     @endif
+
     @if(count($tabs) > 0)
         {{-- Render tabs --}}
         <ul class="nav nav-tabs" role="tablist">
@@ -34,7 +35,6 @@
                 </li>
             @endforeach
         </ul>
-
         <div class="tab-content">
             @foreach($tabs as $index => $tab)
                 <div class="tab-pane fade @if($index === 0) show active @endif"
@@ -44,15 +44,17 @@
                 </div>
             @endforeach
         </div>
+    @endif
 
-    @elseif(count($sections) > 0)
+    @if(count($sections) > 0)
         {{-- Render sections --}}
         @foreach($sections as $section)
             {!! $section->render($config) !!}
         @endforeach
 
-    @else
-        {{-- Render regular fields --}}
+    @endif
+    {{-- Render regular fields --}}
+    @if(count($fields) > 0)
         @foreach($fields as $field)
             <div class="{{$field->getTopGap()}}">
                 @if(method_exists($field, 'render'))
@@ -77,4 +79,5 @@
             </div>
         @endforeach
     @endif
+
 </form>

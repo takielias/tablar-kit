@@ -1,4 +1,4 @@
-<div class="mb-3">
+<div class="mb-3 text-end">
     @if($action)
         <a href="{{ $action }}"
            {!! $attributes !!}
