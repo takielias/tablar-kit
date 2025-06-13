@@ -191,7 +191,7 @@ abstract class BaseField extends TablarComponent
         return $this->topGap ?? 'mb-3';
     }
 
-    protected function renderAttributes(): array
+    public function renderAttributes(): array
     {
         $attributes = $this->attributes;
         $attributes['name'] = $this->name;
@@ -208,7 +208,7 @@ abstract class BaseField extends TablarComponent
         return $this->id ?? $this->name . '_' . uniqid();
     }
 
-    protected function getFieldValue($value = null): string
+    public function getFieldValue($value = null): string
     {
         $fieldValue = $value ?? $this->value ?? old($this->name) ?? '';
         return is_array($fieldValue) ? '' : (string)$fieldValue;

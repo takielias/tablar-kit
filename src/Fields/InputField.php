@@ -25,6 +25,11 @@ class InputField extends BaseField
         return $this;
     }
 
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
     public function maxLength(int $length): self
     {
         $this->attributes['maxlength'] = $length;
