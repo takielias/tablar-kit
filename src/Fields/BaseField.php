@@ -15,6 +15,7 @@ abstract class BaseField extends TablarComponent
     protected array $validationMessages;
     protected bool $required;
     protected ?string $help;
+    protected ?string $topGap;
     protected ?string $placeholder;
     protected array $conditions;
     protected ?int $columnWidth = null;
@@ -32,6 +33,7 @@ abstract class BaseField extends TablarComponent
         $this->validationMessages = [];
         $this->required = false;
         $this->help = null;
+        $this->topGap = null;
         $this->placeholder = null;
         $this->conditions = [];
 
@@ -44,6 +46,7 @@ abstract class BaseField extends TablarComponent
             $this->label = $this->config['label'] ?? $this->label;
             $this->required = $this->config['required'] ?? false;
             $this->help = $this->config['help'] ?? null;
+            $this->topGap = $this->config['topGap'] ?? null;
             $this->placeholder = $this->config['placeholder'] ?? null;
             $this->attributes = array_merge($this->attributes, $this->config['attributes'] ?? []);
             $this->validationRules = $this->config['rules'] ?? [];
@@ -175,6 +178,17 @@ abstract class BaseField extends TablarComponent
     public function getHelp(): ?string
     {
         return $this->help ?? null;
+    }
+
+    public function setTopGap(string $topGap): self
+    {
+        $this->topGap = $topGap;
+        return $this;
+    }
+
+    public function getTopGap(): string
+    {
+        return $this->topGap ?? 'mb-3';
     }
 
     protected function renderAttributes(): array

@@ -300,9 +300,9 @@ class FormBuilder
         return $this;
     }
 
-    public function button(string $text = 'Click', array $config = []): self
+    public function button(string $text = 'Click', string $label = 'Button', array $config = []): self
     {
-        $this->addField(new ButtonField($text, $config));
+        $this->addField(new ButtonField($text, $label, $config));
         return $this;
     }
 

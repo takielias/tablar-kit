@@ -26,6 +26,7 @@ class FormButtonField extends BaseField
             'attributes' => new ComponentAttributeBag($attributes),
             'config' => $this->config,
         ])->render();
+
     }
 }
 

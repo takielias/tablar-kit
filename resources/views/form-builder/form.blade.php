@@ -54,25 +54,27 @@
     @else
         {{-- Render regular fields --}}
         @foreach($fields as $field)
-            @if(method_exists($field, 'render'))
-                @if($field->getLabel())
-                    <x-tablar-kit::forms.label :for="$field->getId()">
-                        {!! $field->getLabel() !!}
-                        @if($field->isRequired())
-                            <span class="text-danger">*</span>
-                        @endif
-                    </x-tablar-kit::forms.label>
+            <div class="{{$field->getTopGap()}}">
+                @if(method_exists($field, 'render'))
+                    @if($field->getLabel())
+                        <x-tablar-kit::forms.label :for="$field->getId()">
+                            {!! $field->getLabel() !!}
+                            @if($field->isRequired())
+                                <span class="text-danger">*</span>
+                            @endif
+                        </x-tablar-kit::forms.label>
+                    @endif
+                    {!! $field->render($data[$field->getName()] ?? null, $config) !!}
+                    @if($field->getHelp())
+                        <div class="form-text">{{ $field->getHelp() }}</div>
+                    @endif
+                    @error($field->getName())
+                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                @else
+                    {!! $field !!}
                 @endif
-                {!! $field->render($data[$field->getName()] ?? null, $config) !!}
-                @if($field->getHelp())
-                    <div class="form-text">{{ $field->getHelp() }}</div>
-                @endif
-                @error($field->getName())
-                <div class="invalid-feedback d-block">{{ $message }}</div>
-                @enderror
-            @else
-                {!! $field !!}
-            @endif
+            </div>
         @endforeach
     @endif
 </form>
