@@ -20,8 +20,14 @@ class TextareaField extends BaseField
 
     public function rows(int $rows): self
     {
-        $this->rows = $rows;
+        $this->attributes['rows'] = $rows;
         return $this;
+    }
+
+    public function getRows(): int
+    {
+        return $this->attributes['rows'];
+
     }
 
     public function render($value = null, array $globalConfig = []): string

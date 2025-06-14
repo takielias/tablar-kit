@@ -3,7 +3,6 @@
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
 use PHPUnit\Framework\TestCase;
-use Takielias\TablarKit\Fields\BaseField;
 
 class BaseFieldTest extends TestCase
 {
@@ -50,9 +49,11 @@ class BaseFieldTest extends TestCase
 
         $attributesString = http_build_query($attributes, '', ' ');
 
-        $this->assertStringContainsString('class="custom-class"', $attributesString);
-        $this->assertStringContainsString('placeholder="Enter text"', $attributesString);
-        $this->assertStringContainsString('required="required"', $attributesString);
+        $this->assertStringContainsString('class=custom-class', $attributesString);
+        $this->assertArrayHasKey('placeholder', $attributes);
+        $this->assertEquals('Enter text', $attributes['placeholder']);
+        $this->assertStringContainsString('required=required', $attributesString);
+
     }
 
     /** @test */
@@ -116,11 +117,3 @@ class BaseFieldTest extends TestCase
     }
 }
 
-// Testable concrete implementation of BaseField
-class TestableBaseField extends BaseField
-{
-    public function render($value = null, array $globalConfig = []): string
-    {
-        return '<input name="' . $this->getName() . '" value="' . $this->getFieldValue($value) . '">';
-    }
-}

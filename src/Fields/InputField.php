@@ -37,6 +37,14 @@ class InputField extends BaseField
         return $this;
     }
 
+    public function minLength(int $length): self
+    {
+        $this->attributes['minlength'] = $length;
+        $this->rules("min:{$length}");
+        return $this;
+    }
+
+
     public function min($min): self
     {
         $this->attributes['min'] = $min;

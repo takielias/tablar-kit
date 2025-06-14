@@ -40,6 +40,11 @@ abstract class BaseField extends TablarComponent
         $this->initializeFromConfig();
     }
 
+    protected function buildComponent(): mixed
+    {
+        return null;
+    }
+
     protected function initializeFromConfig(): void
     {
         if (!empty($this->config)) {
@@ -62,6 +67,33 @@ abstract class BaseField extends TablarComponent
         }
 
         return new static($name, $label, $config);
+    }
+
+    /**
+     * Set a single attribute
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return self
+     */
+    public function setAttribute(string $key, mixed $value): self
+    {
+        $this->attributes[$key] = $value;
+        return $this;
+    }
+
+    /**
+     * Set multiple attributes at once
+     *
+     * @param array $attributes
+     * @return self
+     */
+    public function setAttributes(array $attributes): self
+    {
+        foreach ($attributes as $key => $value) {
+            $this->setAttribute($key, $value);
+        }
+        return $this;
     }
 
     // Fluent interface methods

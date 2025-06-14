@@ -3,6 +3,7 @@
 namespace Takielias\TablarKit\Fields;
 
 use Illuminate\Support\Collection;
+use Takielias\TablarKit\Components\Cards\Card;
 
 class CardField extends BaseField
 {
@@ -48,6 +49,11 @@ class CardField extends BaseField
     {
         $this->footer = $footer;
         return $this;
+    }
+
+    protected function buildComponent(): Card
+    {
+        return new Card();
     }
 
     public function render($value = null, array $globalConfig = []): string

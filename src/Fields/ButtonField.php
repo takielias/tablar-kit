@@ -21,21 +21,30 @@ class ButtonField extends BaseField
         $this->text = $text;
     }
 
+    protected function buildComponent(): Button
+    {
+        return new Button(
+            id: $this->attributes['id'] ?? null,
+            type: $this->type,
+            value: $this->text,
+        );
+    }
+
     public function type(string $type): self
     {
         $this->type = $type;
         return $this;
     }
 
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
     public function render($value = null, array $globalConfig = []): string
     {
         $attributes = $this->renderAttributes();
-
-        $buttonComponent = new Button(
-            id: $this->attributes['id'] ?? null,
-            type: $this->type,
-            value: $this->text,
-        );
+        $buttonComponent = $this->buildComponent();
 
         return View::make($buttonComponent->render()->name(), $buttonComponent->data())
             ->with([
@@ -43,5 +52,6 @@ class ButtonField extends BaseField
             ])
             ->render();
     }
+
 }
 

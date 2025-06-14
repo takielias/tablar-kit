@@ -8,8 +8,8 @@ use Takielias\TablarKit\Components\Forms\Inputs\Checkbox;
 
 class CheckboxField extends BaseField
 {
-    protected $checkedValue = 1;
-    protected $uncheckedValue = 0;
+    protected int $checkedValue = 1;
+    protected int $uncheckedValue = 0;
 
     public function __construct(string $name, string $label = '', array $config = [])
     {
@@ -32,18 +32,33 @@ class CheckboxField extends BaseField
         return $this;
     }
 
-    public function render($value = null, array $globalConfig = []): string
+    public function getCheckedValue(): int
     {
-        $fieldValue = $value ?? $this->value ?? old($this->name);
-        $isChecked = $fieldValue == $this->checkedValue;
-        $attributes = $this->renderAttributes();
+        return $this->checkedValue;
 
-        $checkboxComponent = new Checkbox(
+    }
+
+    public function getUncheckedValue(): int
+    {
+        return $this->uncheckedValue;
+    }
+
+    protected function buildComponent(): Checkbox
+    {
+        $isChecked = $this->checkedValue;
+
+        return new Checkbox(
             name: $this->name,
             id: $this->attributes['id'] ?? null,
             checked: $isChecked,
-            value: (string) $this->checkedValue
+            value: (string)$this->checkedValue
         );
+    }
+
+    public function render($value = null, array $globalConfig = []): string
+    {
+        $attributes = $this->renderAttributes();
+        $checkboxComponent = $this->buildComponent();
 
         return View::make($checkboxComponent->render()->name(), $checkboxComponent->data())
             ->with([
