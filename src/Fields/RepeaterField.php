@@ -2,6 +2,8 @@
 
 namespace Takielias\TablarKit\Fields;
 
+use Takielias\TablarKit\Builder\RepeaterFieldBuilder;
+
 class RepeaterField extends BaseField
 {
     protected $callback;
@@ -12,11 +14,22 @@ class RepeaterField extends BaseField
     protected string $removeButtonText = 'Remove';
     protected bool $sortable = false;
 
-    public function __construct(string $name, callable $callback, array $config = [])
+    public function __construct(string $name, callable $callback = null, array $config = [])
     {
         parent::__construct($name, '', $config);
         $this->callback = $callback;
     }
+
+    public function fields(callable $callback): self
+    {
+        $this->callback = function ($index, $item) use ($callback) {
+            $builder = new RepeaterFieldBuilder($this->name, $index);
+            $callback($builder, $item);
+            return $builder->getFields();
+        };
+        return $this;
+    }
+
 
     public function items(array $items): self
     {

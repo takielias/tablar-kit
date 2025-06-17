@@ -20,6 +20,7 @@ use Takielias\TablarKit\Fields\JoditField;
 use Takielias\TablarKit\Fields\LitePickerField;
 use Takielias\TablarKit\Fields\PasswordField;
 use Takielias\TablarKit\Fields\RadioField;
+use Takielias\TablarKit\Fields\RepeaterField;
 use Takielias\TablarKit\Fields\SelectField;
 use Takielias\TablarKit\Fields\TextareaField;
 use Takielias\TablarKit\Fields\ToggleField;
@@ -246,6 +247,13 @@ class FormBuilder
         }
 
         return $this;
+    }
+
+    public function repeater(string $name, callable $callback = null): RepeaterField
+    {
+        $field = new RepeaterField($name, $callback);
+        $this->addField($field);
+        return $field;
     }
 
     public function id(string $id): self
