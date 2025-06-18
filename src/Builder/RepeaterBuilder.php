@@ -2,12 +2,14 @@
 
 namespace Takielias\TablarKit\Builder;
 
+use Takielias\TablarKit\Fields\FormColumn;
+use Takielias\TablarKit\Fields\FormRow;
 use Takielias\TablarKit\Fields\InputField;
 use Takielias\TablarKit\Fields\SelectField;
 use Takielias\TablarKit\Fields\TextareaField;
 use Takielias\TablarKit\Fields\ToggleField;
 
-class RepeaterFieldBuilder
+class RepeaterBuilder
 {
     private array $fields = [];
     private string $prefix;
@@ -45,6 +47,26 @@ class RepeaterFieldBuilder
         $field = new ToggleField("{$this->prefix}[{$this->index}][{$name}]", $label);
         $this->fields[] = $field;
         return $field;
+    }
+
+    public function row(callable $callback): RepeaterBuilder
+    {
+        $row = new FormRow();
+        $builder = new RepeaterBuilder($this->prefix, $this->index);
+        $callback($builder);
+        $row->setFields(collect($builder->getFields()));
+        $this->fields[] = $row;
+        return $this;
+    }
+
+    public function column(int $size, callable $callback): RepeaterBuilder
+    {
+        $column = new FormColumn($size);
+        $builder = new RepeaterBuilder($this->prefix, $this->index);
+        $callback($builder);
+        $column->setFields(collect($builder->getFields()));
+        $this->fields[] = $column;
+        return $this;
     }
 
     public function getFields(): array

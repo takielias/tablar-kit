@@ -2,7 +2,7 @@
 
 namespace Takielias\TablarKit\Fields;
 
-use Takielias\TablarKit\Builder\RepeaterFieldBuilder;
+use Takielias\TablarKit\Builder\RepeaterBuilder;
 
 class RepeaterField extends BaseField
 {
@@ -23,7 +23,7 @@ class RepeaterField extends BaseField
     public function fields(callable $callback): self
     {
         $this->callback = function ($index, $item) use ($callback) {
-            $builder = new RepeaterFieldBuilder($this->name, $index);
+            $builder = new RepeaterBuilder($this->name, $index);
             $callback($builder, $item);
             return $builder->getFields();
         };

@@ -21,6 +21,19 @@ class FormRow extends BaseField
         return $this;
     }
 
+    public function addColumn(FormColumn $column): void
+    {
+        $this->columns[] = $column;
+    }
+
+    public function column(int $size, callable $callback): FormColumn
+    {
+        $column = new FormColumn($size);
+        $callback($column);
+        $this->addColumn($column);
+        return $column;
+    }
+
     public function render($value = null, array $globalConfig = []): string
     {
         return view('tablar-kit::form-builder.layouts.row', [
