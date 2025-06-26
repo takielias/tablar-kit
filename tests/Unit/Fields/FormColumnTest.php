@@ -3,8 +3,8 @@
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\Fields\FormColumn;
-use Takielias\TablarKit\Fields\InputField;
+use TakiElias\TablarKit\Fields\FormColumn;
+use TakiElias\TablarKit\Fields\InputField;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Collection;
 

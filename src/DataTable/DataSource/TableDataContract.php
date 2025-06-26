@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\DataTable\DataSource;
+namespace TakiElias\TablarKit\DataTable\DataSource;
 
 use Illuminate\Contracts\Pagination\Paginator;
 

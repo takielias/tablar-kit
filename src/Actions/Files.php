@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Actions;
+namespace TakiElias\TablarKit\Actions;
 
 use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
-use Takielias\TablarKit\Dto\FileDto;
-use Takielias\TablarKit\Dto\FolderDto;
-use Takielias\TablarKit\Http\Resources\DirectoryResource;
+use TakiElias\TablarKit\Dto\FileDto;
+use TakiElias\TablarKit\Dto\FolderDto;
+use TakiElias\TablarKit\Http\Resources\DirectoryResource;
 
 class Files extends AbstractFileBrowserAction
 {

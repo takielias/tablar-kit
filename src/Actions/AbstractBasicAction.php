@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Actions;
+namespace TakiElias\TablarKit\Actions;
 
-use Takielias\TablarKit\Http\Resources\FileActionErrorResource;
-use Takielias\TablarKit\Services\FileBrowserStorage;
+use TakiElias\TablarKit\Http\Resources\FileActionErrorResource;
+use TakiElias\TablarKit\Services\FileBrowserStorage;
 
 abstract class AbstractBasicAction
 {

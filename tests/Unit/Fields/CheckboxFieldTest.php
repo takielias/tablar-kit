@@ -4,7 +4,7 @@ namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
 use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\Fields\CheckboxField;
+use TakiElias\TablarKit\Fields\CheckboxField;
 use TakiElias\TablarKit\Tests\Fake\FakeCheckboxField;
 
 class CheckboxFieldTest extends TestCase

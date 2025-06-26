@@ -1,13 +1,13 @@
 <?php
 
-namespace Takielias\TablarKit\Builder;
+namespace TakiElias\TablarKit\Builder;
 
-use Takielias\TablarKit\Fields\FormColumn;
-use Takielias\TablarKit\Fields\FormRow;
-use Takielias\TablarKit\Fields\InputField;
-use Takielias\TablarKit\Fields\SelectField;
-use Takielias\TablarKit\Fields\TextareaField;
-use Takielias\TablarKit\Fields\ToggleField;
+use TakiElias\TablarKit\Fields\FormColumn;
+use TakiElias\TablarKit\Fields\FormRow;
+use TakiElias\TablarKit\Fields\InputField;
+use TakiElias\TablarKit\Fields\SelectField;
+use TakiElias\TablarKit\Fields\TextareaField;
+use TakiElias\TablarKit\Fields\ToggleField;
 
 class RepeaterBuilder
 {

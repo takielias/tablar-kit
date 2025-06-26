@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\Components;
+namespace TakiElias\TablarKit\Components;
 
 class TablarComponentWrapper
 {

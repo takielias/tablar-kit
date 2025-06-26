@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Forms;
+namespace TakiElias\TablarKit\Components\Forms;
 
-use Takielias\TablarKit\Components\TablarComponent;
+use TakiElias\TablarKit\Components\TablarComponent;
 use Illuminate\Support\ViewErrorBag;
 use Illuminate\View\View;
 

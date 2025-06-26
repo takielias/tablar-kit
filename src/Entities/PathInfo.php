@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Entities;
+namespace TakiElias\TablarKit\Entities;
 
 final class PathInfo
 {

@@ -3,7 +3,7 @@
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\Fields\ToggleField;
+use TakiElias\TablarKit\Fields\ToggleField;
 use Illuminate\Support\Facades\View;
 
 class ToggleFieldTest extends TestCase

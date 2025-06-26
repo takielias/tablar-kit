@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Dto;
+namespace TakiElias\TablarKit\Dto;
 
-use Takielias\TablarKit\Entities\PathInfo;
+use TakiElias\TablarKit\Entities\PathInfo;
 
 final class UploadedFileDto
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Takielias\TablarKit\Enums;
+namespace TakiElias\TablarKit\Enums;
 
 enum BottomCalculationType: string
 {

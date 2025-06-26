@@ -3,7 +3,7 @@
 namespace Tests\Unit\TablarKit\Fields;
 
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\Fields\JoditField;
+use TakiElias\TablarKit\Fields\JoditField;
 use Mockery;
 
 class JoditFieldTest extends TestCase

@@ -1,30 +1,30 @@
 <?php
 
-namespace Takielias\TablarKit\Builder;
+namespace TakiElias\TablarKit\Builder;
 
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
-use Takielias\TablarKit\Fields\BaseField;
-use Takielias\TablarKit\Fields\ButtonField;
-use Takielias\TablarKit\Fields\CheckboxField;
-use Takielias\TablarKit\Fields\DependentSelectField;
-use Takielias\TablarKit\Fields\FileField;
-use Takielias\TablarKit\Fields\FilepondField;
-use Takielias\TablarKit\Fields\FlatPickerField;
-use Takielias\TablarKit\Fields\FormButtonField;
-use Takielias\TablarKit\Fields\FormColumn;
-use Takielias\TablarKit\Fields\FormRow;
-use Takielias\TablarKit\Fields\HiddenField;
-use Takielias\TablarKit\Fields\InputField;
-use Takielias\TablarKit\Fields\JoditField;
-use Takielias\TablarKit\Fields\LitePickerField;
-use Takielias\TablarKit\Fields\PasswordField;
-use Takielias\TablarKit\Fields\RadioField;
-use Takielias\TablarKit\Fields\RepeaterField;
-use Takielias\TablarKit\Fields\SelectField;
-use Takielias\TablarKit\Fields\TextareaField;
-use Takielias\TablarKit\Fields\ToggleField;
-use Takielias\TablarKit\Fields\TomSelectField;
+use TakiElias\TablarKit\Fields\BaseField;
+use TakiElias\TablarKit\Fields\ButtonField;
+use TakiElias\TablarKit\Fields\CheckboxField;
+use TakiElias\TablarKit\Fields\DependentSelectField;
+use TakiElias\TablarKit\Fields\FileField;
+use TakiElias\TablarKit\Fields\FilepondField;
+use TakiElias\TablarKit\Fields\FlatPickerField;
+use TakiElias\TablarKit\Fields\FormButtonField;
+use TakiElias\TablarKit\Fields\FormColumn;
+use TakiElias\TablarKit\Fields\FormRow;
+use TakiElias\TablarKit\Fields\HiddenField;
+use TakiElias\TablarKit\Fields\InputField;
+use TakiElias\TablarKit\Fields\JoditField;
+use TakiElias\TablarKit\Fields\LitePickerField;
+use TakiElias\TablarKit\Fields\PasswordField;
+use TakiElias\TablarKit\Fields\RadioField;
+use TakiElias\TablarKit\Fields\RepeaterField;
+use TakiElias\TablarKit\Fields\SelectField;
+use TakiElias\TablarKit\Fields\TextareaField;
+use TakiElias\TablarKit\Fields\ToggleField;
+use TakiElias\TablarKit\Fields\TomSelectField;
 
 class FormBuilder
 {

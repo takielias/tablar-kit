@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\Factories;
+namespace TakiElias\TablarKit\Factories;
 
 use Exception;
 

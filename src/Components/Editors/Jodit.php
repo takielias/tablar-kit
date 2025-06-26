@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Editors;
+namespace TakiElias\TablarKit\Components\Editors;
 
-use Takielias\TablarKit\Components\TablarComponent;
+use TakiElias\TablarKit\Components\TablarComponent;
 use Illuminate\Contracts\View\View;
 
 class Jodit extends TablarComponent

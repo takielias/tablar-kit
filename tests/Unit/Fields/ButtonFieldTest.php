@@ -3,7 +3,7 @@
 namespace Tests\Unit\TablarKit\Fields;
 
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\Fields\ButtonField;
+use TakiElias\TablarKit\Fields\ButtonField;
 use Illuminate\Support\Facades\View;
 use TakiElias\TablarKit\Tests\Fake\FakeButtonField;
 

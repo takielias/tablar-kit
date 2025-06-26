@@ -3,7 +3,7 @@
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\Fields\DependentSelectField;
+use TakiElias\TablarKit\Fields\DependentSelectField;
 use Illuminate\Support\Facades\View;
 
 class DependentSelectFieldTest extends TestCase

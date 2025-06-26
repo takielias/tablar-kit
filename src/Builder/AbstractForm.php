@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\Builder;
+namespace TakiElias\TablarKit\Builder;
 
 abstract class AbstractForm
 {

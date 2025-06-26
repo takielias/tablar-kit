@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Takielias\\TablarKit\\": "src/"
+            "TakiElias\\TablarKit\\": "src/"
         },
         "files": [
             "src/Helpers/functions.php"
@@ -44,10 +44,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Takielias\\TablarKit\\TablarKitServiceProvider"
+                "TakiElias\\TablarKit\\TablarKitServiceProvider"
             ],
             "aliases": {
-                "TablarKit": "Takielias\\TablarKit\\Facades\\TablarKit"
+                "TablarKit": "TakiElias\\TablarKit\\Facades\\TablarKit"
             }
         }
     }

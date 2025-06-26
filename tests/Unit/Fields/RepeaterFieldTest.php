@@ -3,10 +3,10 @@
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\Fields\RepeaterField;
-use Takielias\TablarKit\Fields\InputField;
-use Takielias\TablarKit\Fields\SelectField;
-use Takielias\TablarKit\Fields\ToggleField;
+use TakiElias\TablarKit\Fields\RepeaterField;
+use TakiElias\TablarKit\Fields\InputField;
+use TakiElias\TablarKit\Fields\SelectField;
+use TakiElias\TablarKit\Fields\ToggleField;
 use Illuminate\Support\Facades\View;
 
 class RepeaterFieldTest extends TestCase

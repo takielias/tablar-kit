@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Forms\Inputs;
+namespace TakiElias\TablarKit\Components\Forms\Inputs;
 
-use Illuminate\Support\Str;
-use Takielias\TablarKit\Components\TablarComponent;
+use TakiElias\TablarKit\Components\TablarComponent;
 use Illuminate\Contracts\View\View;
 
 class Input extends TablarComponent
@@ -17,6 +16,7 @@ class Input extends TablarComponent
     public string $type;
 
     public ?string $value;
+
     public function __construct(
         string  $name,
         string  $id = null,
@@ -25,7 +25,7 @@ class Input extends TablarComponent
     )
     {
         $this->name = $name;
-        $this->id = $id ?? Str::random();
+        $this->id = $id ?? $name;
         $this->type = $type;
         $this->value = old($name, $value ?? '');
     }

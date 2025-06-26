@@ -4,7 +4,7 @@ namespace {{ namespace }};
 
 use {{ namespacedUserModel }};
 use Illuminate\Http\Request;
-use Takielias\TablarKit\DataTable\DataTable;
+use TakiElias\TablarKit\DataTable\DataTable;
 
 class {{ class }} extends DataTable
 {

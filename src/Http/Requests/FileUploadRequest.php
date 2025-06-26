@@ -1,11 +1,11 @@
 <?php
 
-namespace Takielias\TablarKit\Http\Requests;
+namespace TakiElias\TablarKit\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\FileBag;
-use Takielias\TablarKit\Dto\FileUploadDto;
-use Takielias\TablarKit\Validators\PathValidator;
+use TakiElias\TablarKit\Dto\FileUploadDto;
+use TakiElias\TablarKit\Validators\PathValidator;
 
 /**
  * @property string action

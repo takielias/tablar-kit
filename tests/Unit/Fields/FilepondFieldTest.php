@@ -3,7 +3,7 @@
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\Fields\FilepondField;
+use TakiElias\TablarKit\Fields\FilepondField;
 use Illuminate\Support\Facades\View;
 
 class FilepondFieldTest extends TestCase

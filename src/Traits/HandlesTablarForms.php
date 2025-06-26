@@ -1,8 +1,8 @@
 <?php
 
-namespace Takielias\TablarKit\Traits;
+namespace TakiElias\TablarKit\Traits;
 
-use Takielias\TablarKit\Builder\AbstractForm;
+use TakiElias\TablarKit\Builder\AbstractForm;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 

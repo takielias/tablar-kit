@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\Builder;
+namespace TakiElias\TablarKit\Builder;
 
 use Illuminate\Support\Collection;
 

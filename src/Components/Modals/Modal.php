@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\Components\Modals;
+namespace TakiElias\TablarKit\Components\Modals;
 
 use Illuminate\View\Component;
 

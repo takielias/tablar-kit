@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\Components\Interfaces;
+namespace TakiElias\TablarKit\Components\Interfaces;
 
 interface Label
 {

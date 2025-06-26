@@ -1,17 +1,17 @@
 <?php
 
-namespace Takielias\TablarKit\DataTable;
+namespace TakiElias\TablarKit\DataTable;
 
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Takielias\TablarKit\DataTable\DataSource\ArrayDataSource;
-use Takielias\TablarKit\DataTable\DataSource\CollectionDataSource;
-use Takielias\TablarKit\DataTable\DataSource\QueryDataSource;
-use Takielias\TablarKit\DataTable\DataSource\TableDataContract;
-use Takielias\TablarKit\Enums\BottomCalculationType;
-use Takielias\TablarKit\Enums\ExportType;
+use TakiElias\TablarKit\DataTable\DataSource\ArrayDataSource;
+use TakiElias\TablarKit\DataTable\DataSource\CollectionDataSource;
+use TakiElias\TablarKit\DataTable\DataSource\QueryDataSource;
+use TakiElias\TablarKit\DataTable\DataSource\TableDataContract;
+use TakiElias\TablarKit\Enums\BottomCalculationType;
+use TakiElias\TablarKit\Enums\ExportType;
 
 class DataTable
 {

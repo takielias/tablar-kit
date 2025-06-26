@@ -1,9 +1,9 @@
 <?php
 
-namespace Takielias\TablarKit\Fields;
+namespace TakiElias\TablarKit\Fields;
 
 use Illuminate\Support\Collection;
-use Takielias\TablarKit\Components\Cards\Card;
+use TakiElias\TablarKit\Components\Cards\Card;
 
 class CardField extends BaseField
 {

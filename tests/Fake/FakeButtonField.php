@@ -3,8 +3,8 @@
 namespace TakiElias\TablarKit\Tests\Fake;
 
 use Illuminate\Contracts\View\View;
-use Takielias\TablarKit\Components\Buttons\Button;
-use Takielias\TablarKit\Fields\ButtonField;
+use TakiElias\TablarKit\Components\Buttons\Button;
+use TakiElias\TablarKit\Fields\ButtonField;
 
 class FakeButtonField extends ButtonField
 {

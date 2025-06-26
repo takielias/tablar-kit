@@ -1,10 +1,10 @@
 <?php
 
-namespace Takielias\TablarKit\Fields;
+namespace TakiElias\TablarKit\Fields;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\View\ComponentAttributeBag;
-use Takielias\TablarKit\Components\Forms\Inputs\TomSelect;
+use TakiElias\TablarKit\Components\Forms\Inputs\TomSelect;
 
 class TomSelectField extends BaseField
 {

@@ -3,7 +3,7 @@
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\Fields\LitePickerField;
+use TakiElias\TablarKit\Fields\LitePickerField;
 use Illuminate\Support\Facades\View;
 
 class LitePickerFieldTest extends TestCase

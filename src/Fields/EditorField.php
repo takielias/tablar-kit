@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\Fields;
+namespace TakiElias\TablarKit\Fields;
 
 class EditorField extends BaseField
 {

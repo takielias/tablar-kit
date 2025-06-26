@@ -3,7 +3,7 @@
 namespace Tests\Unit\TablarKit\Fields;
 
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\Fields\TextareaField;
+use TakiElias\TablarKit\Fields\TextareaField;
 use Illuminate\Support\Facades\View;
 
 class TextareaFieldTest extends TestCase

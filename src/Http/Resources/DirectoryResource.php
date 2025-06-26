@@ -1,10 +1,10 @@
 <?php
 
-namespace Takielias\TablarKit\Http\Resources;
+namespace TakiElias\TablarKit\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Takielias\TablarKit\Dto\FolderDto;
+use TakiElias\TablarKit\Dto\FolderDto;
 
 /**
  * @property FolderDto resource

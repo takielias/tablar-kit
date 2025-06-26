@@ -1,14 +1,14 @@
 <?php
 
-namespace Takielias\TablarKit\Http\Requests;
+namespace TakiElias\TablarKit\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Takielias\TablarKit\Actions\FolderCreate;
-use Takielias\TablarKit\Actions\FolderRemove;
-use Takielias\TablarKit\Actions\FolderRename;
-use Takielias\TablarKit\Dto\FileBrowserDto;
-use Takielias\TablarKit\Validators\PathValidator;
+use TakiElias\TablarKit\Actions\FolderCreate;
+use TakiElias\TablarKit\Actions\FolderRemove;
+use TakiElias\TablarKit\Actions\FolderRename;
+use TakiElias\TablarKit\Dto\FileBrowserDto;
+use TakiElias\TablarKit\Validators\PathValidator;
 
 /**
  * @property string action

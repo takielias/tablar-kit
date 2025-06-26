@@ -3,7 +3,7 @@
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\Fields\HiddenField;
+use TakiElias\TablarKit\Fields\HiddenField;
 use Illuminate\Support\Facades\View;
 
 class HiddenFieldTest extends TestCase

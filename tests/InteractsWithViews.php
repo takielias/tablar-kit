@@ -11,26 +11,13 @@ use Illuminate\View\View;
 
 trait InteractsWithViews
 {
-    /**
-     * Create a new TestView from the given view.
-     *
-     * @param string $view
-     * * @param \Illuminate\Contracts\Support\Arrayable|array $data
-     * * @return TestView
-     */
-    protected function view(string $view, array $data = [])
+
+    protected function view(string $view, $data = [])
     {
         return new TestView(view($view, $data));
     }
 
-    /**
-     * Render the contents of the given Blade template string.
-     *
-     * @param string $template
-     * * @param \Illuminate\Contracts\Support\Arrayable|array $data
-     * * @return TestView
-     */
-    protected function blade(string $template, array $data = [])
+    protected function blade(string $template, $data = [])
     {
         $tempDirectory = sys_get_temp_dir();
 
@@ -45,14 +32,7 @@ trait InteractsWithViews
         return new TestView(view(Str::before(basename($tempFile), '.blade.php'), $data));
     }
 
-    /**
-     * Render the given view component.
-     *
-     * @param string $componentClass
-     * * @param \Illuminate\Contracts\Support\Arrayable|array $data
-     * * @return TestView
-     */
-    protected function component(string $componentClass, array $data = [])
+    protected function component(string $componentClass, $data = [])
     {
         $component = $this->app->make($componentClass, $data);
 
@@ -63,13 +43,6 @@ trait InteractsWithViews
             : new TestView(view($view, $component->data()));
     }
 
-    /**
-     * Populate the shared view error bag with the given errors.
-     *
-     * @param array $errors
-     * @param string $key
-     * @return void
-     */
     protected function withViewErrors(array $errors, $key = 'default')
     {
         ViewFacade::share('errors', (new ViewErrorBag())->put($key, new MessageBag($errors)));

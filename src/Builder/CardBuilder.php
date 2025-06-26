@@ -1,9 +1,9 @@
 <?php
 
-namespace Takielias\TablarKit\Builder;
+namespace TakiElias\TablarKit\Builder;
 
 use Illuminate\Support\Collection;
-use Takielias\TablarKit\Fields\CardField;
+use TakiElias\TablarKit\Fields\CardField;
 
 class CardBuilder
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Takielias\TablarKit\Fields;
+namespace TakiElias\TablarKit\Fields;
 
 
 use Illuminate\Support\Facades\View;
 use Illuminate\View\ComponentAttributeBag;
-use Takielias\TablarKit\Components\Forms\Inputs\DependentSelect;
+use TakiElias\TablarKit\Components\Forms\Inputs\DependentSelect;
 
 class DependentSelectField extends BaseField
 {

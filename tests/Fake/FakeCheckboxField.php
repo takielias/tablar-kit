@@ -3,8 +3,8 @@
 namespace TakiElias\TablarKit\Tests\Fake;
 
 use Illuminate\Contracts\View\View;
-use Takielias\TablarKit\Components\Forms\Inputs\Checkbox;
-use Takielias\TablarKit\Fields\CheckboxField;
+use TakiElias\TablarKit\Components\Forms\Inputs\Checkbox;
+use TakiElias\TablarKit\Fields\CheckboxField;
 
 class FakeCheckboxField extends CheckboxField
 {

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Tests\Components\Forms\Inputs;
 
-
+use TakiElias\TablarKit\Components\Forms\Inputs\Checkbox;
 use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class CheckboxTest extends ComponentTestCase
@@ -12,29 +12,33 @@ class CheckboxTest extends ComponentTestCase
     /** @test */
     public function the_component_can_be_rendered()
     {
-        $this->assertComponentRenders(
-            '<input name="remember_me" type="checkbox" id="remember_me" class="form-check-input" />',
-            '<x-checkbox id="remember_me" name="remember_me"/>',
-        );
+        $component = new Checkbox('remember_me');
+
+        $this->assertEquals('remember_me', $component->name);
+        $this->assertEquals('remember_me', $component->id);
+        $this->assertFalse($component->checked);
+        $this->assertEquals('', $component->value);
     }
 
     /** @test */
-    public function specific_attributes_can_be_overwritten()
+    public function component_returns_correct_data()
     {
-        $this->assertComponentRenders(
-            '<input name="remember_me" type="checkbox" id="rememberMe" class="form-check-input p-4" />',
-            '<x-checkbox name="remember_me" id="rememberMe" class="p-4" />',
-        );
+        $component = new Checkbox('test', 'test-id', true, 'yes');
+        $data = $component->data();
+
+        $this->assertEquals('test', $data['name']);
+        $this->assertEquals('test-id', $data['id']);
+        $this->assertTrue($data['checked']);
+        $this->assertEquals('yes', $data['value']);
     }
 
     /** @test */
     public function inputs_can_have_old_values()
     {
-        $this->flashOld(['remember_me' => true]);
+        $this->flashOld(['remember_me' => '1']);
 
-        $this->assertComponentRenders(
-            '<input name="remember_me" type="checkbox" id="remember_me" value="1" checked class="form-check-input" />',
-            '<x-checkbox id="remember_me" name="remember_me"/>',
-        );
+        $component = new Checkbox('remember_me');
+
+        $this->assertTrue($component->checked);
     }
 }

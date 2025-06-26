@@ -1,9 +1,9 @@
 <?php
 
-namespace Takielias\TablarKit\Fields;
+namespace TakiElias\TablarKit\Fields;
 
 use Illuminate\Support\Str;
-use Takielias\TablarKit\Components\TablarComponent;
+use TakiElias\TablarKit\Components\TablarComponent;
 
 abstract class BaseField extends TablarComponent
 {

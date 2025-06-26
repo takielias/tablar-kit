@@ -3,7 +3,7 @@
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\Fields\TomSelectField;
+use TakiElias\TablarKit\Fields\TomSelectField;
 use Illuminate\Support\Facades\View;
 
 class TomSelectFieldTest extends TestCase

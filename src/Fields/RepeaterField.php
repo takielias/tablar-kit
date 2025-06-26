@@ -1,8 +1,8 @@
 <?php
 
-namespace Takielias\TablarKit\Fields;
+namespace TakiElias\TablarKit\Fields;
 
-use Takielias\TablarKit\Builder\RepeaterBuilder;
+use TakiElias\TablarKit\Builder\RepeaterBuilder;
 
 class RepeaterField extends BaseField
 {
