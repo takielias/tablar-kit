@@ -18,6 +18,7 @@ class ButtonField extends BaseField
         }
 
         parent::__construct('', $label, $config);
+        $this->label = null;
         $this->text = $text;
     }
 

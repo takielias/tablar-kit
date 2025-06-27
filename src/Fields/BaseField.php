@@ -8,7 +8,7 @@ use TakiElias\TablarKit\Components\TablarComponent;
 abstract class BaseField extends TablarComponent
 {
     protected string $name;
-    protected string $label;
+    protected ?string $label;
     protected array $config;
     protected $value;
     protected array $validationRules;
@@ -97,10 +97,15 @@ abstract class BaseField extends TablarComponent
     }
 
     // Fluent interface methods
-    public function label(string $label): self
+    public function label(string|null $label): self
     {
         $this->label = $label;
         return $this;
+    }
+
+    public function hasLabel(): bool
+    {
+        return $this->label ?? false;
     }
 
     public function required(bool $required = true): self
