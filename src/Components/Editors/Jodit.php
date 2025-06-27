@@ -33,14 +33,13 @@ class Jodit extends TablarComponent
         return view('tablar-kit::components.editors.jodit');
     }
 
-    public function data(): array
+    public function getData(): array
     {
         return [
             'name' => $this->name,
             'id' => $this->id,
             'options' => $this->options,
             'value' => $this->value,
-            'attributes' => $this->attributes ?? collect(),
         ];
     }
 }
