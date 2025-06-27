@@ -30,7 +30,7 @@ class Textarea extends TablarComponent
         return view('tablar-kit::components.forms.inputs.textarea');
     }
 
-    public function data(): array
+    public function getData(): array
     {
         return [
             'name' => $this->name,

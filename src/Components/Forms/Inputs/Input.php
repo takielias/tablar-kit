@@ -35,7 +35,7 @@ class Input extends TablarComponent
         return view('tablar-kit::components.forms.inputs.input');
     }
 
-    public function data(): array
+    protected function getData(): array
     {
         return [
             'name' => $this->name,

@@ -58,7 +58,7 @@ class FlatPicker extends Input
         return view('tablar-kit::components.forms.inputs.flat-picker');
     }
 
-    public function data(): array
+    public function getData(): array
     {
         return [
             'name' => $this->name,

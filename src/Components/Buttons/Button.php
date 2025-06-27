@@ -36,7 +36,7 @@ class Button extends TablarComponent
         return view('tablar-kit::components.buttons.button');
     }
 
-    public function data(): array
+    public function getData(): array
     {
         return [
             'id' => $this->id,

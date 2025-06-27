@@ -95,7 +95,7 @@ class TomSelect extends Input
         return $this->options;
     }
 
-    public function data(): array
+    public function getData(): array
     {
         return [
             'name' => $this->name,

@@ -6,7 +6,6 @@ use Orchestra\Testbench\TestCase;
 use TakiElias\TablarKit\Fields\FormColumn;
 use TakiElias\TablarKit\Fields\InputField;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Collection;
 
 class FormColumnTest extends TestCase
 {

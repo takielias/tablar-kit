@@ -25,6 +25,7 @@ class Jodit extends TablarComponent
         $this->name = $name;
         $this->id = $id ?? $name;
         $this->options = $options;
+        $this->value = old($name, '');
     }
 
     public function render(): View
@@ -38,7 +39,8 @@ class Jodit extends TablarComponent
             'name' => $this->name,
             'id' => $this->id,
             'options' => $this->options,
-            'value' => $this->value ?? '',
+            'value' => $this->value,
+            'attributes' => $this->attributes ?? collect(),
         ];
     }
 }

@@ -23,7 +23,7 @@ class Checkbox extends Input
         return view('tablar-kit::components.forms.inputs.checkbox');
     }
 
-    public function data(): array
+    public function getData(): array
     {
         return [
             'name' => $this->name,
