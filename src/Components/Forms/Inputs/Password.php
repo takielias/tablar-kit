@@ -11,6 +11,7 @@ class Password extends Input
     public function __construct(string $name = 'password', string $id = null)
     {
         parent::__construct($name, $id, 'password');
+        $this->value = '';
     }
 
     public function render(): View
