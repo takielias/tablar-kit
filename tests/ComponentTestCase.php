@@ -12,7 +12,6 @@ use TakiElias\TablarKit\TablarKitServiceProvider;
 
 abstract class ComponentTestCase extends TestCase
 {
-    use InteractsWithViews;
 
     protected function setUp(): void
     {
