@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Actions;
+namespace TakiElias\TablarKit\Actions;
 
-use Takielias\TablarKit\Dto\UploadedFileDto;
-use Takielias\TablarKit\Dto\UploadedFilesInfoDto;
-use Takielias\TablarKit\Http\Resources\FileUploadResource;
+use TakiElias\TablarKit\Dto\UploadedFileDto;
+use TakiElias\TablarKit\Dto\UploadedFilesInfoDto;
+use TakiElias\TablarKit\Http\Resources\FileUploadResource;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class FileUploadAction extends AbstractFileUploadAction
 {
-
     private UploadedFilesInfoDto $uploadFilesInfo;
 
     public static function getActionName(): string

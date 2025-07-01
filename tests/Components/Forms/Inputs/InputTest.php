@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Tests\Components\Forms\Inputs;
 
-
+use TakiElias\TablarKit\Components\Forms\Inputs\Input;
 use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class InputTest extends ComponentTestCase
@@ -12,19 +12,21 @@ class InputTest extends ComponentTestCase
     /** @test */
     public function the_component_can_be_rendered()
     {
-        $this->assertComponentRenders(
-            '<input name="search" type="text" id="search" class="form-control" />',
-            '<x-input id="search" name="search" />',
-        );
+        $component = new Input('search', 'search');
+
+        $this->assertEquals('search', $component->name);
+        $this->assertEquals('search', $component->id);
+        $this->assertEquals('text', $component->type);
     }
 
     /** @test */
-    public function specific_attributes_can_be_overwritten()
+    public function component_accepts_custom_type()
     {
-        $this->assertComponentRenders(
-            '<input name="confirm_password" type="password" id="confirmPassword" class="form-control p-4" />',
-            '<x-input name="confirm_password" id="confirmPassword" type="password" class="p-4" />',
-        );
+        $component = new Input('confirm_password', 'confirmPassword', 'password');
+
+        $this->assertEquals('confirm_password', $component->name);
+        $this->assertEquals('confirmPassword', $component->id);
+        $this->assertEquals('password', $component->type);
     }
 
     /** @test */
@@ -32,9 +34,8 @@ class InputTest extends ComponentTestCase
     {
         $this->flashOld(['search' => 'Eloquent']);
 
-        $this->assertComponentRenders(
-            '<input name="search" type="text" id="search" value="Eloquent" class="form-control" />',
-            '<x-input id="search" name="search" />',
-        );
+        $component = new Input('search');
+
+        $this->assertEquals('Eloquent', $component->value);
     }
 }

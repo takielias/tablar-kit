@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit;
+namespace TakiElias\TablarKit;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rule;
 use Illuminate\View\Compilers\BladeCompiler;
-use Takielias\TablarKit\Commands\InstallTablarKit;
-use Takielias\TablarKit\Commands\MakeTableCommand;
-use Takielias\TablarKit\Rules\FilepondRule;
+use TakiElias\TablarKit\Commands\InstallTablarKit;
+use TakiElias\TablarKit\Commands\MakeTableCommand;
+use TakiElias\TablarKit\Rules\FilepondRule;
 
 class TablarKitServiceProvider extends ServiceProvider
 {

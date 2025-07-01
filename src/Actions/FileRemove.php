@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 
-namespace Takielias\TablarKit\Actions;
+namespace TakiElias\TablarKit\Actions;
 
-use Takielias\TablarKit\Http\Resources\SuccessActionResource;
+use TakiElias\TablarKit\Http\Resources\SuccessActionResource;
 
 class FileRemove extends AbstractFileBrowserAction
 {

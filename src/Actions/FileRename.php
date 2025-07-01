@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Actions;
+namespace TakiElias\TablarKit\Actions;
 
-use Takielias\TablarKit\Http\Resources\SuccessActionResource;
+use TakiElias\TablarKit\Http\Resources\SuccessActionResource;
 use Exception;
 
 class FileRename extends AbstractFileBrowserAction
@@ -15,8 +15,7 @@ class FileRename extends AbstractFileBrowserAction
     }
 
     /**
-     * @return $this|FileBrowserAction
-     * @throws Exception
+     * @return FileBrowserAction
      */
     public function handle(): FileBrowserAction
     {

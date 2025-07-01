@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Actions;
+namespace TakiElias\TablarKit\Actions;
 
-use Takielias\TablarKit\Dto\FolderDto;
-use Takielias\TablarKit\Http\Resources\DirectoryResource;
+use TakiElias\TablarKit\Dto\FolderDto;
+use TakiElias\TablarKit\Http\Resources\DirectoryResource;
 
 class Folders extends AbstractFileBrowserAction
 {
-
     private FolderDto $folder;
 
     public static function getActionName(): string

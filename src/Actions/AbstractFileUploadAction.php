@@ -2,16 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Actions;
+namespace TakiElias\TablarKit\Actions;
 
-use Takielias\TablarKit\Dto\FileUploadDto;
+use TakiElias\TablarKit\Dto\FileUploadDto;
 use Illuminate\Support\Str;
 
 abstract class AbstractFileUploadAction extends AbstractBasicAction implements FileBrowserAction
 {
-
     protected FileUploadDto $dto;
-
     public function __construct(FileUploadDto $dto)
     {
         parent::__construct();

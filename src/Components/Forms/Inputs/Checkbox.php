@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Forms\Inputs;
+namespace TakiElias\TablarKit\Components\Forms\Inputs;
 
 use Illuminate\Contracts\View\View;
 
@@ -15,11 +15,21 @@ class Checkbox extends Input
     {
         parent::__construct($name, $id, 'checkbox', $value);
 
-        $this->checked = (bool) old($name, $checked);
+        $this->checked = (bool)old($name, $checked);
     }
 
     public function render(): View
     {
         return view('tablar-kit::components.forms.inputs.checkbox');
+    }
+
+    public function getData(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'checked' => $this->checked,
+            'value' => $this->value,
+        ];
     }
 }

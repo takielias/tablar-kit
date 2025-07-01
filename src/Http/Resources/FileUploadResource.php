@@ -1,11 +1,11 @@
 <?php
 
-namespace Takielias\TablarKit\Http\Resources;
+namespace TakiElias\TablarKit\Http\Resources;
 
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Takielias\TablarKit\Dto\UploadedFileDto;
-use Takielias\TablarKit\Dto\UploadedFilesInfoDto;
+use TakiElias\TablarKit\Dto\UploadedFileDto;
+use TakiElias\TablarKit\Dto\UploadedFilesInfoDto;
 
 /**
  * @property UploadedFilesInfoDto $resource

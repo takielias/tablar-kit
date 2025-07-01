@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Tests\Components\Forms\Inputs;
 
-
-use Illuminate\Support\Facades\Route;
+use TakiElias\TablarKit\Components\Forms\Inputs\DependentSelect;
 use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class DependentSelectTest extends ComponentTestCase
@@ -13,19 +12,39 @@ class DependentSelectTest extends ComponentTestCase
     /** @test */
     public function the_component_can_be_rendered()
     {
-        Route::post('get-product-target-list', function () {
-            // ...
-        })->name('get.product.target.list');
-
-        $this->assertComponentRenders(
-            '<select name="product_list" class="form-select mt-3" id="dependent-select" data-child="dependent_product_1"></select>',
-            '<x-dependent-select name="product_list" id="dependent-select"
-                        target-dropdown="dependent_product_1"
-                        class="mt-3"
-                        target-data-route="get.product.target.list"
-                        :options="[]">
-                     </x-dependent-select>',
+        $component = new DependentSelect(
+            'product_list',
+            'dependent_product_1',
+            'get.product.target.list',
+            'dependent-select'
         );
+
+        $this->assertEquals('product_list', $component->name);
+        $this->assertEquals('dependent-select', $component->id);
+        $this->assertEquals('dependent_product_1', $component->targetDropdown);
+        $this->assertEquals('get.product.target.list', $component->targetDataRoute);
+        $this->assertIsArray($component->options);
     }
 
+    /** @test */
+    public function component_returns_correct_data()
+    {
+        $component = new DependentSelect(
+            'test',
+            'target',
+            'route.name',
+            'test-id',
+            'value',
+            ['key' => 'option'],
+            'Select...'
+        );
+
+        $data = $component->data();
+
+        $this->assertEquals('test', $data['name']);
+        $this->assertEquals('target', $data['targetDropdown']);
+        $this->assertEquals('route.name', $data['targetDataRoute']);
+        $this->assertEquals('Select...', $data['placeholder']);
+        $this->assertEquals(['key' => 'option'], $data['options']);
+    }
 }

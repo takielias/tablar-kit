@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Forms\Inputs;
+namespace TakiElias\TablarKit\Components\Forms\Inputs;
 
 use Illuminate\Contracts\View\View;
 
@@ -23,6 +23,17 @@ class Toggle extends Input
     public function render(): View
     {
         return view('tablar-kit::components.forms.inputs.toggle');
+    }
+
+    public function getData(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'checked' => $this->checked,
+            'value' => $this->value,
+            'label' => $this->label,
+        ];
     }
 
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Dto;
+namespace TakiElias\TablarKit\Dto;
 
 final class UploadedFilesInfoDto
 {

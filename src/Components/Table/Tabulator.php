@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Table;
+namespace TakiElias\TablarKit\Components\Table;
 
-use Takielias\TablarKit\Components\TablarComponent;
-use Takielias\TablarKit\DataTable\DataTable;
+use TakiElias\TablarKit\Components\TablarComponent;
+use TakiElias\TablarKit\DataTable\DataTable;
 
 class Tabulator extends TablarComponent
 {

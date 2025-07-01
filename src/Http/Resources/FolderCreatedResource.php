@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\Http\Resources;
+namespace TakiElias\TablarKit\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
