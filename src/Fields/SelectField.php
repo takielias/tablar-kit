@@ -11,13 +11,13 @@ class SelectField extends BaseField
     protected array $options;
     protected ?string $placeholder = null;
 
-    public function __construct(string $name, array $options = [], string $label = '', array $config = [])
+    public function __construct(string $name, string $label = '', array $config = [])
     {
         if (empty($label)) {
             $label = ucwords(str_replace(['_', '-'], ' ', $name));
         }
         parent::__construct($name, $label, $config);
-        $this->options = $options;
+        $this->options = [];
     }
 
     public function options(array $options): self

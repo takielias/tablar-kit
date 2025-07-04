@@ -190,7 +190,7 @@ abstract class BaseField extends TablarComponent
         return $this->name;
     }
 
-    public function getLabel(): string
+    public function getLabel(): string|null
     {
         return $this->label;
     }
