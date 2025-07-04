@@ -8,20 +8,21 @@
     <div class="card-body">
         @foreach($fields as $field)
             <div class="mb-3">
-                @if(method_exists($field, 'getLabel') && $field->getLabel())
-                    <label for="{{ $field->getName() }}" class="form-label">
-                        {{ $field->getLabel() }}
-                        @if(method_exists($field, 'isRequired') && $field->isRequired())
-                            <span class="text-danger">*</span>
-                        @endif
-                    </label>
-                @endif
-
                 @if(method_exists($field, 'render'))
+                    @if($field->hasLabel())
+                        <x-tablar-kit::forms.label :for="$field->getId()">
+                            {!! $field->getLabel() !!}
+                            @if($field->isRequired())
+                                <span class="text-danger">*</span>
+                            @endif
+                        </x-tablar-kit::forms.label>
+                    @endif
                     {!! $field->render($value[$field->getName()] ?? null, $globalConfig) !!}
+                @else
+                    {!! $field !!}
                 @endif
 
-                @if(method_exists($field, 'getHelp') && $field->getHelp())
+                @if($field->getHelp())
                     <div class="form-text">{{ $field->getHelp() }}</div>
                 @endif
 

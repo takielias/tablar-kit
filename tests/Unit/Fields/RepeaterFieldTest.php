@@ -138,10 +138,10 @@ class RepeaterFieldTest extends TestCase
             return [
                 new InputField("contacts[{$index}][name]", 'Contact Name'),
                 new InputField("contacts[{$index}][email]", 'Email'),
-                new SelectField("contacts[{$index}][role]", [
+                (new SelectField("contacts[{$index}][role]", 'Role'))->options([
                     'manager' => 'Manager',
                     'developer' => 'Developer'
-                ], 'Role'),
+                ]),
                 new ToggleField("contacts[{$index}][primary]", 'Primary Contact')
             ];
         };
