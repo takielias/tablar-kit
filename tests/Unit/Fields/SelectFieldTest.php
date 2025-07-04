@@ -20,7 +20,8 @@ class SelectFieldTest extends TestCase
     public function it_can_create_select_field()
     {
         $options = ['1' => 'Option 1', '2' => 'Option 2'];
-        $field = new SelectField('category', $options, 'Category');
+        $field = new SelectField('category', 'Category');
+        $field->options($options);
 
         $this->assertEquals('category', $field->getName());
         $this->assertEquals('Category', $field->getLabel());
@@ -29,7 +30,8 @@ class SelectFieldTest extends TestCase
     /** @test */
     public function it_auto_generates_label_from_name()
     {
-        $field = new SelectField('product_type', ['books' => 'Books']);
+        $field = new SelectField('product_type');
+        $field->options(['books' => 'Books']);
 
         $this->assertEquals('Product Type', $field->getLabel());
     }
@@ -47,8 +49,9 @@ class SelectFieldTest extends TestCase
     /** @test */
     public function it_can_set_placeholder()
     {
-        $field = new SelectField('country', ['us' => 'USA']);
+        $field = new SelectField('country');
         $field->placeholder('Select country...');
+        $field->options(['us' => 'USA']);
 
         $this->assertInstanceOf(SelectField::class, $field);
     }
@@ -70,8 +73,9 @@ class SelectFieldTest extends TestCase
     /** @test */
     public function it_can_create_using_make_method()
     {
-        $field = new SelectField('status', ['active' => 'Active']);
+        $field = new SelectField('status');
 
+        $field->options(['active' => 'Active']);
         $this->assertEquals('status', $field->getName());
         $this->assertEquals('Status', $field->getLabel());
     }
@@ -79,8 +83,9 @@ class SelectFieldTest extends TestCase
     /** @test */
     public function it_can_set_attributes()
     {
-        $field = new SelectField('category', ['1' => 'Cat 1']);
-        $field->addClass('custom-select')
+        $field = new SelectField('category');
+        $field->options(['1' => 'Cat 1'])
+            ->addClass('custom-select')
             ->id('cat-select')
             ->disabled()
             ->setAttribute('data-live-search', 'true');
@@ -96,8 +101,9 @@ class SelectFieldTest extends TestCase
     /** @test */
     public function it_can_set_validation_rules()
     {
-        $field = new SelectField('type', ['1' => 'Type 1', '2' => 'Type 2']);
-        $field->required()
+        $field = new SelectField('type');
+        $field->options(['1' => 'Type 1', '2' => 'Type 2'])
+            ->required()
             ->rules(['in:1,2']);
 
         $rules = $field->getValidationRules();
@@ -110,8 +116,9 @@ class SelectFieldTest extends TestCase
     public function it_returns_correct_array_representation()
     {
         $options = ['yes' => 'Yes', 'no' => 'No'];
-        $field = new SelectField('confirmed', $options);
-        $field->label('Confirmed')
+        $field = new SelectField('confirmed');
+        $field->options($options)
+            ->label('Confirmed')
             ->placeholder('Select option')
             ->required()
             ->help('Please select');

@@ -33,8 +33,7 @@ class ButtonFieldTest extends TestCase
     public function it_can_create_button_field()
     {
         $field = new ButtonField('Save', 'Save Button');
-
-        $this->assertEquals('Save Button', $field->getLabel());
+        $this->assertEquals('Save', $field->getText());
         $this->assertEquals('submit', $field->getType());
     }
 
@@ -42,8 +41,7 @@ class ButtonFieldTest extends TestCase
     public function it_can_create_button_with_auto_generated_label()
     {
         $field = new ButtonField();
-
-        $this->assertEquals('Button', $field->getLabel());
+        $this->assertEquals('Click', $field->getText());
     }
 
     /** @test */
@@ -70,7 +68,7 @@ class ButtonFieldTest extends TestCase
     {
         $field = ButtonField::make('create_user', 'Create User');
 
-        $this->assertEquals('Create User', $field->getLabel());
+        $this->assertEquals('create_user', $field->getText());
     }
 
     /** @test */
@@ -91,7 +89,7 @@ class ButtonFieldTest extends TestCase
     {
         $field = new ButtonField('save_user', '');
 
-        $this->assertEquals('Save User', $field->getLabel());
+        $this->assertEquals('save_user', $field->getText());
     }
 
     /** @test */
