@@ -6,7 +6,7 @@ use TakiElias\TablarKit\Builder\AbstractForm;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-trait HandlesTablarForms
+trait HandleTablarForm
 {
     /**
      * Create form instance from class name
