@@ -7,9 +7,9 @@ use Illuminate\View\ComponentAttributeBag;
 class FormButtonField extends BaseField
 {
     protected string $text;
-    protected string $action;
+    protected ?string $action;
 
-    public function __construct(string $text, string $action = '', array $config = [])
+    public function __construct(string $text, ?string $action = null, array $config = [])
     {
         parent::__construct('', '', $config);
         $this->text = $text;
@@ -28,5 +28,11 @@ class FormButtonField extends BaseField
         ])->render();
 
     }
+
+    public static function make(string $text, ?string $action = null, array $config = []): static
+    {
+        return new static($text, $action, $config);
+    }
+
 }
 
