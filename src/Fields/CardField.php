@@ -14,10 +14,10 @@ class CardField extends BaseField
     protected ?string $ribbon = null;
     protected ?string $footer = null;
 
-    public function __construct(string $title = '', array $config = [])
+    public function __construct(string $name = '', string $label = '', array $config = [])
     {
-        parent::__construct('', '', $config);
-        $this->title = $title;
+        parent::__construct($name, $label, $config);
+        $this->title = $label ?: $name;
         $this->fields = collect();
     }
 
@@ -64,5 +64,14 @@ class CardField extends BaseField
             'value' => $value,
             'globalConfig' => $globalConfig,
         ])->render();
+    }
+
+    /**
+     * Static factory method that matches BaseField pattern
+     * Note: We override this to maintain compatibility but use label as title
+     */
+    public static function make(string $name, string $label = '', array $config = []): static
+    {
+        return new static($name, $label, $config);
     }
 }
