@@ -449,7 +449,8 @@ class FormBuilder
 
     public function select(string $name, array $options = [], string $label = '', array $config = []): self
     {
-        $this->addField(new SelectField($name, $options, $label, $config));
+        $selectedField = new SelectField($name, $label, $config);
+        $this->addField($selectedField->options($options));
         return $this;
     }
 
