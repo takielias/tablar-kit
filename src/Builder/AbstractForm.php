@@ -2,6 +2,8 @@
 
 namespace TakiElias\TablarKit\Builder;
 
+use TakiElias\TablarKit\Fields\CardField;
+
 abstract class AbstractForm
 {
     protected FormBuilder $form;
@@ -32,6 +34,9 @@ abstract class AbstractForm
     protected function buildFields(): void
     {
         foreach ($this->fields() as $field) {
+            if ($field instanceof CardField) {
+                $this->form->enableCard();
+            }
             $this->form->addField($field);
         }
     }
