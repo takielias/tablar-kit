@@ -10,6 +10,7 @@ class HiddenField extends BaseField
     {
         parent::__construct($name, '', $config);
         $this->value = $value;
+        $this->label = null;
     }
 
     public function render($value = null, array $globalConfig = []): string

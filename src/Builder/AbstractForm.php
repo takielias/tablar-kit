@@ -36,6 +36,7 @@ abstract class AbstractForm
         foreach ($this->fields() as $field) {
             if ($field instanceof CardField) {
                 $this->form->enableCard();
+                $field->setData($this->data);
             }
             $this->form->addField($field);
         }

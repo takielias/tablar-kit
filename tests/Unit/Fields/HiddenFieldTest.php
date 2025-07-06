@@ -23,7 +23,7 @@ class HiddenFieldTest extends TestCase
 
         $this->assertEquals('user_id', $field->getName());
         $this->assertEquals('123', $field->getValue());
-        $this->assertEquals('User Id', $field->getLabel()); // Auto-generated from name
+        $this->assertEquals(null, $field->getLabel()); // Auto-generated from name
     }
 
     /** @test */
@@ -74,7 +74,7 @@ class HiddenFieldTest extends TestCase
 
         $this->assertEquals('csrf_token', $field->getName());
         $this->assertEquals('abc123', $field->getValue());
-        $this->assertEquals('Csrf Token', $field->getLabel()); // Auto-generated but not used
+        $this->assertEquals(null, $field->getLabel()); // Auto-generated but not used
     }
 
     /** @test */

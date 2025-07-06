@@ -17,7 +17,7 @@
                             @endif
                         </x-tablar-kit::forms.label>
                     @endif
-                    {!! $field->render($value[$field->getName()] ?? null, $globalConfig) !!}
+                    {!! $field->render($data[$field->getName()] ?? null, $globalConfig) !!}
                 @else
                     {!! $field !!}
                 @endif
