@@ -69,6 +69,7 @@ class CardField extends BaseField
         return view('tablar-kit::form-builder.fields.card', [
             'title' => $this->title,
             'fields' => $this->fields,
+            'data' => $this->data,
             'value' => $value,
             'globalConfig' => $globalConfig,
         ])->render();
