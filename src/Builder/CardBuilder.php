@@ -17,6 +17,7 @@ class CardBuilder
         $this->title = $title;
         $this->config = $config;
         $this->formBuilder = $formBuilder;
+        $this->formBuilder->enableCard();
         $this->fields = collect();
     }
 
@@ -26,7 +27,7 @@ class CardBuilder
         $callback($builder);
         $this->fields = $builder->getFields();
 
-        $cardField = new CardField($this->title, $this->config);
+        $cardField = new CardField($this->title, $this->title, $this->config);
         $cardField->setFields($this->fields);
 
         $this->formBuilder->addField($cardField);

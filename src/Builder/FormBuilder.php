@@ -34,6 +34,7 @@ class FormBuilder
     protected string $method;
     protected ?string $action;
     protected bool $multipart;
+    protected bool $hasCard = false;
     protected array $sections;
     protected array $tabs;
     protected string $theme;
@@ -214,6 +215,17 @@ class FormBuilder
         }
 
         return $this;
+    }
+
+    public function enableCard(): self
+    {
+        $this->hasCard = true;
+        return $this;
+    }
+
+    public function hasCard(): bool
+    {
+        return $this->hasCard ?? false;
     }
 
     public function itemSearchRoute(string $route): self

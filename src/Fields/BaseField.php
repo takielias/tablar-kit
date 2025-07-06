@@ -14,6 +14,7 @@ abstract class BaseField extends TablarComponent
     protected array $validationRules;
     protected array $validationMessages;
     protected bool $required;
+    protected bool $isHidden = false;
     protected ?string $help;
     protected ?string $topGap;
     protected ?string $placeholder;
@@ -107,6 +108,12 @@ abstract class BaseField extends TablarComponent
     {
         return $this->label ?? false;
     }
+
+    public function isHidden(): bool
+    {
+        return $this->isHidden ?? false;
+    }
+
 
     public function required(bool $required = true): self
     {

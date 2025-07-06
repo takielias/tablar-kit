@@ -58,7 +58,7 @@
         @foreach($fields as $field)
             <div class="{{$field->getTopGap()}}">
                 @if(method_exists($field, 'render'))
-                    @if($field->hasLabel())
+                    @if($field->hasLabel() && !$form->hasCard())
                         <x-tablar-kit::forms.label :for="$field->getId()">
                             {!! $field->getLabel() !!}
                             @if($field->isRequired())
