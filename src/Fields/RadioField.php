@@ -5,9 +5,12 @@ namespace TakiElias\TablarKit\Fields;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\ComponentAttributeBag;
 use TakiElias\TablarKit\Components\Forms\Inputs\Radio;
+use TakiElias\TablarKit\Traits\FieldTrait;
 
 class RadioField extends BaseField
 {
+    use FieldTrait;
+
     protected array $options;
 
     public function __construct(string $name, array $options = [], string $label = '', array $config = [])

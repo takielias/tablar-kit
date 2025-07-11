@@ -5,10 +5,13 @@ namespace TakiElias\TablarKit\Fields;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\ComponentAttributeBag;
 use TakiElias\TablarKit\Components\Editors\Jodit;
+use TakiElias\TablarKit\Traits\FieldTrait;
 
 class JoditField extends BaseField
 {
-    protected array $editorConfig = [];
+    use FieldTrait;
+
+    protected array $options = [];
 
     public function __construct(string $name, string $label = '', array $config = [])
     {
@@ -20,19 +23,19 @@ class JoditField extends BaseField
 
     public function config(array $config): self
     {
-        $this->editorConfig = array_merge($this->editorConfig, $config);
+        $this->options = array_merge($this->options, $config);
         return $this;
     }
 
     public function height(int $height): self
     {
-        $this->editorConfig['height'] = $height;
+        $this->options['height'] = $height;
         return $this;
     }
 
     public function toolbar(array $buttons): self
     {
-        $this->editorConfig['buttons'] = $buttons;
+        $this->options['buttons'] = $buttons;
         return $this;
     }
 
@@ -44,7 +47,7 @@ class JoditField extends BaseField
         $jodit = new Jodit(
             name: $this->name,
             id: $this->getId(),
-            options: $this->editorConfig
+            options: $this->options
         );
 
         return View::make($jodit->render()->name(), $jodit->data())

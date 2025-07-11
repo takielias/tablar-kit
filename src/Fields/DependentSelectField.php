@@ -6,9 +6,11 @@ namespace TakiElias\TablarKit\Fields;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\ComponentAttributeBag;
 use TakiElias\TablarKit\Components\Forms\Inputs\DependentSelect;
+use TakiElias\TablarKit\Traits\FieldTrait;
 
 class DependentSelectField extends BaseField
 {
+    use FieldTrait;
     protected string $targetDropdown;
     protected ?string $targetDataRoute = null;
     protected array $options;

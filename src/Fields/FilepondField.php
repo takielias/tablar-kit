@@ -5,10 +5,13 @@ namespace TakiElias\TablarKit\Fields;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\ComponentAttributeBag;
 use TakiElias\TablarKit\Components\Forms\Inputs\FilePond;
+use TakiElias\TablarKit\Traits\FieldTrait;
 
 class FilepondField extends BaseField
 {
-    protected array $filepondConfig = [];
+    use FieldTrait;
+
+    protected array $options = [];
 
     public function __construct(string $name, string $label = '', array $config = [])
     {
@@ -20,31 +23,31 @@ class FilepondField extends BaseField
 
     public function config(array $config): self
     {
-        $this->filepondConfig = array_merge($this->filepondConfig, $config);
+        $this->options = array_merge($this->options, $config);
         return $this;
     }
 
     public function allowMultiple(bool $multiple = true): self
     {
-        $this->filepondConfig['allowMultiple'] = $multiple;
+        $this->options['allowMultiple'] = $multiple;
         return $this;
     }
 
     public function acceptedFileTypes(array $types): self
     {
-        $this->filepondConfig['acceptedFileTypes'] = $types;
+        $this->options['acceptedFileTypes'] = $types;
         return $this;
     }
 
     public function maxFileSize(string $size): self
     {
-        $this->filepondConfig['maxFileSize'] = $size;
+        $this->options['maxFileSize'] = $size;
         return $this;
     }
 
     public function imageEditor(bool $enable = true): self
     {
-        $this->filepondConfig['allowImageEdit'] = $enable;
+        $this->options['allowImageEdit'] = $enable;
         return $this;
     }
 
@@ -57,14 +60,14 @@ class FilepondField extends BaseField
             name: $this->name,
             id: $this->attributes['id'] ?? null,
             type: 'file',
-            chunkUpload: $this->filepondConfig['chunkUpload'] ?? false,
-            imageManipulation: $this->filepondConfig['allowImageEdit'] ?? true,
+            chunkUpload: $this->options['chunkUpload'] ?? false,
+            imageManipulation: $this->options['allowImageEdit'] ?? true,
             value: $fieldValue
         );
 
         return View::make($filepondComponent->render()->name(), $filepondComponent->data())
             ->with([
-                'config' => $this->filepondConfig,
+                'config' => $this->options,
                 'attributes' => new ComponentAttributeBag($attributes)
             ])
             ->render();
