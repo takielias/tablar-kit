@@ -5,10 +5,13 @@ namespace TakiElias\TablarKit\Fields;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\ComponentAttributeBag;
 use TakiElias\TablarKit\Components\Forms\Inputs\FlatPicker;
+use TakiElias\TablarKit\Traits\FieldTrait;
 
 class FlatPickerField extends BaseField
 {
-    protected array $pickerConfig = [];
+    use FieldTrait;
+
+    protected array $options = [];
     protected ?string $placeholder = null;
 
     public function __construct(string $name, string $label = '', array $config = [])
@@ -21,21 +24,22 @@ class FlatPickerField extends BaseField
 
     public function config(array $config): self
     {
-        $this->pickerConfig = array_merge($this->pickerConfig, $config);
+        $this->options = array_merge($this->options, $config);
         return $this;
     }
 
     public function enableTime(bool $enable = true): self
     {
-        $this->pickerConfig['enableTime'] = $enable;
+        $this->options['enableTime'] = $enable;
         return $this;
     }
 
     public function dateFormat(string $format): self
     {
-        $this->pickerConfig['dateFormat'] = $format;
+        $this->options['dateFormat'] = $format;
         return $this;
     }
+
 
     public function placeholder(string $placeholder): self
     {
@@ -52,9 +56,9 @@ class FlatPickerField extends BaseField
             name: $this->name,
             id: $this->getId(),
             value: $fieldValue,
-            format: $this->pickerConfig['dateFormat'] ?? 'Y-m-d H:i',
+            format: $this->options['dateFormat'] ?? 'Y-m-d H:i',
             placeholder: $this->placeholder ?? null,
-            options: $this->pickerConfig
+            options: $this->options
         );
 
         return View::make($flatPickerComponent->render()->name(), $flatPickerComponent->data())

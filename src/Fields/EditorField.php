@@ -2,10 +2,14 @@
 
 namespace TakiElias\TablarKit\Fields;
 
+use TakiElias\TablarKit\Traits\FieldTrait;
+
 class EditorField extends BaseField
 {
+    use FieldTrait;
+
     protected string $editor = 'tinymce';
-    protected array $editorConfig = [];
+    protected array $options = [];
 
     public function __construct(string $name, string $label = '', array $config = [])
     {
@@ -24,19 +28,19 @@ class EditorField extends BaseField
 
     public function config(array $config): self
     {
-        $this->editorConfig = array_merge($this->editorConfig, $config);
+        $this->options = array_merge($this->options, $config);
         return $this;
     }
 
     public function toolbar(array $tools): self
     {
-        $this->editorConfig['toolbar'] = $tools;
+        $this->options['toolbar'] = $tools;
         return $this;
     }
 
     public function height(int $height): self
     {
-        $this->editorConfig['height'] = $height;
+        $this->options['height'] = $height;
         return $this;
     }
 
@@ -50,7 +54,7 @@ class EditorField extends BaseField
             'value' => $fieldValue,
             'attributes' => $attributes,
             'editor' => $this->editor,
-            'editorConfig' => $this->editorConfig,
+            'options' => $this->options,
         ])->render();
     }
 }

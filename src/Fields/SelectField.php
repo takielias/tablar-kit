@@ -5,9 +5,12 @@ namespace TakiElias\TablarKit\Fields;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\ComponentAttributeBag;
 use TakiElias\TablarKit\Components\Forms\Inputs\Select;
+use TakiElias\TablarKit\Traits\FieldTrait;
 
 class SelectField extends BaseField
 {
+    use FieldTrait;
+
     protected array $options;
     protected ?string $placeholder = null;
 
