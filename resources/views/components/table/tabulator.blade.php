@@ -103,7 +103,6 @@
             cols.forEach(col => {
                 col.headerMenu = headerMenu; // Assign the headerMenu function to each column
             });
-            console.log(cols);
             let table_{{$id}} = new Tabulator("#{{$id}}", {
                 minHeight: 300,
                 paginationSizeSelector: [10, 50, 100, 500, 1000],
@@ -113,8 +112,8 @@
                 layout: "fitDataFill",
                 pagination: true, //enable pagination
                 paginationMode: "remote", //enable remote pagination
-                autoColumns: true,
-                autoColumnsDefinitions: cols,
+                autoColumns: false,
+                columns: cols,
                 paginationInitialPage: 1,
                 paginationButtonCount: 5,
                 ajaxURL: "{{$baseUrl}}",
