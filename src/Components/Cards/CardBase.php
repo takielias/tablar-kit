@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Cards;
+namespace TakiElias\TablarKit\Components\Cards;
 
-use Takielias\TablarKit\Components\TablarComponent;
+use TakiElias\TablarKit\Components\TablarComponent;
 
 abstract class CardBase extends TablarComponent
 {

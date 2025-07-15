@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\Validators;
+namespace TakiElias\TablarKit\Validators;
 
 use Closure;
 

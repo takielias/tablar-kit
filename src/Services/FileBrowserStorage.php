@@ -1,8 +1,8 @@
 <?php
 
-namespace Takielias\TablarKit\Services;
+namespace TakiElias\TablarKit\Services;
 
-use Takielias\TablarKit\Entities\PathInfo;
+use TakiElias\TablarKit\Entities\PathInfo;
 use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Support\Facades\File;
 use Exception;

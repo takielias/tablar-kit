@@ -1,7 +1,7 @@
 <?php
 
-use Takielias\TablarKit\Http\Controllers\FilePondController;
-use Takielias\TablarKit\Http\Controllers\JoditEditorController;
+use TakiElias\TablarKit\Http\Controllers\FilePondController;
+use TakiElias\TablarKit\Http\Controllers\JoditEditorController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => config('tablar-kit.middleware', ['web', 'auth'])], function () {

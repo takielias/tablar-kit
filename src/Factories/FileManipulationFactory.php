@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Factories;
+namespace TakiElias\TablarKit\Factories;
 
-use Takielias\TablarKit\Actions\FileBrowserAction;
-use Takielias\TablarKit\Dto\FileBrowserDto;
+use TakiElias\TablarKit\Actions\FileBrowserAction;
+use TakiElias\TablarKit\Dto\FileBrowserDto;
 
 class FileManipulationFactory
 {

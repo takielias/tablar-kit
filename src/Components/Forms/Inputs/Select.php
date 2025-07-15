@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Forms\Inputs;
+namespace TakiElias\TablarKit\Components\Forms\Inputs;
 
 use Illuminate\Contracts\View\View;
 
@@ -28,6 +28,17 @@ class Select extends Input
     public function options(): array
     {
         return $this->options;
+    }
+
+    public function getData(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'options' => $this->options,
+            'placeholder' => $this->placeholder,
+            'value' => $this->value,
+        ];
     }
 
 }

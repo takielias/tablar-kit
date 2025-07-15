@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Forms\Inputs;
+namespace TakiElias\TablarKit\Components\Forms\Inputs;
 
-use Takielias\TablarKit\Components\TablarComponent;
+use TakiElias\TablarKit\Components\TablarComponent;
 use Illuminate\Contracts\View\View;
 
 class Textarea extends TablarComponent
@@ -28,5 +28,14 @@ class Textarea extends TablarComponent
     public function render(): View
     {
         return view('tablar-kit::components.forms.inputs.textarea');
+    }
+
+    public function getData(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'rows' => $this->rows,
+        ];
     }
 }

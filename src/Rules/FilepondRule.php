@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\Rules;
+namespace TakiElias\TablarKit\Rules;
 
 use Closure;
 use Illuminate\Contracts\Validation\DataAwareRule;

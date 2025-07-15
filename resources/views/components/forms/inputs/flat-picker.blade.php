@@ -9,7 +9,8 @@
 @push('js')
     <script type="module">
         document.addEventListener('DOMContentLoaded', function () {
-            window.flatpickr("#{{$id}}", {!! $jsonOptions() !!})
+            const optional_config = @if(isset($jsonOptions)) {!! $jsonOptions !!}@endif;
+            window.flatpickr("#{{$id}}", optional_config)
         });
     </script>
 @endpush

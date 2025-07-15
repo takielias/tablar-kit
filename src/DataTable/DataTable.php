@@ -1,17 +1,17 @@
 <?php
 
-namespace Takielias\TablarKit\DataTable;
+namespace TakiElias\TablarKit\DataTable;
 
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use Takielias\TablarKit\DataTable\DataSource\ArrayDataSource;
-use Takielias\TablarKit\DataTable\DataSource\CollectionDataSource;
-use Takielias\TablarKit\DataTable\DataSource\QueryDataSource;
-use Takielias\TablarKit\DataTable\DataSource\TableDataContract;
-use Takielias\TablarKit\Enums\BottomCalculationType;
-use Takielias\TablarKit\Enums\ExportType;
+use TakiElias\TablarKit\DataTable\DataSource\ArrayDataSource;
+use TakiElias\TablarKit\DataTable\DataSource\CollectionDataSource;
+use TakiElias\TablarKit\DataTable\DataSource\QueryDataSource;
+use TakiElias\TablarKit\DataTable\DataSource\TableDataContract;
+use TakiElias\TablarKit\Enums\BottomCalculationType;
+use TakiElias\TablarKit\Enums\ExportType;
 
 class DataTable
 {
@@ -26,6 +26,9 @@ class DataTable
     protected array $callbacks;
 
     protected int $limit = 10;
+
+    // Add an array to track hidden columns
+    protected array $hiddenColumns = [];
 
     public function __construct()
     {
@@ -45,7 +48,6 @@ class DataTable
         }
         return $this;
     }
-
 
     // Function to set multiple export types
     public function setExportTypes(array $types): static
@@ -75,6 +77,13 @@ class DataTable
         return $this;
     }
 
+    // Add method to hide columns from auto-generation
+    public function hideColumns(array $columns): self
+    {
+        $this->hiddenColumns = array_merge($this->hiddenColumns, $columns);
+        return $this;
+    }
+
     public function column(string                $name,
                            string                $title,
                                                  $callback = null,
@@ -83,9 +92,16 @@ class DataTable
                            bool                  $search = false,
                            ?string               $width = '200',
                            bool                  $download = true,
-                           BottomCalculationType $bottomCalc = null
+                           BottomCalculationType $bottomCalc = null,
+                           bool                  $hidden = false // Add hidden parameter
     ): self
     {
+        // If a column is marked as hidden, add to a hidden columns array
+        if ($hidden) {
+            $this->hiddenColumns[] = $name;
+            return $this;
+        }
+
         $column = [
             'field' => $name,
             'title' => $title,
@@ -119,6 +135,7 @@ class DataTable
             'rows' => $this->getData($request),
             'columns' => $this->columns,
             'export_types' => $this->exportTypes,
+            'hidden_columns' => $this->hiddenColumns, // Pass hidden columns to view
         ]);
     }
 
@@ -126,6 +143,12 @@ class DataTable
     {
         return collect($data)->map(function ($item) {
             $formatted = is_array($item) ? $item : $item->toArray();
+
+            // Remove hidden columns from formatted data
+            foreach ($this->hiddenColumns as $hiddenColumn) {
+                unset($formatted[$hiddenColumn]);
+            }
+
             foreach ($this->callbacks as $field => $callback) {
                 if (is_callable($callback)) {
                     $formatted[$field] = $callback($item);
@@ -178,7 +201,6 @@ class DataTable
         return $this;
     }
 
-
     protected function paginate($limit): void
     {
         $this->limit = $limit;
@@ -190,7 +212,7 @@ class DataTable
     }
 
     /**
-     * @param $request
+     * @param Request $request
      * @return array
      */
     public function getData(Request $request)
@@ -214,4 +236,3 @@ class DataTable
         ];
     }
 }
-

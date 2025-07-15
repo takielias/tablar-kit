@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Buttons;
+namespace TakiElias\TablarKit\Components\Buttons;
 
 use Illuminate\Support\Str;
-use Takielias\TablarKit\Components\TablarComponent;
+use TakiElias\TablarKit\Components\TablarComponent;
 use Illuminate\Contracts\View\View;
 
 class Button extends TablarComponent
@@ -34,5 +34,14 @@ class Button extends TablarComponent
     public function render(): View
     {
         return view('tablar-kit::components.buttons.button');
+    }
+
+    public function getData(): array
+    {
+        return [
+            'id' => $this->id,
+            'type' => $this->type,
+            'value' => $this->value,
+        ];
     }
 }

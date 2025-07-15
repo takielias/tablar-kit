@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\Commands;
+namespace TakiElias\TablarKit\Commands;
 
 use Illuminate\Console\Command;
 

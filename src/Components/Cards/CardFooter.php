@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Cards;
+namespace TakiElias\TablarKit\Components\Cards;
 
 class CardFooter extends CardBase
 {

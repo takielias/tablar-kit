@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Dto;
+namespace TakiElias\TablarKit\Dto;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Facades\Auth;
