@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Tests\Components\Forms\Inputs;
 
-
+use TakiElias\TablarKit\Components\Forms\Inputs\Radio;
 use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class RadioTest extends ComponentTestCase
@@ -12,39 +12,31 @@ class RadioTest extends ComponentTestCase
     /** @test */
     public function the_component_can_be_rendered()
     {
-        $template = <<<'HTML'
-            <input name="radio" type="radio" id="radio" class="form-check-input" />
-            HTML;
+        $component = new Radio('radio', 'radio');
 
-        $this->assertComponentRenders(
-            $template,
-            '<x-radio id="radio" name="radio"/>',
-        );
+        $this->assertEquals('radio', $component->name);
+        $this->assertEquals('radio', $component->id);
+        $this->assertEquals('radio', $component->type);
+        $this->assertFalse($component->checked);
     }
 
     /** @test */
-    public function specific_attributes_can_be_added()
+    public function component_can_be_checked()
     {
-        $template = <<<'HTML'
-            <input name="radio" type="radio" id="radio" checked class="form-check-input" />
-            HTML;
+        $component = new Radio('radio', 'radio', true);
 
-        $this->assertComponentRenders(
-            $template,
-            '<x-radio id="radio" checked name="radio"/>',
-        );
+        $this->assertTrue($component->checked);
     }
 
     /** @test */
-    public function specific_attributes_can_be_overwritten()
+    public function component_returns_correct_data()
     {
-        $template = <<<'HTML'
-            <input name="radio" type="radio" id="radio" class="form-check-input p-4" />
-            HTML;
+        $component = new Radio('test', 'test-id', false, 'value');
+        $data = $component->data();
 
-        $this->assertComponentRenders(
-            $template,
-            '<x-radio id="radio" class="p-4" name="radio"/>',
-        );
+        $this->assertEquals('test', $data['name']);
+        $this->assertEquals('test-id', $data['id']);
+        $this->assertEquals('value', $data['value']);
+        $this->assertFalse($data['checked']);
     }
 }

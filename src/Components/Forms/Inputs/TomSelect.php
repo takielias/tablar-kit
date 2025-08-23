@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Forms\Inputs;
+namespace TakiElias\TablarKit\Components\Forms\Inputs;
 
 use Illuminate\Contracts\View\View;
 
@@ -82,12 +82,9 @@ class TomSelect extends Input
             // add other properties as needed
         ];
 
-        $tomSelectOptions = [];
-        foreach ($dynamicProperties as $key => $value) {
-            if (!is_null($value) && $value !== '') {
-                $tomSelectOptions[$key] = $value;
-            }
-        }
+        $tomSelectOptions = array_filter($dynamicProperties, function ($value) {
+            return !is_null($value) && $value !== '';
+        });
 
         return view('tablar-kit::components.forms.inputs.tom-select', compact('tomSelectOptions'));
     }
@@ -96,6 +93,30 @@ class TomSelect extends Input
     public function options(): array
     {
         return $this->options;
+    }
+
+    public function getData(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'value' => $this->value,
+            'options' => $this->options,
+            'placeholder' => $this->placeholder,
+            'itemSearchRoute' => $this->itemSearchRoute,
+            'remoteData' => $this->remoteData,
+            'create' => $this->create,
+            'maxItems' => $this->maxItems,
+            'valueField' => $this->valueField,
+            'searchField' => $this->searchField,
+            'labelField' => $this->labelField,
+            'sortField' => $this->sortField,
+            'hideSelected' => $this->hideSelected,
+            'allowEmptyOption' => $this->allowEmptyOption,
+            'createOnBlur' => $this->createOnBlur,
+            'persist' => $this->persist,
+            'duplicates' => $this->duplicates,
+        ];
     }
 
 }

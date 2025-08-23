@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 
-namespace Takielias\TablarKit\Dto;
+namespace TakiElias\TablarKit\Dto;
 
 use Illuminate\Http\File;
 

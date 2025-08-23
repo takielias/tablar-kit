@@ -1,5 +1,5 @@
 <label for="{{ $for }}"
     {{ $attributes->merge(['class' => 'form-label']) }}
 >
-    {{ $fallback }}
+    {{ $slot->isNotEmpty() ? $slot : $fallback() }}
 </label>

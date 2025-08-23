@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Forms\Inputs;
+namespace TakiElias\TablarKit\Components\Forms\Inputs;
 
 use Illuminate\Contracts\View\View;
 
@@ -55,4 +55,18 @@ class LitePicker extends Input
     {
         return view('tablar-kit::components.forms.inputs.lite-picker');
     }
+
+    public function getData(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'value' => $this->value,
+            'format' => $this->format,
+            'placeholder' => $this->placeholder,
+            'options' => $this->options,
+            'jsonOptions' => $this->jsonOptions(),
+        ];
+    }
+
 }

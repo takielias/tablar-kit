@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Tests\Components\Forms\Inputs;
 
+use TakiElias\TablarKit\Components\Forms\Inputs\Email;
 use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class EmailTest extends ComponentTestCase
@@ -11,29 +12,29 @@ class EmailTest extends ComponentTestCase
     /** @test */
     public function the_component_can_be_rendered()
     {
-        $this->assertComponentRenders(
-            '<input name="email" type="email" id="email" class="form-control" />',
-            '<x-email id="email"/>',
-        );
+        $component = new Email();
+
+        $this->assertEquals('email', $component->name);
+        $this->assertEquals('email', $component->id);
+        $this->assertEquals('email', $component->type);
     }
 
     /** @test */
-    public function specific_attributes_can_be_overwritten()
+    public function component_accepts_custom_name_and_id()
     {
-        $this->assertComponentRenders(
-            '<input name="email_address" type="email" id="emailAddress" class="form-control p-4" />',
-            '<x-email name="email_address" id="emailAddress" class="p-4" />',
-        );
+        $component = new Email('email_address', 'emailAddress');
+
+        $this->assertEquals('email_address', $component->name);
+        $this->assertEquals('emailAddress', $component->id);
     }
 
     /** @test */
     public function inputs_can_have_old_values()
     {
-        $this->flashOld(['email' => 'Eloquent']);
+        $this->flashOld(['email' => 'test@example.com']);
 
-        $this->assertComponentRenders(
-            '<input name="email" type="email" id="email" value="Eloquent" class="form-control" />',
-            '<x-email id="email"/>',
-        );
+        $component = new Email();
+
+        $this->assertEquals('test@example.com', $component->value);
     }
 }

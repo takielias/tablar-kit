@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Actions;
+namespace TakiElias\TablarKit\Actions;
 
-use Takielias\TablarKit\Http\Resources\FileUploadResource;
+use TakiElias\TablarKit\Http\Resources\FileUploadResource;
 
 class FileUploadRemoteAction extends AbstractFileUploadAction
 {

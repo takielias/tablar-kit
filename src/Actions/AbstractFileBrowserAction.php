@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Actions;
+namespace TakiElias\TablarKit\Actions;
 
-use Takielias\TablarKit\Dto\FileBrowserDto;
+use TakiElias\TablarKit\Dto\FileBrowserDto;
 
 abstract class AbstractFileBrowserAction extends AbstractBasicAction implements FileBrowserAction
 {

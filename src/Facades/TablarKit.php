@@ -1,6 +1,6 @@
 <?php
 
-namespace Takielias\TablarKit\Facades;
+namespace TakiElias\TablarKit\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

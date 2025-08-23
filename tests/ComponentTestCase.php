@@ -8,11 +8,10 @@ use Gajus\Dindent\Exception\InvalidArgumentException;
 use Gajus\Dindent\Exception\RuntimeException;
 use Gajus\Dindent\Indenter;
 use Orchestra\Testbench\TestCase;
-use Takielias\TablarKit\TablarKitServiceProvider;
+use TakiElias\TablarKit\TablarKitServiceProvider;
 
 abstract class ComponentTestCase extends TestCase
 {
-    use InteractsWithViews;
 
     protected function setUp(): void
     {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Components\Forms\Inputs;
+namespace TakiElias\TablarKit\Components\Forms\Inputs;
 
 use Illuminate\Contracts\View\View;
 
@@ -32,6 +32,19 @@ class DependentSelect extends Input
     public function options(): array
     {
         return $this->options;
+    }
+
+    public function getData(): array
+    {
+        return [
+            'name' => $this->name,
+            'id' => $this->id,
+            'value' => $this->value,
+            'options' => $this->options,
+            'targetDropdown' => $this->targetDropdown,
+            'targetDataRoute' => $this->targetDataRoute,
+            'placeholder' => $this->placeholder,
+        ];
     }
 
 }

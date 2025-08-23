@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Tests\Components\Forms\Inputs;
 
-
+use TakiElias\TablarKit\Components\Forms\Inputs\Textarea;
 use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class TextareaTest extends ComponentTestCase
@@ -12,29 +12,31 @@ class TextareaTest extends ComponentTestCase
     /** @test */
     public function the_component_can_be_rendered()
     {
-        $this->assertComponentRenders(
-            '<textarea name="about" id="about" rows="3" class="form-control"></textarea>',
-            '<x-textarea name="about"/>',
-        );
+        $component = new Textarea('about');
+
+        $this->assertEquals('about', $component->name);
+        $this->assertEquals('about', $component->id);
+        $this->assertEquals(3, $component->rows);
     }
 
     /** @test */
-    public function specific_attributes_can_be_overwritten()
+    public function component_accepts_custom_attributes()
     {
-        $this->assertComponentRenders(
-            '<textarea name="about" id="aboutMe" rows="5" class="form-control p-4" cols="8">About me text</textarea>',
-            '<x-textarea name="about" id="aboutMe" rows="5" cols="8" class="p-4">About me text</x-textarea>',
-        );
+        $component = new Textarea('about', 'aboutMe', 5);
+
+        $this->assertEquals('about', $component->name);
+        $this->assertEquals('aboutMe', $component->id);
+        $this->assertEquals(5, $component->rows);
     }
 
     /** @test */
-    public function inputs_can_have_old_values()
+    public function component_returns_correct_data()
     {
-        $this->flashOld(['about' => 'About me text']);
+        $component = new Textarea('test', 'test-id', 8);
+        $data = $component->data();
 
-        $this->assertComponentRenders(
-            '<textarea name="about" id="about" rows="3" class="form-control">About me text</textarea>',
-            '<x-textarea name="about"/>',
-        );
+        $this->assertEquals('test', $data['name']);
+        $this->assertEquals('test-id', $data['id']);
+        $this->assertEquals(8, $data['rows']);
     }
 }

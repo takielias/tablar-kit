@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Takielias\TablarKit\Dto;
+namespace TakiElias\TablarKit\Dto;
 
-use Takielias\TablarKit\Http\Requests\FileBrowserRequest;
+use TakiElias\TablarKit\Http\Requests\FileBrowserRequest;
 
 final class FileBrowserDto
 {
