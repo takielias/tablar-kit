@@ -29,6 +29,7 @@ class FormSection
             'title' => $this->title,
             'fields' => $this->fields,
             'config' => $this->config,
+            'data' => $this->data ?? [],
             'globalConfig' => $globalConfig,
         ])->render();
     }

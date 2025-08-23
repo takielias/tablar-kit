@@ -71,6 +71,12 @@ class FormBuilder
         return $this;
     }
 
+    public function setFields(Collection $fields): self
+    {
+        $this->fields = $fields;
+        return $this;
+    }
+
     public function method(string $method): self
     {
         $this->method = strtoupper($method);
@@ -764,7 +770,7 @@ class FormBuilder
         }
 
         if (method_exists($field, 'render')) {
-            return $field->render($this->data[$name] ?? null, $this->globalConfig);
+            return $field->render($this->data[$field->getName()] ?? null, $this->globalConfig);
         }
 
         return (string)$field;
