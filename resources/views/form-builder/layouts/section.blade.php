@@ -8,7 +8,8 @@
             @endif
         </x-tablar-kit::forms.label>
     @endif
-    {!! $field->render($globalConfig['data'] ?? null, $globalConfig) !!}
+    @php $field->setData($data)@endphp
+    {!! $field->render($data[$field->getName()] ?? null, $globalConfig) !!}
     @if($field->getHelp())
         <div class="form-text">{{ $field->getHelp() }}</div>
     @endif

@@ -9,7 +9,6 @@ class CardField extends BaseField
 {
     protected string $title;
     protected Collection $fields;
-    protected array $data;
     protected ?string $header = null;
     protected ?string $stamp = null;
     protected ?string $ribbon = null;
@@ -20,18 +19,11 @@ class CardField extends BaseField
         parent::__construct($name, $label, $config);
         $this->title = $label ?: $name;
         $this->fields = collect();
-        $this->data = [];
     }
 
     public function setFields(Collection $fields): self
     {
         $this->fields = $fields;
-        return $this;
-    }
-
-    public function setData(array $data): self
-    {
-        $this->data = array_merge($this->data, $data);
         return $this;
     }
 

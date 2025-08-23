@@ -66,7 +66,8 @@
                             @endif
                         </x-tablar-kit::forms.label>
                     @endif
-                    {!! $field->render($data[$field->getName()] ?? null, $config) !!}
+                    @php $field->setData($data)@endphp
+                    {!! $field->render($data ?? null, $config) !!}
                     @if($field->getHelp())
                         <div class="form-text">{{ $field->getHelp() }}</div>
                     @endif

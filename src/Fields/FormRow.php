@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 class FormRow extends BaseField
 {
     protected Collection $fields;
-    protected array $columnClasses = [];
+    protected array $columns = [];
 
     public function __construct(array $config = [])
     {
@@ -34,10 +34,18 @@ class FormRow extends BaseField
         return $column;
     }
 
+    public function setData(array $data): self
+    {
+        $this->data = array_merge($this->data, $data);
+        return $this;
+    }
+
     public function render($value = null, array $globalConfig = []): string
     {
         return view('tablar-kit::form-builder.layouts.row', [
             'fields' => $this->fields,
+            'data' => $this->data ?? [],
+            'config' => $this->config ?? [],
             'globalConfig' => $globalConfig,
         ])->render();
     }
