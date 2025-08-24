@@ -5,5 +5,7 @@
         type="checkbox"
         {{ $checked ? 'checked' : '' }}
         id="{{ $id }}"
-        @if($value)value="{{ $value }}"@endif><span class="form-check-label">{{$label??''}}</span>
+        @if($value)value="{{ $value }}"@endif/>
+    <div class="invalid-feedback"></div>
+    <span class="form-check-label">{{$label??''}}</span>
 </label>

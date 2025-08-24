@@ -6,6 +6,7 @@
     @if($value) value="{{ $value }}" @endif
     {{ $attributes->merge(['class' => config('tablar-kit.default-class'). ' flatpickr']) }}
 />
+<div class="invalid-feedback"></div>
 @push('js')
     <script type="module">
         document.addEventListener('DOMContentLoaded', function () {
