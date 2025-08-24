@@ -6,3 +6,4 @@
     {{ $checked ? 'checked' : '' }}
     {{ $attributes->merge(['class' => 'form-check-input']) }}
 />
+<div class="invalid-feedback"></div>
