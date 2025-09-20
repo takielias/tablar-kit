@@ -8,8 +8,9 @@ use TakiElias\TablarKit\Components\Forms\Inputs\Checkbox;
 
 class CheckboxField extends BaseField
 {
-    protected int $checkedValue = 1;
+    protected $checkedValue = 1;
     protected int $uncheckedValue = 0;
+    protected bool $checked = false;
 
     public function __construct(string $name, string $label = '', array $config = [])
     {
@@ -28,14 +29,14 @@ class CheckboxField extends BaseField
 
     public function checked(bool $checked = true): self
     {
-        $this->value = $checked ? $this->checkedValue : $this->uncheckedValue;
+        $this->checked = $checked;
         return $this;
     }
+
 
     public function getCheckedValue(): int
     {
         return $this->checkedValue;
-
     }
 
     public function getUncheckedValue(): int
@@ -45,7 +46,7 @@ class CheckboxField extends BaseField
 
     protected function buildComponent(): Checkbox
     {
-        $isChecked = $this->checkedValue;
+        $isChecked = $this->checked;
 
         return new Checkbox(
             name: $this->name,
