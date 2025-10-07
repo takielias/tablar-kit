@@ -257,7 +257,7 @@ abstract class BaseField extends TablarComponent
 
     public function getId(): string
     {
-        return $this->id ?? $this->name . '_' . uniqid();
+        return $this->attributes['id'] ?? $this->id ?? $this->name . '_' . uniqid();
     }
 
     public function getFieldValue($value = null): string
