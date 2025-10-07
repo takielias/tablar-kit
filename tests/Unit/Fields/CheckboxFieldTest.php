@@ -64,7 +64,7 @@ class CheckboxFieldTest extends TestCase
         $field = new CheckboxField('enabled');
         $field->checked(true);
 
-        $this->assertEquals(1, $field->getValue());
+        $this->assertEquals(1, $field->getCheckedValue());
     }
 
     /** @test */

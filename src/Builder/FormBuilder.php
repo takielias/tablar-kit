@@ -8,6 +8,7 @@ use TakiElias\TablarKit\Fields\BaseField;
 use TakiElias\TablarKit\Fields\ButtonField;
 use TakiElias\TablarKit\Fields\CheckboxField;
 use TakiElias\TablarKit\Fields\DependentSelectField;
+use TakiElias\TablarKit\Fields\EditorField;
 use TakiElias\TablarKit\Fields\FileField;
 use TakiElias\TablarKit\Fields\FilepondField;
 use TakiElias\TablarKit\Fields\FlatPickerField;
@@ -16,7 +17,6 @@ use TakiElias\TablarKit\Fields\FormColumn;
 use TakiElias\TablarKit\Fields\FormRow;
 use TakiElias\TablarKit\Fields\HiddenField;
 use TakiElias\TablarKit\Fields\InputField;
-use TakiElias\TablarKit\Fields\JoditField;
 use TakiElias\TablarKit\Fields\LitePickerField;
 use TakiElias\TablarKit\Fields\PasswordField;
 use TakiElias\TablarKit\Fields\RadioField;
@@ -296,46 +296,53 @@ class FormBuilder
         return $this;
     }
 
-    public function input(string $name, string $label = '', array $config = []): self
+    public function input(string $name, string $label = '', array $config = []): InputField
     {
-        $this->addField(new InputField($name, $label, $config));
-        return $this;
+        $field = new InputField($name, $label, $config);
+        $this->addField($field);
+        return $field;
     }
 
-    public function password(string $name, string $label = '', array $config = []): self
+    public function password(string $name, string $label = '', array $config = []): PasswordField
     {
-        $this->addField(new PasswordField($name, $label, $config));
-        return $this;
+        $field = new PasswordField($name, $label, $config);
+        $this->addField($field);
+        return $field;
     }
 
-    public function checkbox(string $name, string $label = '', array $config = []): self
+    public function checkbox(string $name, string $label = '', array $config = []): CheckboxField
     {
-        $this->addField(new CheckboxField($name, $label, $config));
-        return $this;
+        $field = new CheckboxField($name, $label, $config);
+        $this->addField($field);
+        return $field;
     }
 
-    public function toggle(string $name, string $label = '', array $config = []): self
+    public function toggle(string $name, string $label = '', array $config = []): ToggleField
     {
-        $this->addField(new ToggleField($name, $label, $config));
-        return $this;
+        $field = new ToggleField($name, $label, $config);
+        $this->addField($field);
+        return $field;
     }
 
-    public function radio(string $name, array $options = [], string $label = '', array $config = []): self
+    public function radio(string $name, array $options = [], string $label = '', array $config = []): RadioField
     {
-        $this->addField(new RadioField($name, $options, $label, $config));
-        return $this;
+        $field = new RadioField($name, $options, $label, $config);
+        $this->addField($field);
+        return $field;
     }
 
-    public function button(string $text = 'Click', string $label = 'Button', array $config = []): self
+    public function button(string $text = 'Click', string $label = 'Button', array $config = []): ButtonField
     {
-        $this->addField(new ButtonField($text, $label, $config));
-        return $this;
+        $field = new ButtonField($text, $label, $config);
+        $this->addField($field);
+        return $field;
     }
 
-    public function formButton(string $text, string $action = '', array $config = []): self
+    public function formButton(string $text, string $action = '', array $config = []): FormButtonField
     {
-        $this->addField(new FormButtonField($text, $action, $config));
-        return $this;
+        $field = new FormButtonField($text, $action, $config);
+        $this->addField($field);
+        return $field;
     }
 
     public function rows(int $rows): self
@@ -465,121 +472,139 @@ class FormBuilder
         return new CardBuilder($title, $config, $this);
     }
 
-    public function select(string $name, array $options = [], string $label = '', array $config = []): self
+    public function select(string $name, array $options = [], string $label = '', array $config = []): SelectField
     {
-        $selectedField = new SelectField($name, $label, $config);
-        $this->addField($selectedField->options($options));
-        return $this;
+        $field = new SelectField($name, $label, $config);
+        $this->addField($field->options($options));
+        return $field;
     }
 
-    public function tomSelect(string $name, string $label = '', array $config = []): self
+    public function tomSelect(string $name, string $label = '', array $config = []): TomSelectField
     {
-        $this->addField(new TomSelectField($name, $label, $config));
-        return $this;
+        $filed = new TomSelectField($name, $label, $config);
+        $this->addField($filed);
+        return $filed;
     }
 
-    public function dependentSelect(string $name, string $targetDropdown = '', array $config = []): self
+    public function dependentSelect(string $name, string $targetDropdown = '', array $config = []): DependentSelectField
     {
-        $this->addField(new DependentSelectField($name, $targetDropdown, $config));
-        return $this;
+        $field = new DependentSelectField($name, $targetDropdown, $config);
+        $this->addField($field);
+        return $field;
     }
 
-    public function flatPicker(string $name, string $label = '', array $config = []): self
+    public function flatPicker(string $name, string $label = '', array $config = []): FlatPickerField
     {
-        $this->addField(new FlatPickerField($name, $label, $config));
-        return $this;
+        $field = new FlatPickerField($name, $label, $config);
+        $this->addField($field);
+        return $field;
     }
 
-    public function litePicker(string $name, string $label = '', array $config = []): self
+    public function litePicker(string $name, string $label = '', array $config = []): LitePickerField
     {
-        $this->addField(new LitePickerField($name, $label, $config));
-        return $this;
+        $field = new LitePickerField($name, $label, $config);
+        $this->addField($field);
+        return $field;
     }
 
-    public function filepond(string $name, string $label = '', array $config = []): self
+    public function filepond(string $name, string $label = '', array $config = []): FilepondField
     {
+        $field = new FilepondField($name, $label, $config);
         $this->multipart = true;
-        $this->addField(new FilepondField($name, $label, $config));
-        return $this;
+        $this->addField($field);
+        return $field;
     }
 
-    public function editor(string $name, string $label = '', array $config = []): self
+    public function editor(string $name, string $label = '', array $config = []): EditorField
     {
-        $this->addField(new JoditField($name, $label, $config));
-        return $this;
+        $field = new EditorField($name, $label, $config);
+        $this->addField($field);
+        return $field;
     }
 
-    public function textarea(string $name, string $label = '', array $config = []): self
+    public function textarea(string $name, string $label = '', array $config = []): TextareaField
     {
-        $this->addField(new TextareaField($name, $label, $config));
-        return $this;
+        $field = new TextareaField($name, $label, $config);
+        $this->addField($field);
+        return $field;
     }
 
-    public function email(string $name, string $label = '', array $config = []): self
+    public function email(string $name, string $label = '', array $config = []): InputField
     {
-        $this->addField(new InputField($name, $label, $config))->type('email')->rules('email');
-        return $this;
+        $field = new InputField($name, $label, $config);
+        $this->addField($field)->type('email')->rules('email');
+        return $field;
     }
 
-    public function number(string $name, string $label = '', array $config = []): self
+    public function number(string $name, string $label = '', array $config = []): InputField
     {
-        $this->addField(new InputField($name, $label, $config))->type('number');
-        return $this;
+        $field = new InputField($name, $label, $config);
+        $this->addField($field)->type('number');
+        return $field;
     }
 
-    public function url(string $name, string $label = '', array $config = []): self
+    public function url(string $name, string $label = '', array $config = []): InputField
     {
-        $this->addField(new InputField($name, $label, $config))->type('url')->rules('url');
-        return $this;
+        $field = new InputField($name, $label, $config);
+        $this->addField($field)->type('url')->rules('url');
+        return $field;
     }
 
-    public function tel(string $name, string $label = '', array $config = []): self
+    public function tel(string $name, string $label = '', array $config = []): InputField
     {
-        $this->addField(new InputField($name, $label, $config))->type('tel');
-        return $this;
+        $field = new InputField($name, $label, $config);
+        $this->addField($field)->type('tel');
+        return $field;
     }
 
-    public function date(string $name, string $label = '', array $config = []): self
+    public function date(string $name, string $label = '', array $config = []): InputField
     {
-        $this->addField(new InputField($name, $label, $config))->type('date');
-        return $this;
+        $field = new InputField($name, $label, $config);
+        $this->addField($field)->type('date');
+        return $field;
     }
 
-    public function time(string $name, string $label = '', array $config = []): self
+    public function time(string $name, string $label = '', array $config = []): InputField
     {
-        $this->addField(new InputField($name, $label, $config))->type('time');
-        return $this;
+        $field = new InputField($name, $label, $config);
+        $this->addField($field)->type('time');
+        return $field;
     }
 
-    public function datetime(string $name, string $label = '', array $config = []): self
+    public function datetime(string $name, string $label = '', array $config = []): InputField
     {
-        $this->addField(new InputField($name, $label, $config))->type('datetime-local');
-        return $this;
+        $field = new InputField($name, $label, $config);
+        $this->addField($field)->type('datetime-local');
+        return $field;
     }
 
-    public function color(string $name, string $label = '', array $config = []): self
+    public function color(string $name, string $label = '', array $config = []): InputField
     {
-        $this->addField(new InputField($name, $label, $config))->type('color');
-        return $this;
+        $field = new InputField($name, $label, $config);
+        $this->addField($field)->type('color');
+        return $field;
     }
 
-    public function range(string $name, string $label = '', array $config = []): self
+    public function range(string $name, string $label = '', array $config = []): InputField
     {
-        $this->addField(new InputField($name, $label, $config))->type('range');
-        return $this;
+        $field = new InputField($name, $label, $config);
+        $this->addField($field)->type('range');
+        return $field;
     }
 
-    public function file(string $name, string $label = '', array $config = []): self
+    public function file(string $name, string $label = '', array $config = []): FileField
     {
+        $field = new FileField($name, $label, $config);
         $this->multipart = true;
-        $this->addField(new FileField($name, $label, $config));
-        return $this;
+        $this->addField($field);
+        return $field;
     }
 
-    public function hidden(string $name, $value = '', array $config = []): self
+    public function hidden(string $name, $value = '', array $config = []): HiddenField
     {
-        $this->addField(new HiddenField($name, $value, $config));
-        return $this;
+        $field = new HiddenField($name, $value, $config);
+        $this->addField($field);
+        return $field;
     }
 
     /**
