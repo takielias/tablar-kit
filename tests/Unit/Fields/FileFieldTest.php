@@ -8,13 +8,24 @@ use Illuminate\Support\Facades\View;
 
 class FileFieldTest extends TestCase
 {
+    protected function getPackageProviders($app)
+    {
+        return [\TakiElias\TablarKit\TablarKitServiceProvider::class];
+    }
+
     protected function setUp(): void
     {
         parent::setUp();
 
-        // Mock Laravel View facade
-        View::shouldReceive('make')
-            ->andReturn(\Mockery::mock(['render' => '<input type="file">']));
+        // Mock the view factory in the container
+        $mockView = \Mockery::mock(\Illuminate\Contracts\View\View::class);
+        $mockView->shouldReceive('with')->andReturnSelf();
+        $mockView->shouldReceive('render')->andReturn('<input type="file">');
+
+        $mockFactory = \Mockery::mock(\Illuminate\Contracts\View\Factory::class);
+        $mockFactory->shouldReceive('make')->andReturn($mockView);
+
+        $this->app->instance('view', $mockFactory);
     }
 
     /** @test */
@@ -166,14 +177,6 @@ class FileFieldTest extends TestCase
             ->maxSize(1024)
             ->multiple()
             ->help('Upload your documents');
-
-        // Mock view rendering
-        $mockView = \Mockery::mock();
-        $mockView->shouldReceive('render')->andReturn('<input type="file" multiple>');
-
-        \Illuminate\Support\Facades\View::shouldReceive('__callStatic')
-            ->with('make', \Mockery::type('array'))
-            ->andReturn($mockView);
 
         $html = $field->render();
 
