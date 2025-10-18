@@ -38,7 +38,7 @@ class TextareaField extends BaseField
         $component = new Textarea(
             name: $this->name,
             id: $this->attributes['id'] ?? null,
-            rows: $this->rows
+            rows: $this->getRows()
         );
 
         return View::make($component->render()->name(), $component->data())
