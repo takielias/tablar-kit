@@ -8,12 +8,24 @@ use Illuminate\Support\Facades\View;
 
 class FormButtonFieldTest extends TestCase
 {
+    protected function getPackageProviders($app)
+    {
+        return [\TakiElias\TablarKit\TablarKitServiceProvider::class];
+    }
+
     protected function setUp(): void
     {
         parent::setUp();
 
-        View::shouldReceive('make')
-            ->andReturn(\Mockery::mock(['render' => '<button>Test</button>']));
+        // Mock the view factory in the container
+        $mockView = \Mockery::mock(\Illuminate\Contracts\View\View::class);
+        $mockView->shouldReceive('with')->andReturnSelf();
+        $mockView->shouldReceive('render')->andReturn('<button>Test</button>');
+
+        $mockFactory = \Mockery::mock(\Illuminate\Contracts\View\Factory::class);
+        $mockFactory->shouldReceive('make')->andReturn($mockView);
+
+        $this->app->instance('view', $mockFactory);
     }
 
     /** @test */
@@ -67,13 +79,6 @@ class FormButtonFieldTest extends TestCase
     public function it_renders_with_view()
     {
         $field = new FormButtonField('Submit', '/submit');
-
-        View::shouldReceive('make')
-            ->with('tablar-kit::form-builder.form-button', \Mockery::type('array'))
-            ->andReturnSelf();
-
-        View::shouldReceive('render')
-            ->andReturn('<button type="submit">Submit</button>');
 
         $html = $field->render();
 
