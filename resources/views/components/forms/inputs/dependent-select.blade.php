@@ -21,6 +21,7 @@
         <option value="{{$key}}" @selected($value == $key) >{{$option}}</option>
     @endforeach
 </select>
+<div class="invalid-feedback"></div>
 
 @push('js')
     <script type="module">

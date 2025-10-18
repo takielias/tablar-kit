@@ -7,5 +7,6 @@
         {{ $checked ? 'checked' : '' }}
         {{ $attributes->merge(['class' => 'form-check-input']) }}
     />
+    <div class="invalid-feedback"></div>
     <span class="form-check-label">{{$label}}</span>
 </label>

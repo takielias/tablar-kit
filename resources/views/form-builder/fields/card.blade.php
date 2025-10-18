@@ -4,7 +4,6 @@
             <h3 class="card-title">{{ $title }}</h3>
         </div>
     @endif
-
     <div class="card-body">
         @foreach($fields as $field)
             <div class="mb-3">
@@ -17,6 +16,7 @@
                             @endif
                         </x-tablar-kit::forms.label>
                     @endif
+                    @php $field->setData($data)@endphp
                     {!! $field->render($data[$field->getName()] ?? null, $globalConfig) !!}
                 @else
                     {!! $field !!}

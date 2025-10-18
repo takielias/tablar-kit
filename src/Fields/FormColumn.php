@@ -22,12 +22,19 @@ class FormColumn extends BaseField
         return $this;
     }
 
+    public function setData(array $data): self
+    {
+        $this->data = array_merge($this->data, $data);
+        return $this;
+    }
+
     public function render($value = null, array $globalConfig = []): string
     {
         $columnClass = 'col-md-' . $this->width;
 
         return view('tablar-kit::form-builder.layouts.column', [
             'fields' => $this->fields,
+            'data' => $this->data ?? [],
             'columnClass' => $columnClass,
             'globalConfig' => $globalConfig,
         ])->render();

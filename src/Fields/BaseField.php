@@ -11,6 +11,7 @@ abstract class BaseField extends TablarComponent
     protected ?string $label;
     protected array $config;
     protected $value;
+    protected array $data;
     protected array $validationRules;
     protected array $validationMessages;
     protected bool $required;
@@ -37,6 +38,7 @@ abstract class BaseField extends TablarComponent
         $this->topGap = null;
         $this->placeholder = null;
         $this->conditions = [];
+        $this->data = [];
 
         $this->initializeFromConfig();
     }
@@ -44,6 +46,12 @@ abstract class BaseField extends TablarComponent
     protected function buildComponent(): mixed
     {
         return null;
+    }
+
+    public function setData(array $data): self
+    {
+        $this->data = array_merge($this->data, $data);
+        return $this;
     }
 
     protected function initializeFromConfig(): void
@@ -249,7 +257,7 @@ abstract class BaseField extends TablarComponent
 
     public function getId(): string
     {
-        return $this->id ?? $this->name . '_' . uniqid();
+        return $this->attributes['id'] ?? $this->id ?? $this->name . '_' . uniqid();
     }
 
     public function getFieldValue($value = null): string
