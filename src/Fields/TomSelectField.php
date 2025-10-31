@@ -5,9 +5,12 @@ namespace TakiElias\TablarKit\Fields;
 use Illuminate\Support\Facades\View;
 use Illuminate\View\ComponentAttributeBag;
 use TakiElias\TablarKit\Components\Forms\Inputs\TomSelect;
+use TakiElias\TablarKit\Traits\FieldTrait;
 
 class TomSelectField extends BaseField
 {
+    use FieldTrait;
+
     protected bool $remoteData = false;
     protected ?string $itemSearchRoute = null;
 
