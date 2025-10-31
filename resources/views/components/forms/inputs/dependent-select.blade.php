@@ -1,3 +1,8 @@
+@php
+    // Generate a unique ID if one isn't provided
+    $id = $id ?? 'select-' . uniqid();
+@endphp
+
 <select name="{{ $name }}"
         {{ $attributes->merge(['class' => 'form-select']) }}
         id="{{ $id }}"
@@ -23,43 +28,133 @@
 </select>
 <div class="invalid-feedback"></div>
 
+@push('css')
+    <style>
+        /* Fix for Tom Select dropdown visibility in Tabler */
+        .ts-dropdown {
+            /* Use Tabler's surface background color for the dropdown */
+            background-color: var(--tblr-bg-surface);
+            /* Add a border to match Tabler's style */
+            border: 1px solid var(--tblr-border-color);
+            /* Add a shadow for depth */
+            box-shadow: var(--tblr-box-shadow);
+            /* Ensure the dropdown appears above other page content */
+            z-index: 1050;
+        }
+        .ts-dropdown .dropdown-content,
+        .ts-dropdown .ts-dropdown-content {
+            /* Ensure the dropdown content itself is not transparent */
+            background-color: var(--tblr-bg-surface);
+        }
+        .ts-dropdown .option {
+            /* Set text color for options */
+            color: var(--tblr-body-color);
+        }
+        .ts-dropdown .option.active {
+            /* Style for the active/hovered option */
+            background-color: var(--tblr-primary-bg-subtle);
+            color: var(--tblr-primary);
+        }
+    </style>
+@endpush
+
 @push('js')
     <script type="module">
         document.addEventListener('DOMContentLoaded', () => {
-            const mainSelect = document.getElementById('{{ $id }}');
+            // Check if TomSelect is available
+            if (!window.TomSelect) return;
+
+            // Initialize Tom Select with Tabler-compatible settings
+            const mainSelect = new TomSelect('#{{ $id }}', {
+                copyClassesToDropdown: false,
+                dropdownParent: 'body',
+                controlInput: '<input>',
+                create: false,
+                sortField: {
+                    field: "text",
+                    direction: "asc"
+                },
+                render: {
+                    item: function (data, escape) {
+                        if (data.customProperties) {
+                            return '<div><span class="dropdown-item-indicator">' + data.customProperties + "</span>" + escape(data.text) + "</div>";
+                        }
+                        return "<div>" + escape(data.text) + "</div>";
+                    },
+                    option: function (data, escape) {
+                        if (data.customProperties) {
+                            return '<div><span class="dropdown-item-indicator">' + data.customProperties + "</span>" + escape(data.text) + "</div>";
+                        }
+                        return "<div>" + escape(data.text) + "</div>";
+                    },
+                }
+            });
+
             @if($targetDropdown!=null)
-            const targetSelect = document.getElementById('{{ $targetDropdown }}');
-            @endif
-            @if($targetDropdown!=null)
-            mainSelect.addEventListener('change', () => {
+            const targetSelect = new TomSelect('#{{ $targetDropdown }}', {
+                copyClassesToDropdown: false,
+                dropdownParent: 'body',
+                controlInput: '<input>',
+                create: false,
+                sortField: {
+                    field: "text",
+                    direction: "asc"
+                },
+                render: {
+                    item: function (data, escape) {
+                        if (data.customProperties) {
+                            return '<div><span class="dropdown-item-indicator">' + data.customProperties + "</span>" + escape(data.text) + "</div>";
+                        }
+                        return "<div>" + escape(data.text) + "</div>";
+                    },
+                    option: function (data, escape) {
+                        if (data.customProperties) {
+                            return '<div><span class="dropdown-item-indicator">' + data.customProperties + "</span>" + escape(data.text) + "</div>";
+                        }
+                        return "<div>" + escape(data.text) + "</div>";
+                    },
+                }
+            });
+
+            mainSelect.on('change', () => {
                 @if($targetDataRoute!=null)
-                targetSelect.dispatchEvent(new CustomEvent('optionsRemoved'));
+                // Clear existing options in Tom Select
+                targetSelect.clear();
+                targetSelect.clearOptions();
+
+                // Trigger optionsRemoved event for any child dropdowns
+                targetSelect.trigger('optionsRemoved');
                 @endif
+
                 axios.get(`{{ route($targetDataRoute) }}`, {
-                    params: {id: mainSelect.value}
+                    params: {id: mainSelect.getValue()}
                 })
                     .then(response => {
-                        // The response data is now an object, not an array
                         const products = response.data;
+
                         Object.entries(products).forEach(([id, value]) => {
-                            const opt = document.createElement('option');
-                            opt.value = id;
-                            opt.textContent = value;
-                            targetSelect.appendChild(opt);
+                            targetSelect.addOption({
+                                value: id,
+                                text: value
+                            });
                         });
+
+                        targetSelect.refreshOptions();
                     })
                     .catch(error => {
                         console.error('Error fetching data:', error);
                     });
             });
-            targetSelect.addEventListener('optionsRemoved', function () {
-                while (this.options.length > 0) {
-                    this.remove(0);
-                }
-                const childId = this.dataset.child;
+
+            targetSelect.on('optionsRemoved', () => {
+                const childId = targetSelect.input.dataset.child;
                 if (childId) {
-                    const childSelect = document.getElementById(childId);
-                    childSelect.dispatchEvent(new CustomEvent('optionsRemoved'));
+                    const childSelect = document.getElementById(childId).tomselect;
+                    if (childSelect) {
+                        childSelect.clear();
+                        childSelect.clearOptions();
+                        childSelect.trigger('optionsRemoved');
+                    }
                 }
             });
             @endif
