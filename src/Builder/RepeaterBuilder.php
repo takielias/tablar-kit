@@ -30,8 +30,10 @@ class RepeaterBuilder
 
     public function select(string $name, array $options = [], string $label = ''): SelectField
     {
-        $field = new SelectField("{$this->prefix}[{$this->index}][{$name}]", $options, $label);
+        $field = new SelectField("{$this->prefix}[{$this->index}][{$name}]", $label);
+        $field->options($options);
         $this->fields[] = $field;
+
         return $field;
     }
 
