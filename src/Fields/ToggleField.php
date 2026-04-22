@@ -34,6 +34,9 @@ class ToggleField extends BaseField
     public function render($value = null, array $globalConfig = []): string
     {
         $fieldValue = $value ?? $this->value ?? old($this->name);
+        if (is_array($fieldValue)) {
+            $fieldValue = null;
+        }
         $isChecked = $fieldValue == $this->checkedValue;
         $attributes = $this->renderAttributes();
 
@@ -41,7 +44,7 @@ class ToggleField extends BaseField
             name: $this->name,
             id: $this->attributes['id'] ?? null,
             checked: $isChecked,
-            value: $fieldValue,
+            value: $fieldValue !== null ? (string) $fieldValue : '',
             label: $this->label
         );
 

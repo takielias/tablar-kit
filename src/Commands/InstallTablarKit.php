@@ -61,8 +61,7 @@ class InstallTablarKit extends Command
             "filepond-plugin-image-preview" => "^4.6.11",
             "filepond-plugin-file-encode" => "^2.1.14",
             "filepond-plugin-image-edit" => "^1.6.3",
-            "filerobot-image-editor" => "^4.6.1",
-            "react-filerobot-image-editor" => "^4.6.3",
+            "filerobot-image-editor" => "~4.8.1",
             "flatpickr" => "^4.6.13",
             "jspdf" => "^2.5.1",
             "jspdf-autotable" => "^3.8.1",
@@ -70,7 +69,13 @@ class InstallTablarKit extends Command
             "xlsx" => "^0.18.5",
             "jodit" => "^4.6.2",
             "litepicker" => "^2.0.12",
-            "tom-select" => "^2.4.3"
+            "tom-select" => "^2.4.3",
+        ];
+
+        $requiredOverrides = [
+            "react" => "18.3.1",
+            "react-dom" => "18.3.1",
+            "react-konva" => "18.2.10",
         ];
 
         // Combine existing dependencies and devDependencies
@@ -89,6 +94,14 @@ class InstallTablarKit extends Command
         );
 
         ksort($packagesFile['devDependencies']);
+
+        // Dedupe React/react-konva across filerobot-image-editor's
+        // transitive tree — otherwise two React copies ship together
+        // and hooks throw "Invalid hook call" in the host app.
+        $packagesFile['overrides'] = static::updatePackageArray(
+            $packagesFile['overrides'] ?? [],
+            $requiredOverrides
+        );
 
         file_put_contents(
             base_path('package.json'),
