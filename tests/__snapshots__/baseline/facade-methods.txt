@@ -1,0 +1,14 @@
+__callStatic
+clearResolvedInstance
+clearResolvedInstances
+defaultAliases
+expects
+getFacadeApplication
+getFacadeRoot
+isFake
+partialMock
+resolved
+setFacadeApplication
+shouldReceive
+spy
+swap
