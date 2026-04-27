@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\TablarKit\Fields;
 
+use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
 use TakiElias\TablarKit\Fields\TextareaField;
-use Illuminate\Support\Facades\View;
 
 class TextareaFieldTest extends TestCase
 {

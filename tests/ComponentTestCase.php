@@ -12,7 +12,6 @@ use TakiElias\TablarKit\TablarKitServiceProvider;
 
 abstract class ComponentTestCase extends TestCase
 {
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -27,7 +26,6 @@ abstract class ComponentTestCase extends TestCase
         request()->setLaravelSession($sessionStore);
     }
 
-
     protected function getPackageProviders($app): array
     {
         return [TablarKitServiceProvider::class];
@@ -39,11 +37,11 @@ abstract class ComponentTestCase extends TestCase
      */
     public function assertComponentRenders(string $expected, string $template, array $data = []): void
     {
-        $indenter = new Indenter();
+        $indenter = new Indenter;
         $indenter->setElementType('h1', Indenter::ELEMENT_TYPE_INLINE);
         $indenter->setElementType('del', Indenter::ELEMENT_TYPE_INLINE);
 
-        $blade = (string)$this->blade($template, $data);
+        $blade = (string) $this->blade($template, $data);
         $indented = $indenter->indent($blade);
         $cleaned = str_replace(
             [' >', "\n/>", ' </div>', '> ', "\n>"],

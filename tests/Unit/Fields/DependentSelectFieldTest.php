@@ -2,9 +2,9 @@
 
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
+use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
 use TakiElias\TablarKit\Fields\DependentSelectField;
-use Illuminate\Support\Facades\View;
 
 class DependentSelectFieldTest extends TestCase
 {
@@ -33,7 +33,7 @@ class DependentSelectFieldTest extends TestCase
             'label' => 'Product Category',
             'required' => true,
             'help' => 'Select a category first',
-            'placeholder' => 'Choose category...'
+            'placeholder' => 'Choose category...',
         ];
 
         $field = new DependentSelectField('category', 'subcategory', $config);
@@ -71,7 +71,7 @@ class DependentSelectFieldTest extends TestCase
         $options = [
             '1' => 'Electronics',
             '2' => 'Clothing',
-            '3' => 'Books'
+            '3' => 'Books',
         ];
 
         $field = new DependentSelectField('category', 'subcategory');

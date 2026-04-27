@@ -2,9 +2,9 @@
 
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
+use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
 use TakiElias\TablarKit\Fields\RadioField;
-use Illuminate\Support\Facades\View;
 
 class RadioFieldTest extends TestCase
 {

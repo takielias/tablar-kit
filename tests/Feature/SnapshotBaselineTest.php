@@ -2,8 +2,11 @@
 
 namespace TakiElias\TablarKit\Tests\Feature;
 
+use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\ServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use TakiElias\TablarKit\TablarKit;
 use TakiElias\TablarKit\TablarKitServiceProvider;
 
 /**
@@ -18,6 +21,7 @@ use TakiElias\TablarKit\TablarKitServiceProvider;
 class SnapshotBaselineTest extends BaseTestCase
 {
     private string $baselineDir;
+
     private string $packageRoot;
 
     protected function getPackageProviders($app): array
@@ -34,7 +38,7 @@ class SnapshotBaselineTest extends BaseTestCase
 
     public function test_artisan_commands_unchanged(): void
     {
-        $kernel = $this->app->make(\Illuminate\Contracts\Console\Kernel::class);
+        $kernel = $this->app->make(Kernel::class);
         $all = array_keys($kernel->all());
         $relevant = array_values(array_filter(
             $all,
@@ -92,7 +96,7 @@ class SnapshotBaselineTest extends BaseTestCase
 
     public function test_tablarkit_class_public_api_unchanged(): void
     {
-        $reflection = new \ReflectionClass(\TakiElias\TablarKit\TablarKit::class);
+        $reflection = new \ReflectionClass(TablarKit::class);
         $methods = array_map(fn ($m) => $m->getName(), $reflection->getMethods(\ReflectionMethod::IS_PUBLIC));
         sort($methods);
         $this->assertSnapshot('tablarkit-class-methods.txt', implode("\n", $methods)."\n");
@@ -108,7 +112,7 @@ class SnapshotBaselineTest extends BaseTestCase
 
     public function test_publish_tags_unchanged(): void
     {
-        $tags = \Illuminate\Support\ServiceProvider::publishableGroups();
+        $tags = ServiceProvider::publishableGroups();
         sort($tags);
         $this->assertSnapshot('publish-tags.txt', implode("\n", $tags)."\n");
     }

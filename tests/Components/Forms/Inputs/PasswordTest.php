@@ -12,7 +12,7 @@ class PasswordTest extends ComponentTestCase
     /** @test */
     public function the_component_can_be_rendered()
     {
-        $component = new Password();
+        $component = new Password;
 
         $this->assertEquals('password', $component->name);
         $this->assertEquals('password', $component->id);
@@ -33,7 +33,7 @@ class PasswordTest extends ComponentTestCase
     {
         $this->flashOld(['password' => 'secret']);
 
-        $component = new Password();
+        $component = new Password;
 
         $this->assertEquals('', $component->value);
     }

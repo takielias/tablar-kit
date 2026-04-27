@@ -12,7 +12,7 @@ class EmailTest extends ComponentTestCase
     /** @test */
     public function the_component_can_be_rendered()
     {
-        $component = new Email();
+        $component = new Email;
 
         $this->assertEquals('email', $component->name);
         $this->assertEquals('email', $component->id);
@@ -33,7 +33,7 @@ class EmailTest extends ComponentTestCase
     {
         $this->flashOld(['email' => 'test@example.com']);
 
-        $component = new Email();
+        $component = new Email;
 
         $this->assertEquals('test@example.com', $component->value);
     }

@@ -2,10 +2,10 @@
 
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
+use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
 use TakiElias\TablarKit\Fields\FormRow;
 use TakiElias\TablarKit\Fields\InputField;
-use Illuminate\Support\Facades\View;
 
 class FormRowTest extends TestCase
 {
@@ -20,7 +20,7 @@ class FormRowTest extends TestCase
     /** @test */
     public function it_can_create_form_row()
     {
-        $row = new FormRow();
+        $row = new FormRow;
 
         $this->assertEquals('', $row->getName());
         $this->assertEquals('', $row->getLabel());
@@ -40,10 +40,10 @@ class FormRowTest extends TestCase
     {
         $fields = collect([
             new InputField('name'),
-            new InputField('email')
+            new InputField('email'),
         ]);
 
-        $row = new FormRow();
+        $row = new FormRow;
         $row->setFields($fields);
 
         $this->assertInstanceOf(FormRow::class, $row);
@@ -52,7 +52,7 @@ class FormRowTest extends TestCase
     /** @test */
     public function it_can_set_empty_fields_collection()
     {
-        $row = new FormRow();
+        $row = new FormRow;
         $row->setFields(collect());
 
         $this->assertInstanceOf(FormRow::class, $row);
@@ -64,10 +64,10 @@ class FormRowTest extends TestCase
         $fields = collect([
             new InputField('first_name'),
             new InputField('last_name'),
-            new InputField('email')
+            new InputField('email'),
         ]);
 
-        $row = new FormRow();
+        $row = new FormRow;
         $row->setFields($fields);
 
         $this->assertInstanceOf(FormRow::class, $row);
@@ -90,7 +90,7 @@ class FormRowTest extends TestCase
     /** @test */
     public function it_can_set_column_width()
     {
-        $row = new FormRow();
+        $row = new FormRow;
         $row->columnWidth(8);
 
         $this->assertEquals(8, $row->getColumnWidth());
