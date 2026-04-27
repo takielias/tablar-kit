@@ -11,11 +11,9 @@ use Illuminate\Support\Str;
 class CollectionDataSource implements TableDataContract
 {
     protected Collection $data;
+
     protected Collection $processedData;
 
-    /**
-     * @param Collection $data
-     */
     public function __construct(Collection $data)
     {
         $this->data = $data;
@@ -36,7 +34,7 @@ class CollectionDataSource implements TableDataContract
 
                 if (Str::contains($columnValue, $search)) {
                     return true;
-                };
+                }
             }
         });
     }
@@ -65,20 +63,20 @@ class CollectionDataSource implements TableDataContract
         $results = collect($results->values());
 
         return $this->paginator($results, $total, $perPage, $page, [
-                'path' => '/',
-                'pageName' => $pageName,
-            ]);
+            'path' => '/',
+            'pageName' => $pageName,
+        ]);
     }
 
     /**
      * Create a new length-aware paginator instance.
      *
-     * @param  \Illuminate\Support\Collection  $items
+     * @param  Collection  $items
      * @param  int  $total
      * @param  int  $perPage
      * @param  int  $currentPage
      * @param  array  $options
-     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * @return LengthAwarePaginator
      */
     protected function paginator($items, $total, $perPage, $currentPage, $options)
     {

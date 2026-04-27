@@ -44,5 +44,4 @@ abstract class AbstractFileBrowserAction extends AbstractBasicAction implements 
     {
         return str_replace(' ', '_', $path);
     }
-
 }

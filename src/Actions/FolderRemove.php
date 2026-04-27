@@ -16,7 +16,7 @@ class FolderRemove extends AbstractFileBrowserAction
     public function handle(): FileBrowserAction
     {
         $path = $this->getPath();
-        $removedFolderPath = $path . DIRECTORY_SEPARATOR . $this->getName();
+        $removedFolderPath = $path.DIRECTORY_SEPARATOR.$this->getName();
         $this->fileBrowser->removeDirectory($removedFolderPath);
 
         return $this;

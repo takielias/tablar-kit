@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace TakiElias\TablarKit\Dto;
 
 use Carbon\Carbon;
@@ -22,7 +21,7 @@ class FileDto implements Arrayable
     public static function byAttributes(array $attributes): self
     {
 
-        $self = new self();
+        $self = new self;
 
         $self->fileName = Arr::get($attributes, 'fileName');
         $self->thumb = Arr::get($attributes, 'thumb');
@@ -50,7 +49,7 @@ class FileDto implements Arrayable
 
     public function hasThumb(): bool
     {
-        return !!$this->thumb;
+        return (bool) $this->thumb;
     }
 
     public function getThumb(): string
@@ -69,7 +68,7 @@ class FileDto implements Arrayable
 
         $size = round($size, config('tablar-kit.file_size_accuracy'));
 
-        return $size . ' kb';
+        return $size.' kb';
     }
 
     public function getSize(): ?int

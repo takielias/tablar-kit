@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Actions;
 
-use Illuminate\Support\Facades\Cache;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
 use TakiElias\TablarKit\Dto\FileDto;
 use TakiElias\TablarKit\Dto\FolderDto;
 use TakiElias\TablarKit\Http\Resources\DirectoryResource;
@@ -49,12 +49,12 @@ class Files extends AbstractFileBrowserAction
     protected function getAttributesByPath(string $filePath): array
     {
         return Cache::remember(
-            config('tablar-kit.cache.key') . $filePath,
+            config('tablar-kit.cache.key').$filePath,
             config('tablar-kit.cache.duration'),
             function () use ($filePath): array {
                 return [
                     'fileName' => $this->getNameByFilePath($filePath),
-                    'thumb' => !$this->isImage($filePath)
+                    'thumb' => ! $this->isImage($filePath)
                         ? $this->getThumbByFilePath($filePath)
                         : null,
                     'changed' => $this->getChangedTimeByFilePath($filePath),
@@ -83,10 +83,10 @@ class Files extends AbstractFileBrowserAction
         $url = config('tablar-kit.thumb.dir_url');
 
         if (in_array($extension, config('tablar-kit.thumb.exists'))) {
-            return $url . sprintf(config('tablar-kit.thumb.mask'), $extension);
+            return $url.sprintf(config('tablar-kit.thumb.mask'), $extension);
         }
 
-        return $url . config('tablar-kit.thumb.unknown_extension');
+        return $url.config('tablar-kit.thumb.unknown_extension');
     }
 
     protected function getChangedTimeByFilePath(string $filePath): Carbon

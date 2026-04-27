@@ -13,8 +13,9 @@ class InstallTablarKit extends Command
     public function handle(): void
     {
         // Update npm packages
-        if (!file_exists(base_path('package.json'))) {
+        if (! file_exists(base_path('package.json'))) {
             $this->error('package.json not found.');
+
             return;
         }
 
@@ -22,8 +23,9 @@ class InstallTablarKit extends Command
         $filePath = base_path('resources/js/tabler-init.js');
 
         // Check if the file exists
-        if (!file_exists($filePath)) {
+        if (! file_exists($filePath)) {
             $this->error("File does not exist: {$filePath}");
+
             return;
         }
 
@@ -44,7 +46,7 @@ class InstallTablarKit extends Command
     protected static function updatePackageArray(array $packages, array $requiredPackages): array
     {
         foreach ($requiredPackages as $package => $version) {
-            if (!array_key_exists($package, $packages)) {
+            if (! array_key_exists($package, $packages)) {
                 $packages[$package] = $version;
             }
         }
@@ -57,25 +59,25 @@ class InstallTablarKit extends Command
         $packagesFile = json_decode(file_get_contents(base_path('package.json')), true);
 
         $requiredPackages = [
-            "filepond" => "^4.30.4",
-            "filepond-plugin-image-preview" => "^4.6.11",
-            "filepond-plugin-file-encode" => "^2.1.14",
-            "filepond-plugin-image-edit" => "^1.6.3",
-            "filerobot-image-editor" => "~4.8.1",
-            "flatpickr" => "^4.6.13",
-            "jspdf" => "^2.5.1",
-            "jspdf-autotable" => "^3.8.1",
-            "tabulator-tables" => "^5.5.2",
-            "xlsx" => "^0.18.5",
-            "jodit" => "^4.6.2",
-            "litepicker" => "^2.0.12",
-            "tom-select" => "^2.4.3",
+            'filepond' => '^4.30.4',
+            'filepond-plugin-image-preview' => '^4.6.11',
+            'filepond-plugin-file-encode' => '^2.1.14',
+            'filepond-plugin-image-edit' => '^1.6.3',
+            'filerobot-image-editor' => '~4.8.1',
+            'flatpickr' => '^4.6.13',
+            'jspdf' => '^2.5.1',
+            'jspdf-autotable' => '^3.8.1',
+            'tabulator-tables' => '^5.5.2',
+            'xlsx' => '^0.18.5',
+            'jodit' => '^4.6.2',
+            'litepicker' => '^2.0.12',
+            'tom-select' => '^2.4.3',
         ];
 
         $requiredOverrides = [
-            "react" => "18.3.1",
-            "react-dom" => "18.3.1",
-            "react-konva" => "18.2.10",
+            'react' => '18.3.1',
+            'react-dom' => '18.3.1',
+            'react-konva' => '18.2.10',
         ];
 
         // Combine existing dependencies and devDependencies
@@ -105,7 +107,7 @@ class InstallTablarKit extends Command
 
         file_put_contents(
             base_path('package.json'),
-            json_encode($packagesFile, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . PHP_EOL
+            json_encode($packagesFile, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT).PHP_EOL
         );
     }
 
@@ -139,7 +141,7 @@ class InstallTablarKit extends Command
 
         foreach ($linesToAdd as $lineToAdd) {
             // Check if the import has already been added (using a more robust method)
-            if (!self::hasImportBeenAdded($filePath, $lineToAdd)) {
+            if (! self::hasImportBeenAdded($filePath, $lineToAdd)) {
                 // Append the line if it does not exist
                 file_put_contents($filePath, $lineToAdd, FILE_APPEND);
             }
@@ -151,14 +153,14 @@ class InstallTablarKit extends Command
      */
     protected static function scaffoldConfig(): void
     {
-        copy(__DIR__ . '../../../config/tablar-kit.php', base_path('config/tablar-kit.php'));
+        copy(__DIR__.'../../../config/tablar-kit.php', base_path('config/tablar-kit.php'));
     }
 
     // Helper function to check for the import more reliably
     protected static function hasImportBeenAdded($filePath, $lineToAdd): bool
     {
         $fileContent = file_get_contents($filePath);
+
         return str_contains($fileContent, $lineToAdd);
     }
-
 }

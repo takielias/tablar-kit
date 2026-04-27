@@ -24,18 +24,21 @@ class JoditField extends BaseField
     public function config(array $config): self
     {
         $this->options = array_merge($this->options, $config);
+
         return $this;
     }
 
     public function height(int $height): self
     {
         $this->options['height'] = $height;
+
         return $this;
     }
 
     public function toolbar(array $buttons): self
     {
         $this->options['buttons'] = $buttons;
+
         return $this;
     }
 
@@ -54,7 +57,7 @@ class JoditField extends BaseField
             ->with([
                 'value' => $fieldValue,
                 'slot' => $fieldValue,
-                'attributes' => new ComponentAttributeBag($attributes)
+                'attributes' => new ComponentAttributeBag($attributes),
             ])
             ->render();
     }

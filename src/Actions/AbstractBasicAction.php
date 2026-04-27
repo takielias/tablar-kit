@@ -20,7 +20,7 @@ abstract class AbstractBasicAction
 
     public function hasErrors(): bool
     {
-        return (bool)count($this->errors);
+        return (bool) count($this->errors);
     }
 
     protected function getPath(): string
@@ -53,7 +53,7 @@ abstract class AbstractBasicAction
             if (config('tablar-kit.duplicate_file')) {
                 $this->fileBrowser->renameIfExist($path);
             } else {
-                $this->errors[] = $path . ' - ' . __('is already exists!');
+                $this->errors[] = $path.' - '.__('is already exists!');
             }
         }
     }

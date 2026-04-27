@@ -9,6 +9,7 @@ trait FieldTrait
         foreach ($options as $name => $value) {
             $this->options[$name] = $value;
         }
+
         return $this;
     }
 }

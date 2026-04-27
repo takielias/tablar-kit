@@ -8,25 +8,21 @@ use Illuminate\Contracts\View\View;
 
 class FlatPicker extends Input
 {
-    /** @var string */
     public string $format;
 
-    /** @var string */
     public string $placeholder;
 
-    /** @var array */
     public array $options;
 
     public function __construct(
-        string  $name,
-        string  $id = null,
+        string $name,
+        ?string $id = null,
         ?string $value = '',
-        string  $format = 'Y-m-d H:i',
-        string  $placeholder = null,
-        array   $options = []
-    )
-    {
-        $this->id = $id ?? 'id_' . uniqid();
+        string $format = 'Y-m-d H:i',
+        ?string $placeholder = null,
+        array $options = []
+    ) {
+        $this->id = $id ?? 'id_'.uniqid();
 
         parent::__construct($name, $this->id, 'text', $value);
 
@@ -50,7 +46,7 @@ class FlatPicker extends Input
             return '';
         }
 
-        return json_encode((object)$this->options());
+        return json_encode((object) $this->options());
     }
 
     public function render(): View

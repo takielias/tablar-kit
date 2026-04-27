@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Actions;
 
-use TakiElias\TablarKit\Http\Resources\SuccessActionResource;
 use Exception;
+use TakiElias\TablarKit\Http\Resources\SuccessActionResource;
 
 class FolderRename extends AbstractFileBrowserAction
 {
@@ -15,16 +15,15 @@ class FolderRename extends AbstractFileBrowserAction
     }
 
     /**
-     * @return FileBrowserAction
      * @throws Exception
      */
     public function handle(): FileBrowserAction
     {
         $path = $this->getPath();
-        $from = $path . DIRECTORY_SEPARATOR . $this->getName();
+        $from = $path.DIRECTORY_SEPARATOR.$this->getName();
 
         $newName = $this->getNewName();
-        $to = $path . DIRECTORY_SEPARATOR . $newName;
+        $to = $path.DIRECTORY_SEPARATOR.$newName;
 
         $this->checkPathExists($to);
 

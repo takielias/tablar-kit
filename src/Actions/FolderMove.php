@@ -8,7 +8,6 @@ use TakiElias\TablarKit\Http\Resources\FileActionErrorResource;
 
 class FolderMove extends AbstractFileBrowserAction
 {
-
     public static function getActionName(): string
     {
         return 'folderMove';

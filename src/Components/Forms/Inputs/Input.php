@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Components\Forms\Inputs;
 
-use TakiElias\TablarKit\Components\TablarComponent;
 use Illuminate\Contracts\View\View;
+use TakiElias\TablarKit\Components\TablarComponent;
 
 class Input extends TablarComponent
 {
@@ -18,12 +18,11 @@ class Input extends TablarComponent
     public ?string $value;
 
     public function __construct(
-        string  $name,
-        string  $id = null,
-        string  $type = 'text',
+        string $name,
+        ?string $id = null,
+        string $type = 'text',
         ?string $value = '',
-    )
-    {
+    ) {
         $this->name = $name;
         $this->id = $id ?? $name;
         $this->type = $type;
@@ -44,5 +43,4 @@ class Input extends TablarComponent
             'value' => $this->value,
         ];
     }
-
 }

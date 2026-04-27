@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace TakiElias\TablarKit\Actions;
 
 use TakiElias\TablarKit\Http\Resources\SuccessActionResource;
@@ -17,7 +16,7 @@ class FileRemove extends AbstractFileBrowserAction
     public function handle(): FileBrowserAction
     {
         $path = $this->getPath();
-        $removingFilePath = $path . DIRECTORY_SEPARATOR . $this->getName();
+        $removingFilePath = $path.DIRECTORY_SEPARATOR.$this->getName();
         $this->fileBrowser->removeFile($removingFilePath);
 
         return $this;

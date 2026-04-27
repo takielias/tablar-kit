@@ -9,12 +9,12 @@ use TakiElias\TablarKit\Entities\PathInfo;
 final class UploadedFileDto
 {
     private string $path;
-    private function __construct()
-    {
-    }
+
+    private function __construct() {}
+
     public static function byFilePath(string $path): self
     {
-        $self = new self();
+        $self = new self;
 
         $self->path = $path;
 

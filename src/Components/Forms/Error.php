@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Components\Forms;
 
-use TakiElias\TablarKit\Components\TablarComponent;
 use Illuminate\Support\ViewErrorBag;
 use Illuminate\View\View;
+use TakiElias\TablarKit\Components\TablarComponent;
 
 class Error extends TablarComponent
 {
-    /** @var string */
     public string $field;
 
-    /** @var string */
     public string $bag;
 
     public function __construct(string $field, string $bag = 'default')

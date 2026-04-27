@@ -12,6 +12,7 @@ class LitePickerField extends BaseField
     use FieldTrait;
 
     protected array $options = [];
+
     protected ?string $placeholder = null;
 
     public function __construct(string $name, string $label = '', array $config = [])
@@ -25,24 +26,28 @@ class LitePickerField extends BaseField
     public function config(array $config): self
     {
         $this->options = array_merge($this->options, $config);
+
         return $this;
     }
 
     public function singleMode(bool $single = true): self
     {
         $this->options['singleMode'] = $single;
+
         return $this;
     }
 
     public function format(string $format): self
     {
         $this->options['format'] = $format;
+
         return $this;
     }
 
     public function placeholder(string $placeholder): self
     {
         $this->placeholder = $placeholder;
+
         return $this;
     }
 
@@ -63,7 +68,7 @@ class LitePickerField extends BaseField
         return View::make($litePickerComponent->render()->name(), $litePickerComponent->data())
             ->with([
                 'attributes' => new ComponentAttributeBag($attributes),
-                'jsonOptions' => $litePickerComponent->jsonOptions()
+                'jsonOptions' => $litePickerComponent->jsonOptions(),
             ])
             ->render();
     }

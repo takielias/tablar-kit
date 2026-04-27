@@ -7,7 +7,9 @@ use Illuminate\View\ComponentAttributeBag;
 class FileField extends BaseField
 {
     protected array $acceptedTypes = [];
+
     protected ?int $maxSize = null;
+
     protected bool $multiple = false;
 
     public function __construct(string $name, string $label = '', array $config = [])
@@ -21,24 +23,28 @@ class FileField extends BaseField
     public function accept(array $types): self
     {
         $this->acceptedTypes = $types;
+
         return $this;
     }
 
     public function maxSize(int $sizeInKb): self
     {
         $this->maxSize = $sizeInKb;
+
         return $this;
     }
 
     public function multiple(bool $multiple = true): self
     {
         $this->multiple = $multiple;
+
         return $this;
     }
 
     public function acceptedFileTypes(array $types): self
     {
         $this->attributes['accept'] = implode(',', $types);
+
         return $this;
     }
 
@@ -57,8 +63,7 @@ class FileField extends BaseField
             'acceptedTypes' => $this->acceptedTypes,
             'maxSize' => $this->maxSize,
             'multiple' => $this->multiple,
-            'attributes' => new ComponentAttributeBag($attributes)
+            'attributes' => new ComponentAttributeBag($attributes),
         ])->render();
     }
 }
-

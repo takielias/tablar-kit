@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace TakiElias\TablarKit\Dto;
 
 use Illuminate\Http\File;
@@ -13,9 +12,6 @@ final class FileUploadDto
 
     private ?string $source;
 
-    /**
-     * @var string|null
-     */
     private ?string $path;
 
     /**
@@ -26,12 +22,11 @@ final class FileUploadDto
     private ?string $url;
 
     private function __construct(
-        string  $source,
+        string $source,
         ?string $path = null,
-        array   $files = [],
+        array $files = [],
         ?string $url = null
-    )
-    {
+    ) {
         $this->source = $source;
         $this->path = $path;
         $this->files = $files;
@@ -39,12 +34,11 @@ final class FileUploadDto
     }
 
     public static function byParams(
-        string  $source = 'default',
+        string $source = 'default',
         ?string $path = null,
-        ?array  $files = [],
+        ?array $files = [],
         ?string $url = null
-    ): self
-    {
+    ): self {
         return new self(
             $source,
             $path,
@@ -65,7 +59,7 @@ final class FileUploadDto
 
     public function hasPath(): bool
     {
-        return (bool)$this->path;
+        return (bool) $this->path;
     }
 
     public function getAction(): string

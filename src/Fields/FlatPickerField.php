@@ -12,6 +12,7 @@ class FlatPickerField extends BaseField
     use FieldTrait;
 
     protected array $options = [];
+
     protected ?string $placeholder = null;
 
     public function __construct(string $name, string $label = '', array $config = [])
@@ -25,25 +26,28 @@ class FlatPickerField extends BaseField
     public function config(array $config): self
     {
         $this->options = array_merge($this->options, $config);
+
         return $this;
     }
 
     public function enableTime(bool $enable = true): self
     {
         $this->options['enableTime'] = $enable;
+
         return $this;
     }
 
     public function dateFormat(string $format): self
     {
         $this->options['dateFormat'] = $format;
+
         return $this;
     }
-
 
     public function placeholder(string $placeholder): self
     {
         $this->placeholder = $placeholder;
+
         return $this;
     }
 
@@ -64,9 +68,8 @@ class FlatPickerField extends BaseField
         return View::make($flatPickerComponent->render()->name(), $flatPickerComponent->data())
             ->with([
                 'attributes' => new ComponentAttributeBag($attributes),
-                'jsonOptions' => $flatPickerComponent->jsonOptions()
+                'jsonOptions' => $flatPickerComponent->jsonOptions(),
             ])
             ->render();
     }
 }
-

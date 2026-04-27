@@ -7,6 +7,7 @@ namespace TakiElias\TablarKit\Components\Cards;
 class CardStamp extends CardBase
 {
     public $icon;
+
     public $color;
 
     public function render()

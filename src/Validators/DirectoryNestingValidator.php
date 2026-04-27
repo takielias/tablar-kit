@@ -29,5 +29,4 @@ class DirectoryNestingValidator extends AbstractPathValidator
             $fail("The {$attribute} exceeds the maximum allowed directory nesting level.");
         }
     }
-
 }
