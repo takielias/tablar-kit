@@ -28,6 +28,8 @@ components/forms/inputs/textarea.blade.php
 components/forms/inputs/toggle.blade.php
 components/forms/inputs/tom-select.blade.php
 components/forms/label.blade.php
+components/modals/confirm-modal.blade.php
+components/modals/confirm.blade.php
 components/modals/form.blade.php
 components/modals/modal.blade.php
 components/table/tabulator.blade.php

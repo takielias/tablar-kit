@@ -108,6 +108,21 @@ return [
     'prefix' => '',
 
     /* --------------------------------------------------------------------------------------------
+    * Confirm Modal
+    * --------------------------------------------------------------------------------------------
+    * Settings for the <x-confirm-modal /> singleton + its <x-confirm> trigger.
+    *
+    * `toast` — when true (default), the JS layer pops a Bootstrap toast on
+    * successful confirm using `response.message` if present. Set false to
+    * suppress all toasts globally; consumers can still listen to the
+    * `tablar-kit:confirm:success` event and render their own UX.
+    */
+
+    'confirm' => [
+        'toast' => true,
+    ],
+
+    /* --------------------------------------------------------------------------------------------
     * Jodit Editor Configuration
     * --------------------------------------------------------------------------------------------
     * Specific settings for the Jodit Editor component, including root directories, middleware,

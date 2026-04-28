@@ -1,5 +1,6 @@
 cache
 components
+confirm
 default-class
 duplicate_file
 file_actions

@@ -3,7 +3,8 @@
      tabindex="-1"
      role="dialog"
      aria-hidden="true"
-     aria-labelledby="tablar-kit-confirm-modal-title">
+     aria-labelledby="tablar-kit-confirm-modal-title"
+     data-toast-enabled="{{ config('tablar-kit.confirm.toast', true) ? '1' : '0' }}">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-status bg-danger" id="tablar-kit-confirm-modal-status"></div>

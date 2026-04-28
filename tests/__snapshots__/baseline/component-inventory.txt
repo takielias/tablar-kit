@@ -29,6 +29,8 @@ Forms/Inputs/Toggle.php
 Forms/Inputs/TomSelect.php
 Forms/Label.php
 Interfaces/Label.php
+Modals/Confirm.php
+Modals/ConfirmModal.php
 Modals/Modal.php
 Modals/ModalForm.php
 TablarComponent.php

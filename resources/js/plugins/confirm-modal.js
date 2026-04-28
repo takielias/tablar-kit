@@ -14,6 +14,11 @@
  *
  * Outcome priority on success: onSuccess > redirect > event > reload.
  */
+// Import only the Modal + Toast classes — NOT the full `bootstrap` bundle.
+// The full bundle re-registers data-API event delegation on dropdowns,
+// collapses, etc., which double-fires if @tabler/core has already done so.
+import BsModal from 'bootstrap/js/dist/modal';
+import BsToast from 'bootstrap/js/dist/toast';
 const TablarConfirmModal = {
     MODAL_ID: 'tablar-kit-confirm-modal',
 
@@ -27,8 +32,19 @@ const TablarConfirmModal = {
 
     instance() {
         const el = this.el();
-        if (!el || typeof bootstrap === 'undefined') return null;
-        return bootstrap.Modal.getOrCreateInstance(el);
+        if (!el) {
+            console.error('[tablar-kit] #' + this.MODAL_ID + ' not in DOM — drop <x-confirm-modal /> in your layout.');
+            return null;
+        }
+        // Prefer the global Bootstrap if @tabler/core or another bundle has
+        // already exposed it; fall back to the directly-imported class so
+        // tablar-kit works even when the host app doesn't expose `window.bootstrap`.
+        const ModalCtor = (typeof bootstrap !== 'undefined' && bootstrap.Modal) ? bootstrap.Modal : BsModal;
+        if (!ModalCtor) {
+            console.error('[tablar-kit] No Bootstrap Modal class available.');
+            return null;
+        }
+        return ModalCtor.getOrCreateInstance(el);
     },
 
     fill(opts) {
@@ -101,27 +117,103 @@ const TablarConfirmModal = {
     },
 
     runOutcome(json, opts) {
+        const message = (json && typeof json.message === 'string') ? json.message : null;
+
         if (typeof opts.onSuccess === 'function') {
+            if (message) this.toast('success', message);
             opts.onSuccess(json);
             return;
         }
         if (opts.redirect) {
+            if (message) this.persistFlash('success', message);
             window.location.assign(opts.redirect);
             return;
         }
         if (opts.event) {
+            if (message) this.toast('success', message);
             document.dispatchEvent(new CustomEvent(opts.event, { detail: json }));
             return;
         }
         if (opts.reload !== false) {
+            if (message) this.persistFlash('success', message);
             window.location.reload();
+        } else if (message) {
+            this.toast('success', message);
         }
+    },
+
+    persistFlash(type, message) {
+        try {
+            sessionStorage.setItem('tablar-kit:flash', JSON.stringify({ type, message }));
+        } catch (_) { /* storage disabled — non-fatal */ }
+    },
+
+    consumeFlash() {
+        try {
+            const raw = sessionStorage.getItem('tablar-kit:flash');
+            if (!raw) return;
+            sessionStorage.removeItem('tablar-kit:flash');
+            const data = JSON.parse(raw);
+            if (data && data.message) {
+                this.toast(data.type || 'success', data.message);
+            }
+        } catch (_) { /* corrupt storage — ignore */ }
+    },
+
+    toastEnabled() {
+        const el = this.el();
+        if (!el) return true;
+        const flag = el.dataset.toastEnabled;
+        return flag !== '0' && flag !== 'false';
+    },
+
+    toast(type, message) {
+        if (!this.toastEnabled()) return;
+        const containerId = 'tablar-kit-toast-container';
+        let container = document.getElementById(containerId);
+        if (!container) {
+            container = document.createElement('div');
+            container.id = containerId;
+            container.className = 'toast-container position-fixed bottom-0 end-0 p-3';
+            container.style.zIndex = '1080';
+            document.body.appendChild(container);
+        }
+
+        const variant = ({ success: 'success', danger: 'danger', warning: 'warning', info: 'info' })[type] || 'success';
+
+        const toastEl = document.createElement('div');
+        toastEl.className = 'toast align-items-center text-bg-' + variant + ' border-0';
+        toastEl.setAttribute('role', 'alert');
+        toastEl.setAttribute('aria-live', 'assertive');
+        toastEl.setAttribute('aria-atomic', 'true');
+
+        const flex = document.createElement('div');
+        flex.className = 'd-flex';
+
+        const body = document.createElement('div');
+        body.className = 'toast-body';
+        body.textContent = message;
+
+        const close = document.createElement('button');
+        close.type = 'button';
+        close.className = 'btn-close btn-close-white me-2 m-auto';
+        close.setAttribute('data-bs-dismiss', 'toast');
+        close.setAttribute('aria-label', 'Close');
+
+        flex.appendChild(body);
+        flex.appendChild(close);
+        toastEl.appendChild(flex);
+        container.appendChild(toastEl);
+
+        const ToastCtor = (typeof bootstrap !== 'undefined' && bootstrap.Toast) ? bootstrap.Toast : BsToast;
+        const inst = ToastCtor.getOrCreateInstance(toastEl, { delay: 4000 });
+        toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove(), { once: true });
+        inst.show();
     },
 
     open(opts) {
         const inst = this.instance();
         if (!inst) {
-            console.error('[tablar-kit] Confirm modal mount missing — drop <x-confirm-modal /> in your layout.');
             return Promise.reject(new Error('Confirm modal mount missing.'));
         }
 
@@ -207,6 +299,10 @@ const TablarConfirmModal = {
             e.preventDefault();
             this.open(this.readDataAttrs(trigger));
         });
+
+        // Surface any flash message stored before a redirect/reload
+        // (e.g. server's `response()->json(['message' => ...])` after delete).
+        this.consumeFlash();
 
         // Warn if a consumer accidentally mounts the modal twice — JS targets
         // the first instance via getElementById; the second is dead weight.

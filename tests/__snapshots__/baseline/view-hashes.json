@@ -29,6 +29,8 @@
     "components\/forms\/inputs\/toggle.blade.php": "98c0a06770e9a62929a26e0cb6bf1549c6f45ad5fe70e39c90e00ce3afe74f5e",
     "components\/forms\/inputs\/tom-select.blade.php": "ffcb66d7c51617bc528cf93808ec37e318553cb7e956ed6b78dab2286745f5fc",
     "components\/forms\/label.blade.php": "a5e981ab441f48628c2d6b82cd61d1571aaa5be3bf382175409b93a71f05d9ce",
+    "components\/modals\/confirm-modal.blade.php": "6a788053e1bd54bc6818126d486d4cb2f33ce1f732d82692da2acc86ed1c02a4",
+    "components\/modals\/confirm.blade.php": "7ff8667735c50d264e15f72721bebbb96e1b58cc97b85fa9497839f501b392fa",
     "components\/modals\/form.blade.php": "40d8f0cf893d103c21433c4785ef306d274fb17d70e0b4f84e2def38871b9d01",
     "components\/modals\/modal.blade.php": "250e012b12fde9b26fea2a9c9040b5b6e9dc4f9327464f6861b81fc5281453cd",
     "components\/table\/tabulator.blade.php": "8e7fe79dbbeee2abcd1fd72a3c32309dee70d096bd2845270f0b6f152324b4c7",
