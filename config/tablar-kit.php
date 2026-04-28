@@ -39,6 +39,8 @@ use TakiElias\TablarKit\Components\Forms\Inputs\Textarea;
 use TakiElias\TablarKit\Components\Forms\Inputs\Toggle;
 use TakiElias\TablarKit\Components\Forms\Inputs\TomSelect;
 use TakiElias\TablarKit\Components\Forms\Label;
+use TakiElias\TablarKit\Components\Modals\Confirm;
+use TakiElias\TablarKit\Components\Modals\ConfirmModal;
 use TakiElias\TablarKit\Components\Modals\Modal;
 use TakiElias\TablarKit\Components\Modals\ModalForm;
 use TakiElias\TablarKit\Components\Table\Tabulator;
@@ -75,6 +77,8 @@ return [
         'email' => Email::class,
         'modal' => Modal::class,
         'modal-form' => ModalForm::class,
+        'confirm-modal' => ConfirmModal::class,
+        'confirm' => Confirm::class,
         'error' => Error::class,
         'lite-picker' => LitePicker::class,
         'flat-picker' => FlatPicker::class,
