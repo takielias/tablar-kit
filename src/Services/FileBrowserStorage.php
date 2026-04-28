@@ -228,11 +228,12 @@ class FileBrowserStorage
         if ($this->fs->exists($path)) {
             $pathInfo = pathinfo($path);
 
+            $extension = $pathInfo['extension'] ?? '';
+
             $path = $pathInfo['dirname']
-            .DIRECTORY_SEPARATOR
-            .$pathInfo['filename'].'1'
-            .'.'
-            .$pathInfo['extension'] ?? '';
+                .DIRECTORY_SEPARATOR
+                .$pathInfo['filename'].'1'
+                .($extension !== '' ? '.'.$extension : '');
 
             return $this->renameIfExistsRaw($path);
         }
