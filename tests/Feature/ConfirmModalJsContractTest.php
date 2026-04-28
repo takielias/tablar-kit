@@ -82,7 +82,7 @@ class ConfirmModalJsContractTest extends TestCase
         $this->assertStringContainsString('data-confirm-no-reload', $source);
     }
 
-    public function test_runs_outcome_priority_onSuccess_redirect_event_reload(): void
+    public function test_runs_outcome_priority_on_success_redirect_event_reload(): void
     {
         $source = $this->source();
 
@@ -113,7 +113,7 @@ class ConfirmModalJsContractTest extends TestCase
     public function test_renders_error_alert_on_non_2xx(): void
     {
         $this->assertStringContainsString('showAlert', $this->source());
-        $this->assertStringContainsString("d-none", $this->source());
+        $this->assertStringContainsString('d-none', $this->source());
     }
 
     public function test_reenables_confirm_button_on_error(): void
