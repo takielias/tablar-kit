@@ -2,10 +2,10 @@
 
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
+use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
 use TakiElias\TablarKit\Fields\FormColumn;
 use TakiElias\TablarKit\Fields\InputField;
-use Illuminate\Support\Facades\View;
 
 class FormColumnTest extends TestCase
 {
@@ -40,7 +40,7 @@ class FormColumnTest extends TestCase
     {
         $fields = collect([
             new InputField('name'),
-            new InputField('email')
+            new InputField('email'),
         ]);
 
         $column = new FormColumn(6);

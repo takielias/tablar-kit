@@ -2,11 +2,16 @@
 
 ## The Elegance of Laravel Tablar Dashboard
 
+[![tests](https://github.com/takielias/tablar-kit/actions/workflows/tests.yml/badge.svg)](https://github.com/takielias/tablar-kit/actions/workflows/tests.yml)
+[![lint](https://github.com/takielias/tablar-kit/actions/workflows/lint.yml/badge.svg)](https://github.com/takielias/tablar-kit/actions/workflows/lint.yml)
 [![Latest Version](https://img.shields.io/packagist/v/takielias/tablar-kit?color=blue&label=release&style=for-the-badge)](https://packagist.org/packages/takielias/tablar-kit)
-[![Stars](https://img.shields.io/github/stars/takielias/tablar-kit?color=rgb%2806%20189%20248%29&label=stars&style=for-the-badge)](https://packagist.org/packages/takielias/tablar-kit)
 [![Total Downloads](https://img.shields.io/packagist/dt/takielias/tablar-kit.svg?color=rgb%28249%20115%2022%29&style=for-the-badge)](https://packagist.org/packages/takielias/tablar-kit)
-[![Forks](https://img.shields.io/github/forks/takielias/tablar-kit?color=rgb%28134%20115%2022%29&style=for-the-badge)](https://packagist.org/packages/takielias/tablar-kit)
-[![Issues](https://img.shields.io/github/issues/takielias/tablar-kit?color=rgb%28134%20239%20128%29&style=for-the-badge)](https://packagist.org/packages/takielias/tablar-kit)
+[![PHP Version](https://img.shields.io/packagist/dependency-v/takielias/tablar-kit/php?style=for-the-badge)](https://packagist.org/packages/takielias/tablar-kit)
+[![Laravel](https://img.shields.io/badge/Laravel-11%20%7C%2012%20%7C%2013-FF2D20?style=for-the-badge&logo=laravel)](https://packagist.org/packages/takielias/tablar-kit)
+[![License](https://img.shields.io/packagist/l/takielias/tablar-kit?style=for-the-badge)](https://github.com/takielias/tablar-kit/blob/master/LICENSE.md)
+[![Stars](https://img.shields.io/github/stars/takielias/tablar-kit?color=rgb%2806%20189%20248%29&label=stars&style=for-the-badge)](https://github.com/takielias/tablar-kit)
+[![Forks](https://img.shields.io/github/forks/takielias/tablar-kit?color=rgb%28134%20115%2022%29&style=for-the-badge)](https://github.com/takielias/tablar-kit)
+[![Issues](https://img.shields.io/github/issues/takielias/tablar-kit?color=rgb%28134%20239%20128%29&style=for-the-badge)](https://github.com/takielias/tablar-kit)
 [![Linkedin](https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&color=rgba(235%2068%2050)&style=for-the-badge)](https://linkedin.com/in/takielias)
 
 

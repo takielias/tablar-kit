@@ -2,12 +2,12 @@
 
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
+use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
-use TakiElias\TablarKit\Fields\RepeaterField;
 use TakiElias\TablarKit\Fields\InputField;
+use TakiElias\TablarKit\Fields\RepeaterField;
 use TakiElias\TablarKit\Fields\SelectField;
 use TakiElias\TablarKit\Fields\ToggleField;
-use Illuminate\Support\Facades\View;
 
 class RepeaterFieldTest extends TestCase
 {
@@ -116,7 +116,7 @@ class RepeaterFieldTest extends TestCase
         $callback = function ($index, $item) {
             return [
                 new InputField("contacts[{$index}][name]", 'Name'),
-                new InputField("contacts[{$index}][email]", 'Email')
+                new InputField("contacts[{$index}][email]", 'Email'),
             ];
         };
 
@@ -140,9 +140,9 @@ class RepeaterFieldTest extends TestCase
                 new InputField("contacts[{$index}][email]", 'Email'),
                 (new SelectField("contacts[{$index}][role]", 'Role'))->options([
                     'manager' => 'Manager',
-                    'developer' => 'Developer'
+                    'developer' => 'Developer',
                 ]),
-                new ToggleField("contacts[{$index}][primary]", 'Primary Contact')
+                new ToggleField("contacts[{$index}][primary]", 'Primary Contact'),
             ];
         };
 

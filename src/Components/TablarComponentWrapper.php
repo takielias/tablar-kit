@@ -5,6 +5,7 @@ namespace TakiElias\TablarKit\Components;
 class TablarComponentWrapper
 {
     protected string $component;
+
     protected array $config;
 
     public function __construct(string $component, array $config = [])

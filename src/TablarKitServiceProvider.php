@@ -13,11 +13,8 @@ use TakiElias\TablarKit\Rules\FilepondRule;
 
 class TablarKitServiceProvider extends ServiceProvider
 {
-
     /**
      * Perform post-registration booting of services.
-     *
-     * @return void
      */
     public function boot(): void
     {
@@ -44,9 +41,8 @@ class TablarKitServiceProvider extends ServiceProvider
 
     private function bootResources(): void
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'tablar-kit');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'tablar-kit');
     }
-
 
     private function bootBladeComponents(): void
     {
@@ -60,12 +56,10 @@ class TablarKitServiceProvider extends ServiceProvider
 
     /**
      * Register any package services.
-     *
-     * @return void
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/tablar-kit.php', 'tablar-kit');
+        $this->mergeConfigFrom(__DIR__.'/../config/tablar-kit.php', 'tablar-kit');
 
         // Register the service the package provides.
         $this->app->singleton('tablar-kit', function () {
@@ -79,16 +73,15 @@ class TablarKitServiceProvider extends ServiceProvider
         }
     }
 
-
     private function bootPublishing(): void
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/tablar-kit.php' => $this->app->configPath('tablar-kit.php'),
+                __DIR__.'/../config/tablar-kit.php' => $this->app->configPath('tablar-kit.php'),
             ], 'tablar-kit-config');
 
             $this->publishes([
-                __DIR__ . '/../resources/views' => $this->app->resourcePath('views/vendor/tablar-kit'),
+                __DIR__.'/../resources/views' => $this->app->resourcePath('views/vendor/tablar-kit'),
             ], 'tablar-kit-views');
         }
     }
@@ -105,14 +98,12 @@ class TablarKitServiceProvider extends ServiceProvider
 
     /**
      * Console-specific booting.
-     *
-     * @return void
      */
     protected function bootForConsole(): void
     {
         // Publishing the configuration file.
         $this->publishes([
-            __DIR__ . '/../config/tablar-kit.php' => config_path('tablar-kit.php'),
+            __DIR__.'/../config/tablar-kit.php' => config_path('tablar-kit.php'),
         ], 'tablar-kit.config');
 
         // Publishing the views.
@@ -136,7 +127,7 @@ class TablarKitServiceProvider extends ServiceProvider
 
     private function bootRoutes(): void
     {
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     }
 
     private function bootMacro(): void

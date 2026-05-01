@@ -22,6 +22,7 @@ class InputField extends BaseField
     public function type(string $type): self
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -34,6 +35,7 @@ class InputField extends BaseField
     {
         $this->attributes['maxlength'] = $length;
         $this->rules("max:{$length}");
+
         return $this;
     }
 
@@ -41,14 +43,15 @@ class InputField extends BaseField
     {
         $this->attributes['minlength'] = $length;
         $this->rules("min:{$length}");
+
         return $this;
     }
-
 
     public function min($min): self
     {
         $this->attributes['min'] = $min;
         $this->rules("min:{$min}");
+
         return $this;
     }
 
@@ -56,12 +59,14 @@ class InputField extends BaseField
     {
         $this->attributes['max'] = $max;
         $this->rules("max:{$max}");
+
         return $this;
     }
 
     public function step($step): self
     {
         $this->attributes['step'] = $step;
+
         return $this;
     }
 
@@ -79,9 +84,8 @@ class InputField extends BaseField
 
         return View::make($inputComponent->render()->name(), $inputComponent->data())
             ->with([
-                'attributes' => new ComponentAttributeBag($attributes)
+                'attributes' => new ComponentAttributeBag($attributes),
             ])
             ->render();
     }
 }
-

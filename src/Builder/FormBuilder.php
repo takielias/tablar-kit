@@ -29,18 +29,31 @@ use TakiElias\TablarKit\Fields\TomSelectField;
 class FormBuilder
 {
     protected Collection $fields;
+
     protected array $attributes;
+
     protected array $data;
+
     protected string $method;
+
     protected ?string $action;
+
     protected bool $multipart;
+
     protected bool $hasCard = false;
+
     protected array $sections;
+
     protected array $tabs;
+
     protected string $theme;
+
     protected array $globalConfig;
+
     protected array $customComponents;
+
     protected array $validationRules;
+
     protected array $conditionalRules;
 
     public function __construct()
@@ -62,54 +75,62 @@ class FormBuilder
 
     public static function create(): self
     {
-        return new static();
+        return new static;
     }
 
     public function action(string $action): self
     {
         $this->action = $action;
+
         return $this;
     }
 
     public function setFields(Collection $fields): self
     {
         $this->fields = $fields;
+
         return $this;
     }
 
     public function method(string $method): self
     {
         $this->method = strtoupper($method);
+
         return $this;
     }
 
     public function multipart(bool $multipart = true): self
     {
         $this->multipart = $multipart;
+
         return $this;
     }
 
     public function attributes(array $attributes): self
     {
         $this->attributes = array_merge($this->attributes, $attributes);
+
         return $this;
     }
 
     public function data(array $data): self
     {
         $this->data = array_merge($this->data, $data);
+
         return $this;
     }
 
     public function theme(string $theme): self
     {
         $this->theme = $theme;
+
         return $this;
     }
 
     public function config(array $config): self
     {
         $this->globalConfig = array_merge($this->globalConfig, $config);
+
         return $this;
     }
 
@@ -226,6 +247,7 @@ class FormBuilder
     public function enableCard(): self
     {
         $this->hasCard = true;
+
         return $this;
     }
 
@@ -267,10 +289,11 @@ class FormBuilder
         return $this;
     }
 
-    public function repeater(string $name, callable $callback = null): RepeaterField
+    public function repeater(string $name, ?callable $callback = null): RepeaterField
     {
         $field = new RepeaterField($name, $callback);
         $this->addField($field);
+
         return $field;
     }
 
@@ -300,6 +323,7 @@ class FormBuilder
     {
         $field = new InputField($name, $label, $config);
         $this->addField($field);
+
         return $field;
     }
 
@@ -307,6 +331,7 @@ class FormBuilder
     {
         $field = new PasswordField($name, $label, $config);
         $this->addField($field);
+
         return $field;
     }
 
@@ -314,6 +339,7 @@ class FormBuilder
     {
         $field = new CheckboxField($name, $label, $config);
         $this->addField($field);
+
         return $field;
     }
 
@@ -321,6 +347,7 @@ class FormBuilder
     {
         $field = new ToggleField($name, $label, $config);
         $this->addField($field);
+
         return $field;
     }
 
@@ -328,6 +355,7 @@ class FormBuilder
     {
         $field = new RadioField($name, $options, $label, $config);
         $this->addField($field);
+
         return $field;
     }
 
@@ -335,6 +363,7 @@ class FormBuilder
     {
         $field = new ButtonField($text, $label, $config);
         $this->addField($field);
+
         return $field;
     }
 
@@ -342,6 +371,7 @@ class FormBuilder
     {
         $field = new FormButtonField($text, $action, $config);
         $this->addField($field);
+
         return $field;
     }
 
@@ -373,6 +403,7 @@ class FormBuilder
         if ($lastField && method_exists($lastField, 'allowMultiple')) {
             $lastField->allowMultiple($allow);
         }
+
         return $this;
     }
 
@@ -382,6 +413,7 @@ class FormBuilder
         if ($lastField && method_exists($lastField, 'height')) {
             $lastField->height($height);
         }
+
         return $this;
     }
 
@@ -391,6 +423,7 @@ class FormBuilder
         if ($lastField && method_exists($lastField, 'toolbar')) {
             $lastField->toolbar($toolbar);
         }
+
         return $this;
     }
 
@@ -433,6 +466,7 @@ class FormBuilder
         if ($lastField && method_exists($lastField, 'max')) {
             $lastField->max($max);
         }
+
         return $this;
     }
 
@@ -442,6 +476,7 @@ class FormBuilder
         if ($lastField && method_exists($lastField, 'help')) {
             $lastField->help($helpText);
         }
+
         return $this;
     }
 
@@ -476,6 +511,7 @@ class FormBuilder
     {
         $field = new SelectField($name, $label, $config);
         $this->addField($field->options($options));
+
         return $field;
     }
 
@@ -483,6 +519,7 @@ class FormBuilder
     {
         $filed = new TomSelectField($name, $label, $config);
         $this->addField($filed);
+
         return $filed;
     }
 
@@ -490,6 +527,7 @@ class FormBuilder
     {
         $field = new DependentSelectField($name, $targetDropdown, $config);
         $this->addField($field);
+
         return $field;
     }
 
@@ -497,6 +535,7 @@ class FormBuilder
     {
         $field = new FlatPickerField($name, $label, $config);
         $this->addField($field);
+
         return $field;
     }
 
@@ -504,6 +543,7 @@ class FormBuilder
     {
         $field = new LitePickerField($name, $label, $config);
         $this->addField($field);
+
         return $field;
     }
 
@@ -512,6 +552,7 @@ class FormBuilder
         $field = new FilepondField($name, $label, $config);
         $this->multipart = true;
         $this->addField($field);
+
         return $field;
     }
 
@@ -519,6 +560,7 @@ class FormBuilder
     {
         $field = new EditorField($name, $label, $config);
         $this->addField($field);
+
         return $field;
     }
 
@@ -526,6 +568,7 @@ class FormBuilder
     {
         $field = new TextareaField($name, $label, $config);
         $this->addField($field);
+
         return $field;
     }
 
@@ -533,6 +576,7 @@ class FormBuilder
     {
         $field = new InputField($name, $label, $config);
         $this->addField($field)->type('email')->rules('email');
+
         return $field;
     }
 
@@ -540,6 +584,7 @@ class FormBuilder
     {
         $field = new InputField($name, $label, $config);
         $this->addField($field)->type('number');
+
         return $field;
     }
 
@@ -547,6 +592,7 @@ class FormBuilder
     {
         $field = new InputField($name, $label, $config);
         $this->addField($field)->type('url')->rules('url');
+
         return $field;
     }
 
@@ -554,6 +600,7 @@ class FormBuilder
     {
         $field = new InputField($name, $label, $config);
         $this->addField($field)->type('tel');
+
         return $field;
     }
 
@@ -561,6 +608,7 @@ class FormBuilder
     {
         $field = new InputField($name, $label, $config);
         $this->addField($field)->type('date');
+
         return $field;
     }
 
@@ -568,6 +616,7 @@ class FormBuilder
     {
         $field = new InputField($name, $label, $config);
         $this->addField($field)->type('time');
+
         return $field;
     }
 
@@ -575,6 +624,7 @@ class FormBuilder
     {
         $field = new InputField($name, $label, $config);
         $this->addField($field)->type('datetime-local');
+
         return $field;
     }
 
@@ -582,6 +632,7 @@ class FormBuilder
     {
         $field = new InputField($name, $label, $config);
         $this->addField($field)->type('color');
+
         return $field;
     }
 
@@ -589,6 +640,7 @@ class FormBuilder
     {
         $field = new InputField($name, $label, $config);
         $this->addField($field)->type('range');
+
         return $field;
     }
 
@@ -597,6 +649,7 @@ class FormBuilder
         $field = new FileField($name, $label, $config);
         $this->multipart = true;
         $this->addField($field);
+
         return $field;
     }
 
@@ -604,27 +657,29 @@ class FormBuilder
     {
         $field = new HiddenField($name, $value, $config);
         $this->addField($field);
+
         return $field;
     }
 
     /**
      * Add a custom component that extends BaseField
      *
-     * @param string $componentClass Fully qualified class name that extends BaseField
-     * @param array $config Configuration array for the component
+     * @param  string  $componentClass  Fully qualified class name that extends BaseField
+     * @param  array  $config  Configuration array for the component
      * @return BaseField Returns the component instance for method chaining
+     *
      * @throws InvalidArgumentException If class doesn't exist or doesn't extend BaseField
      */
     public function setComponent(string $componentClass, array $config = []): BaseField
     {
         // Validate class exists
-        if (!class_exists($componentClass)) {
-            throw new \InvalidArgumentException("Component class '{$componentClass}' does not exist.");
+        if (! class_exists($componentClass)) {
+            throw new InvalidArgumentException("Component class '{$componentClass}' does not exist.");
         }
 
         // Validate extends BaseField
-        if (!is_subclass_of($componentClass, BaseField::class)) {
-            throw new \InvalidArgumentException("Component class '{$componentClass}' must extend BaseField.");
+        if (! is_subclass_of($componentClass, BaseField::class)) {
+            throw new InvalidArgumentException("Component class '{$componentClass}' must extend BaseField.");
         }
 
         // Create and add component
@@ -640,22 +695,25 @@ class FormBuilder
     public function addComponent(string $componentClass, array $config = []): self
     {
         $this->setComponent($componentClass, $config);
+
         return $this;
     }
 
     public function registerComponent(string $name, string $class): self
     {
         $this->customComponents[$name] = $class;
+
         return $this;
     }
 
     public function component(string $name, array $config = []): BaseField
     {
-        if (!isset($this->customComponents[$name])) {
-            throw new \InvalidArgumentException("Component '{$name}' is not registered.");
+        if (! isset($this->customComponents[$name])) {
+            throw new InvalidArgumentException("Component '{$name}' is not registered.");
         }
 
         $class = $this->customComponents[$name];
+
         return $this->addField(new $class($config));
     }
 
@@ -664,40 +722,44 @@ class FormBuilder
     public function section(string $title, callable $callback, array $config = []): self
     {
         $section = new FormSection($title, $config);
-        $builder = new static();
+        $builder = new static;
         $callback($builder);
         $section->setFields($builder->getFields());
         $this->sections[] = $section;
+
         return $this;
     }
 
     public function tab(string $title, callable $callback, array $config = []): self
     {
         $tab = new FormTab($title, $config);
-        $builder = new static();
+        $builder = new static;
         $callback($builder);
         $tab->setFields($builder->getFields());
         $this->tabs[] = $tab;
+
         return $this;
     }
 
     public function row(callable $callback, array $config = []): self
     {
         $row = new FormRow($config);
-        $builder = new static();
+        $builder = new static;
         $callback($builder);
         $row->setFields($builder->getFields());
         $this->addField($row);
+
         return $this;
     }
 
     public function column(int $width, callable $callback, array $config = []): self
     {
         $column = new FormColumn($width, $config);
-        $builder = new static();
+        $builder = new static;
         $callback($builder);
         $column->setFields($builder->getFields());
         $this->addField($column);
+
         return $this;
     }
 
@@ -706,18 +768,19 @@ class FormBuilder
     public function rules(array $rules): self
     {
         $this->validationRules = array_merge($this->validationRules, $rules);
+
         return $this;
     }
 
     public function when(string $field, $value, callable $callback): self
     {
-        $conditionalBuilder = new static();
+        $conditionalBuilder = new static;
         $callback($conditionalBuilder);
 
         $this->conditionalRules[] = [
             'field' => $field,
             'value' => $value,
-            'builder' => $conditionalBuilder
+            'builder' => $conditionalBuilder,
         ];
 
         return $this;
@@ -756,13 +819,13 @@ class FormBuilder
     public function toArray(): array
     {
         return [
-            'fields' => $this->fields->map(fn($field) => method_exists($field, 'toArray') ? $field->toArray() : [])->toArray(),
+            'fields' => $this->fields->map(fn ($field) => method_exists($field, 'toArray') ? $field->toArray() : [])->toArray(),
             'attributes' => $this->attributes,
             'method' => $this->method,
             'action' => $this->action,
             'multipart' => $this->multipart,
-            'sections' => array_map(fn($section) => $section->toArray(), $this->sections),
-            'tabs' => array_map(fn($tab) => $tab->toArray(), $this->tabs),
+            'sections' => array_map(fn ($section) => $section->toArray(), $this->sections),
+            'tabs' => array_map(fn ($tab) => $tab->toArray(), $this->tabs),
             'validation' => $this->validationRules,
         ];
     }
@@ -788,17 +851,17 @@ class FormBuilder
 
     public function renderField(string $name): string
     {
-        $field = $this->fields->first(fn($field) => method_exists($field, 'getName') && $field->getName() === $name);
+        $field = $this->fields->first(fn ($field) => method_exists($field, 'getName') && $field->getName() === $name);
 
-        if (!$field) {
-            throw new \InvalidArgumentException("Field '{$name}' not found.");
+        if (! $field) {
+            throw new InvalidArgumentException("Field '{$name}' not found.");
         }
 
         if (method_exists($field, 'render')) {
             return $field->render($this->data[$field->getName()] ?? null, $this->globalConfig);
         }
 
-        return (string)$field;
+        return (string) $field;
     }
 
     public function __toString(): string
@@ -811,6 +874,7 @@ class FormBuilder
     public function addField($field): mixed
     {
         $this->fields->push($field);
+
         return $field;
     }
 
@@ -842,6 +906,7 @@ class FormBuilder
         if ($lastField && method_exists($lastField, 'value')) {
             $lastField->value($value);
         }
+
         return $this;
     }
 
@@ -889,14 +954,16 @@ class FormBuilder
         if ($condition) {
             $callback($this);
         }
+
         return $this;
     }
 
     public function unless(bool $condition, callable $callback): self
     {
-        if (!$condition) {
+        if (! $condition) {
             $callback($this);
         }
+
         return $this;
     }
 }

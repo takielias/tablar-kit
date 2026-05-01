@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Tests\Components\Forms;
 
-
 use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class LabelTest extends ComponentTestCase

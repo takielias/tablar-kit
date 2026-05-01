@@ -21,14 +21,13 @@ final class FileBrowserDto
     private ?string $newName;
 
     private function __construct(
-        string  $action,
-        string  $source,
+        string $action,
+        string $source,
         ?string $path = null,
         ?string $from = null,
         ?string $name = null,
         ?string $newName = null
-    )
-    {
+    ) {
         $this->action = $action;
         $this->source = $source;
         $this->path = $path;
@@ -50,14 +49,13 @@ final class FileBrowserDto
     }
 
     public static function byParams(
-        string  $action,
-        string  $source = 'default',
+        string $action,
+        string $source = 'default',
         ?string $path = null,
         ?string $from = null,
         ?string $name = null,
         ?string $newName = null
-    ): self
-    {
+    ): self {
         return new self(
             $action,
             $source,
@@ -70,7 +68,7 @@ final class FileBrowserDto
 
     public function hasName(): bool
     {
-        return (bool)$this->name;
+        return (bool) $this->name;
     }
 
     public function getName(): string
@@ -95,7 +93,7 @@ final class FileBrowserDto
 
     public function hasPath(): bool
     {
-        return (bool)$this->path;
+        return (bool) $this->path;
     }
 
     public function getAction(): string

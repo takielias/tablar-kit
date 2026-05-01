@@ -2,7 +2,6 @@
 
 namespace TakiElias\TablarKit\Http\Resources;
 
-
 use Illuminate\Http\Resources\Json\JsonResource;
 use TakiElias\TablarKit\Dto\UploadedFileDto;
 use TakiElias\TablarKit\Dto\UploadedFilesInfoDto;
@@ -32,7 +31,7 @@ class FileUploadResource extends JsonResource
     protected function getFiles(UploadedFilesInfoDto $uploadedFilesInfo): array
     {
         $files = array_map(
-            static fn(UploadedFileDto $fileDto) => $fileDto->getName(),
+            static fn (UploadedFileDto $fileDto) => $fileDto->getName(),
             $uploadedFilesInfo->getFiles()
         );
 
@@ -42,7 +41,7 @@ class FileUploadResource extends JsonResource
     protected function getImageVerifications(UploadedFilesInfoDto $uploadedFilesInfo): array
     {
         $isImages = array_map(
-            static fn(UploadedFileDto $infoDto) => $infoDto->isImage(),
+            static fn (UploadedFileDto $infoDto) => $infoDto->isImage(),
             $uploadedFilesInfo->getFiles()
         );
 

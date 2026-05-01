@@ -10,6 +10,9 @@
             <exclude>tests/Components/ComponentTestCase.php</exclude>
             <exclude>./vendor</exclude>
         </testsuite>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
     </testsuites>
     <source>
         <include>

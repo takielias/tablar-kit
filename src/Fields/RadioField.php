@@ -25,6 +25,7 @@ class RadioField extends BaseField
     public function options(array $options): self
     {
         $this->options = $options;
+
         return $this;
     }
 
@@ -37,7 +38,7 @@ class RadioField extends BaseField
         foreach ($this->options as $optionValue => $optionLabel) {
             $radio = new Radio(
                 name: $this->name,
-                id: $this->getId() . '_' . $optionValue,
+                id: $this->getId().'_'.$optionValue,
                 checked: $fieldValue == $optionValue,
                 value: $optionValue
             );
@@ -45,7 +46,7 @@ class RadioField extends BaseField
             $radioButtons .= View::make($radio->render()->name(), $radio->data())
                 ->with([
                     'label' => $optionLabel,
-                    'attributes' => new ComponentAttributeBag($attributes)
+                    'attributes' => new ComponentAttributeBag($attributes),
                 ])
                 ->render();
         }

@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Tests\Components\Forms;
 
-
 use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class FormTest extends ComponentTestCase
 {
-
     /** @test */
     public function the_component_can_be_rendered()
     {
@@ -18,7 +16,7 @@ class FormTest extends ComponentTestCase
         );
 
         $view->assertSee('form', false) // Check for the 'form' tag
-        ->assertSee('method="POST"', false)
+            ->assertSee('method="POST"', false)
             ->assertSee('action="http://example.com"', false)
             ->assertSee('name="_token"', false)
             ->assertSee('name="_method"', false)
@@ -33,12 +31,11 @@ class FormTest extends ComponentTestCase
         );
 
         $view->assertSee('form', false) // Check for the 'form' tag
-        ->assertSee('method="POST"', false)
+            ->assertSee('method="POST"', false)
             ->assertSee('action="http://example.com"', false)
             ->assertSee('name="_token"', false)
             ->assertSee('enctype="multipart/form-data"', false)
             ->assertSee('name="_method"', false)
             ->assertSee('Form fields...', false);
     }
-
 }

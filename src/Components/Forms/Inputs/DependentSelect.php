@@ -8,13 +8,15 @@ use Illuminate\Contracts\View\View;
 
 class DependentSelect extends Input
 {
-    /** @var array */
     public array $options;
+
     public ?string $targetDropdown;
+
     public ?string $targetDataRoute;
+
     public ?string $placeholder;
 
-    public function __construct(string $name, string $targetDropdown = null, string $targetDataRoute = null, string $id = null, ?string $value = '', array $options = [], ?string $placeholder = '')
+    public function __construct(string $name, ?string $targetDropdown = null, ?string $targetDataRoute = null, ?string $id = null, ?string $value = '', array $options = [], ?string $placeholder = '')
     {
         parent::__construct($name, $id, 'select', $value);
 
@@ -46,5 +48,4 @@ class DependentSelect extends Input
             'placeholder' => $this->placeholder,
         ];
     }
-
 }

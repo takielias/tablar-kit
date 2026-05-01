@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Tests\Components\Cards;
 
-
 use TakiElias\TablarKit\Tests\ComponentTestCase;
 
 class CardTest extends ComponentTestCase
 {
-
     /** @test */
     public function the_component_can_be_rendered()
     {
@@ -103,5 +101,4 @@ class CardTest extends ComponentTestCase
         $view->assertSee('class="card-footer"', false);
         $view->assertSee('href="/docs/4.0/cards#"', false);
     }
-
 }

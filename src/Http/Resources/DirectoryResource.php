@@ -12,8 +12,7 @@ use TakiElias\TablarKit\Dto\FolderDto;
 class DirectoryResource extends JsonResource
 {
     /**
-     * @param Request $request
-     * @return array
+     * @param  Request  $request
      */
     public function toArray($request): array
     {

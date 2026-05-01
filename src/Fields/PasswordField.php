@@ -19,6 +19,7 @@ class PasswordField extends BaseField
     public function confirmation(): self
     {
         $this->rules('confirmed');
+
         return $this;
     }
 
@@ -36,7 +37,7 @@ class PasswordField extends BaseField
 
         return View::make($passwordComponent->render()->name(), $passwordComponent->data())
             ->with([
-                'attributes' => new ComponentAttributeBag($attributes)
+                'attributes' => new ComponentAttributeBag($attributes),
             ])
             ->render();
     }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace TakiElias\TablarKit\Enums;
 
 enum BottomCalculationType: string
@@ -10,11 +9,11 @@ enum BottomCalculationType: string
     case MIN = 'min';
     case SUM = 'sum';
 
-    case PRECISION  = 'precision ';
+    case PRECISION = 'precision ';
 
-    case CONCAT  = 'concat ';
+    case CONCAT = 'concat ';
 
-    case COUNT  = 'count ';
+    case COUNT = 'count ';
 
-    case UNIQUE  = 'unique ';
+    case UNIQUE = 'unique ';
 }

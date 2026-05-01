@@ -11,9 +11,6 @@ class QueryDataSource implements TableDataContract
 {
     public Builder $query;
 
-    /**
-     * @param Builder $query
-     */
     public function __construct(Builder $query)
     {
         $this->query = $query;
@@ -26,7 +23,7 @@ class QueryDataSource implements TableDataContract
                 if ($column['search']) {
                     $columnName = $column['id'] ?? $column['field'];
                     if ($type == 'like') {
-                        $query->orWhere($columnName, 'like', '%' . $search . '%');
+                        $query->orWhere($columnName, 'like', '%'.$search.'%');
                     } else {
                         $query->orWhere($columnName, $type, $search);
                     }
@@ -37,7 +34,7 @@ class QueryDataSource implements TableDataContract
 
     public function sort(?array $orders, ?array $dirs): void
     {
-        collect($orders)->each(fn($field, $index) => $this->query->orderBy($field, $dirs[$index] ?? 'asc'));
+        collect($orders)->each(fn ($field, $index) => $this->query->orderBy($field, $dirs[$index] ?? 'asc'));
     }
 
     public function paginate($perPage = 10, $columns = ['*'], $pageName = 'page', $page = null): Paginator

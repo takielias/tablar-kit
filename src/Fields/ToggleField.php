@@ -9,6 +9,7 @@ use TakiElias\TablarKit\Components\Forms\Inputs\Toggle;
 class ToggleField extends BaseField
 {
     protected int $checkedValue = 1;
+
     protected int $uncheckedValue = 0;
 
     public function __construct(string $name, string $label = '', array $config = [])
@@ -22,12 +23,14 @@ class ToggleField extends BaseField
     public function checkedValue($value): self
     {
         $this->checkedValue = $value;
+
         return $this;
     }
 
     public function checked(bool $checked = true): self
     {
         $this->value = $checked ? $this->checkedValue : $this->uncheckedValue;
+
         return $this;
     }
 
@@ -50,9 +53,8 @@ class ToggleField extends BaseField
 
         return View::make($component->render()->name(), $component->data())
             ->with([
-                'attributes' => new ComponentAttributeBag($attributes)
+                'attributes' => new ComponentAttributeBag($attributes),
             ])
             ->render();
     }
 }
-

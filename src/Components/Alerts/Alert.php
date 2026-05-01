@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Components\Alerts;
 
-use TakiElias\TablarKit\Components\TablarComponent;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
+use TakiElias\TablarKit\Components\TablarComponent;
 
 class Alert extends TablarComponent
 {
-    /** @var string */
     public string $type;
 
     public function __construct(string $type = 'alert')

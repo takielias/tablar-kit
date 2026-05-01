@@ -23,4 +23,3 @@ class FakeButtonField extends ButtonField
         return $mockComponent;
     }
 }
-

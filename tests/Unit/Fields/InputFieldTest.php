@@ -2,9 +2,9 @@
 
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
+use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
 use TakiElias\TablarKit\Fields\InputField;
-use Illuminate\Support\Facades\View;
 
 class InputFieldTest extends TestCase
 {
@@ -99,7 +99,6 @@ class InputFieldTest extends TestCase
         $this->assertEquals('time', $field->getType());
     }
 
-
     /** @test */
     public function it_can_set_number_attributes()
     {
@@ -123,7 +122,7 @@ class InputFieldTest extends TestCase
         $field->min(3)
             ->maxLength(20);
 
-        $attributes = $field->renderAttributes();;
+        $attributes = $field->renderAttributes();
         $this->assertEquals('3', $attributes['min']);
         $this->assertEquals('20', $attributes['maxlength']);
 
@@ -137,5 +136,4 @@ class InputFieldTest extends TestCase
         $this->assertEquals('user_email', $field->getName());
         $this->assertEquals('User Email', $field->getLabel());
     }
-
 }

@@ -8,25 +8,21 @@ use Illuminate\Contracts\View\View;
 
 class LitePicker extends Input
 {
-    /** @var string */
     public string $format;
 
-    /** @var string */
     public string $placeholder;
 
-    /** @var array */
     public array $options;
 
     public function __construct(
-        string  $name,
-        string  $id = null,
+        string $name,
+        ?string $id = null,
         ?string $value = '',
-        string  $format = 'YYYY-MM-DD',
-        string  $placeholder = null,
-        array   $options = []
-    )
-    {
-        $this->id = $id ?? 'id_' . uniqid();
+        string $format = 'YYYY-MM-DD',
+        ?string $placeholder = null,
+        array $options = []
+    ) {
+        $this->id = $id ?? 'id_'.uniqid();
 
         parent::__construct($name, $this->id, 'text', $value);
 
@@ -48,7 +44,7 @@ class LitePicker extends Input
             return '';
         }
 
-        return json_encode((object)$this->options());
+        return json_encode((object) $this->options());
     }
 
     public function render(): View
@@ -68,5 +64,4 @@ class LitePicker extends Input
             'jsonOptions' => $this->jsonOptions(),
         ];
     }
-
 }

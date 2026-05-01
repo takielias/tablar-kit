@@ -8,13 +8,11 @@ final class PathInfo
 {
     private string $path;
 
-    private function __construct()
-    {
-    }
+    private function __construct() {}
 
     public static function byPath(string $path): self
     {
-        $self = new self();
+        $self = new self;
 
         $self->path = $path;
 
@@ -35,5 +33,4 @@ final class PathInfo
     {
         return pathinfo($this->path, PATHINFO_EXTENSION);
     }
-
 }

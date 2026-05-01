@@ -2,9 +2,9 @@
 
 namespace TakiElias\TablarKit\Traits;
 
-use TakiElias\TablarKit\Builder\AbstractForm;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use TakiElias\TablarKit\Builder\AbstractForm;
 
 trait HandleTablarForm
 {
@@ -13,15 +13,15 @@ trait HandleTablarForm
      */
     protected function makeForm(string $formClass): AbstractForm
     {
-        if (!class_exists($formClass)) {
+        if (! class_exists($formClass)) {
             throw new \InvalidArgumentException("Form class {$formClass} does not exist");
         }
 
-        if (!is_subclass_of($formClass, AbstractForm::class)) {
+        if (! is_subclass_of($formClass, AbstractForm::class)) {
             throw new \InvalidArgumentException("Form class {$formClass} must extend AbstractForm");
         }
 
-        return new $formClass();
+        return new $formClass;
     }
 
     /**
@@ -48,6 +48,7 @@ trait HandleTablarForm
 
         try {
             $validated = $this->validateForm($request, $formInstance);
+
             return $callback($validated, $formInstance);
         } catch (ValidationException $e) {
             return back()->withErrors($e->errors())->withInput();

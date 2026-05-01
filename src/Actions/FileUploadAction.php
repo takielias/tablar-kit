@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Actions;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use TakiElias\TablarKit\Dto\UploadedFileDto;
 use TakiElias\TablarKit\Dto\UploadedFilesInfoDto;
 use TakiElias\TablarKit\Http\Resources\FileUploadResource;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @group FileBrowser
@@ -56,8 +56,8 @@ class FileUploadAction extends AbstractFileUploadAction
     protected function generateNewFilePath(string $path, string $fileName): string
     {
         return $path
-            . DIRECTORY_SEPARATOR
-            . $this->replaceSpecialCharacters($fileName);
+            .DIRECTORY_SEPARATOR
+            .$this->replaceSpecialCharacters($fileName);
     }
 
     public function storeFiles(): void

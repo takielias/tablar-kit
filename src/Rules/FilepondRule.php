@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Validator;
 class FilepondRule implements DataAwareRule, Rule, ValidatorAwareRule
 {
     protected $validator;
+
     protected array $data;
+
     protected array|string $rules;
+
     protected array $messages = [];
 
     public function __construct(array|string $rules)
@@ -25,12 +28,14 @@ class FilepondRule implements DataAwareRule, Rule, ValidatorAwareRule
     public function setValidator($validator): static
     {
         $this->validator = $validator;
+
         return $this;
     }
 
     public function setData(array $data): static
     {
         $this->data = $data;
+
         return $this;
     }
 
@@ -74,8 +79,6 @@ class FilepondRule implements DataAwareRule, Rule, ValidatorAwareRule
     }
 
     /**
-     * @param string $tempFilePath
-     * @return UploadedFile
      * @throws \Exception
      */
     private function createFileObject(string $tempFilePath): UploadedFile
@@ -94,18 +97,17 @@ class FilepondRule implements DataAwareRule, Rule, ValidatorAwareRule
                 true
             );
         } else {
-            throw new \Exception("File does not exist or is not readable: " . $tempFilePath);
+            throw new \Exception('File does not exist or is not readable: '.$tempFilePath);
         }
     }
 
     /**
      * Deletes the temporary file from storage.
      *
-     * @param string $tempFilePath The path of the temporary file.
+     * @param  string  $tempFilePath  The path of the temporary file.
      */
     private function deleteTempFile(string $tempFilePath): void
     {
         Storage::disk(config('tablar-kit.filepond.temp_disk', 'local'))->delete($tempFilePath);
     }
-
 }

@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\TablarKit\Fields;
 
+use Mockery;
 use Orchestra\Testbench\TestCase;
 use TakiElias\TablarKit\Fields\JoditField;
-use Mockery;
 
 class JoditFieldTest extends TestCase
 {
@@ -137,7 +137,7 @@ class JoditFieldTest extends TestCase
         $field = new JoditField('content');
         $uploadConfig = [
             'path' => 'uploads/images',
-            'source' => 'local'
+            'source' => 'local',
         ];
 
         $field->config($uploadConfig);
@@ -156,7 +156,7 @@ class JoditFieldTest extends TestCase
             'theme' => 'default',
             'toolbar' => true,
             'spellcheck' => true,
-            'enableDragAndDropFileToEditor' => true
+            'enableDragAndDropFileToEditor' => true,
         ];
 
         $field->config($defaultOptions);
@@ -322,7 +322,7 @@ class JoditFieldTest extends TestCase
             'help' => 'Help text',
             'placeholder' => 'Enter content',
             'value' => '<p>Default content</p>',
-            'attributes' => ['class' => 'custom-class']
+            'attributes' => ['class' => 'custom-class'],
         ];
 
         $field = new JoditField('content', '', $config);
@@ -385,31 +385,31 @@ class JoditFieldTest extends TestCase
             'enableDragAndDropFileToEditor' => true,
             'uploader' => [
                 'insertImageAsBase64URI' => false,
-                'imagesExtensions' => ['jpg', 'png', 'gif', 'jpeg', 'webp']
+                'imagesExtensions' => ['jpg', 'png', 'gif', 'jpeg', 'webp'],
             ],
             'filebrowser' => [
                 'ajax' => [
-                    'url' => '/admin/file-browser'
-                ]
+                    'url' => '/admin/file-browser',
+                ],
             ],
             'buttons' => [
                 'bold', 'italic', 'underline', 'strikethrough', '|',
                 'ul', 'ol', '|',
                 'font', 'fontsize', 'brush', 'paragraph', '|',
                 'image', 'file', 'video', 'table', 'link', '|',
-                'align', 'undo', 'redo', 'hr', 'source', 'fullsize'
+                'align', 'undo', 'redo', 'hr', 'source', 'fullsize',
             ],
             'buttonsMD' => [
                 'bold', 'italic', 'underline', '|',
                 'ul', 'ol', '|',
                 'image', 'link', '|',
-                'align', 'undo', 'redo', 'source'
+                'align', 'undo', 'redo', 'source',
             ],
             'buttonsSM' => [
                 'bold', 'italic', '|',
                 'ul', 'ol', '|',
-                'link', 'undo', 'redo'
-            ]
+                'link', 'undo', 'redo',
+            ],
         ];
 
         $field->config($complexConfig)

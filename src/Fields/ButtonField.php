@@ -9,6 +9,7 @@ use TakiElias\TablarKit\Components\Buttons\Button;
 class ButtonField extends BaseField
 {
     protected string $text;
+
     protected string $type = 'submit';
 
     public function __construct(string $text = 'Click', string $label = 'Button', array $config = [])
@@ -34,6 +35,7 @@ class ButtonField extends BaseField
     public function type(string $type): self
     {
         $this->type = $type;
+
         return $this;
     }
 
@@ -54,10 +56,8 @@ class ButtonField extends BaseField
 
         return View::make($buttonComponent->render()->name(), $buttonComponent->data())
             ->with([
-                'attributes' => new ComponentAttributeBag($attributes)
+                'attributes' => new ComponentAttributeBag($attributes),
             ])
             ->render();
     }
-
 }
-

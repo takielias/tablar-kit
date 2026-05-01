@@ -8,8 +8,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class PermissionsResource extends JsonResource
 {
     /**
-     * @param Request $request
-     * @return array
+     * @param  Request  $request
      */
     public function toArray($request): array
     {
@@ -31,7 +30,7 @@ class PermissionsResource extends JsonResource
                     'allowFolderRemove' => true,
                     'allowFolderRename' => true,
                     'allowImageResize' => true,
-                    'allowImageCrop' => true
+                    'allowImageCrop' => true,
                 ],
             ],
         ];

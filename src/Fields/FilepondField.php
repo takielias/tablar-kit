@@ -24,30 +24,35 @@ class FilepondField extends BaseField
     public function config(array $config): self
     {
         $this->options = array_merge($this->options, $config);
+
         return $this;
     }
 
     public function allowMultiple(bool $multiple = true): self
     {
         $this->options['allowMultiple'] = $multiple;
+
         return $this;
     }
 
     public function acceptedFileTypes(array $types): self
     {
         $this->options['acceptedFileTypes'] = $types;
+
         return $this;
     }
 
     public function maxFileSize(string $size): self
     {
         $this->options['maxFileSize'] = $size;
+
         return $this;
     }
 
     public function imageEditor(bool $enable = true): self
     {
         $this->options['allowImageEdit'] = $enable;
+
         return $this;
     }
 
@@ -68,7 +73,7 @@ class FilepondField extends BaseField
         return View::make($filepondComponent->render()->name(), $filepondComponent->data())
             ->with([
                 'config' => $this->options,
-                'attributes' => new ComponentAttributeBag($attributes)
+                'attributes' => new ComponentAttributeBag($attributes),
             ])
             ->render();
     }

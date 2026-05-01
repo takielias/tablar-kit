@@ -21,8 +21,7 @@ class HiddenField extends BaseField
         return view('tablar-kit::form-builder.fields.hidden', [
             'field' => $this,
             'value' => $fieldValue,
-            'attributes' => new ComponentAttributeBag($attributes)
+            'attributes' => new ComponentAttributeBag($attributes),
         ])->render();
     }
 }
-

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace TakiElias\TablarKit\Actions;
 
 use TakiElias\TablarKit\Http\Resources\SuccessActionResource;
-use Exception;
 
 class FileRename extends AbstractFileBrowserAction
 {
@@ -14,16 +13,13 @@ class FileRename extends AbstractFileBrowserAction
         return 'fileRename';
     }
 
-    /**
-     * @return FileBrowserAction
-     */
     public function handle(): FileBrowserAction
     {
         $path = $this->getPath();
-        $from = $path . DIRECTORY_SEPARATOR . $this->getName();
+        $from = $path.DIRECTORY_SEPARATOR.$this->getName();
 
         $fileName = $this->getNewName();
-        $to = $path . DIRECTORY_SEPARATOR . $fileName;
+        $to = $path.DIRECTORY_SEPARATOR.$fileName;
 
         $this->checkPathExists($to);
 

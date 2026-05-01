@@ -7,17 +7,17 @@ namespace TakiElias\TablarKit\Dto;
 final class UploadedFilesInfoDto
 {
     private string $url;
+
     private array $files;
 
-    private function __construct()
-    {
-    }
+    private function __construct() {}
 
     public static function byDirUrlAndFiles(string $url, array $files): self
     {
-        $self = new self();
+        $self = new self;
         $self->url = $url;
         $self->files = $files;
+
         return $self;
     }
 

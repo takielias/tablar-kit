@@ -1,5 +1,51 @@
 <?php
 
+use TakiElias\TablarKit\Actions\FileMove;
+use TakiElias\TablarKit\Actions\FileRemove;
+use TakiElias\TablarKit\Actions\FileRename;
+use TakiElias\TablarKit\Actions\Files;
+use TakiElias\TablarKit\Actions\FileUploadAction;
+use TakiElias\TablarKit\Actions\FolderCreate;
+use TakiElias\TablarKit\Actions\FolderMove;
+use TakiElias\TablarKit\Actions\FolderRemove;
+use TakiElias\TablarKit\Actions\FolderRename;
+use TakiElias\TablarKit\Actions\Folders;
+use TakiElias\TablarKit\Actions\Permissions;
+use TakiElias\TablarKit\Components\Alerts\Alert;
+use TakiElias\TablarKit\Components\Buttons\Button;
+use TakiElias\TablarKit\Components\Buttons\FormButton;
+use TakiElias\TablarKit\Components\Buttons\Logout;
+use TakiElias\TablarKit\Components\Cards\Card;
+use TakiElias\TablarKit\Components\Cards\CardBody;
+use TakiElias\TablarKit\Components\Cards\CardButton;
+use TakiElias\TablarKit\Components\Cards\CardFooter;
+use TakiElias\TablarKit\Components\Cards\CardHeader;
+use TakiElias\TablarKit\Components\Cards\CardRibbon;
+use TakiElias\TablarKit\Components\Cards\CardStamp;
+use TakiElias\TablarKit\Components\Editors\Jodit;
+use TakiElias\TablarKit\Components\Forms\Error;
+use TakiElias\TablarKit\Components\Forms\Form;
+use TakiElias\TablarKit\Components\Forms\Inputs\Checkbox;
+use TakiElias\TablarKit\Components\Forms\Inputs\DependentSelect;
+use TakiElias\TablarKit\Components\Forms\Inputs\Email;
+use TakiElias\TablarKit\Components\Forms\Inputs\FilePond;
+use TakiElias\TablarKit\Components\Forms\Inputs\FlatPicker;
+use TakiElias\TablarKit\Components\Forms\Inputs\Input;
+use TakiElias\TablarKit\Components\Forms\Inputs\LitePicker;
+use TakiElias\TablarKit\Components\Forms\Inputs\Password;
+use TakiElias\TablarKit\Components\Forms\Inputs\Radio;
+use TakiElias\TablarKit\Components\Forms\Inputs\Select;
+use TakiElias\TablarKit\Components\Forms\Inputs\Textarea;
+use TakiElias\TablarKit\Components\Forms\Inputs\Toggle;
+use TakiElias\TablarKit\Components\Forms\Inputs\TomSelect;
+use TakiElias\TablarKit\Components\Forms\Label;
+use TakiElias\TablarKit\Components\Modals\Confirm;
+use TakiElias\TablarKit\Components\Modals\ConfirmModal;
+use TakiElias\TablarKit\Components\Modals\Modal;
+use TakiElias\TablarKit\Components\Modals\ModalForm;
+use TakiElias\TablarKit\Components\Table\Tabulator;
+use TakiElias\TablarKit\Http\Controllers\FilePondController;
+
 return [
 
     /* --------------------------------------------------------------------------------------------
@@ -11,39 +57,40 @@ return [
     */
 
     'components' => [
-        'alert' => TakiElias\TablarKit\Components\Alerts\Alert::class,
-        'button' => TakiElias\TablarKit\Components\Buttons\Button::class,
-        'card' => TakiElias\TablarKit\Components\Cards\Card::class,
-        'card-header' => TakiElias\TablarKit\Components\Cards\CardHeader::class,
-        'card-body' => TakiElias\TablarKit\Components\Cards\CardBody::class,
-        'card-footer' => TakiElias\TablarKit\Components\Cards\CardFooter::class,
-        'card-stamp' => TakiElias\TablarKit\Components\Cards\CardStamp::class,
-        'card-button' => TakiElias\TablarKit\Components\Cards\CardButton::class,
-        'card-ribbon' => TakiElias\TablarKit\Components\Cards\CardRibbon::class,
-        'checkbox' => TakiElias\TablarKit\Components\Forms\Inputs\Checkbox::class,
-        'filepond' => TakiElias\TablarKit\Components\Forms\Inputs\FilePond::class,
-        'radio' => TakiElias\TablarKit\Components\Forms\Inputs\Radio::class,
-        'tabulator' => TakiElias\TablarKit\Components\Table\Tabulator::class,
-        'toggle' => TakiElias\TablarKit\Components\Forms\Inputs\Toggle::class,
-        'select' => TakiElias\TablarKit\Components\Forms\Inputs\Select::class,
-        'dependent-select' => TakiElias\TablarKit\Components\Forms\Inputs\DependentSelect::class,
-        'tom-select' => TakiElias\TablarKit\Components\Forms\Inputs\TomSelect::class,
-        'email' => TakiElias\TablarKit\Components\Forms\Inputs\Email::class,
-        'modal' => TakiElias\TablarKit\Components\Modals\Modal::class,
-        'modal-form' => TakiElias\TablarKit\Components\Modals\ModalForm::class,
-        'error' => TakiElias\TablarKit\Components\Forms\Error::class,
-        'lite-picker' => TakiElias\TablarKit\Components\Forms\Inputs\LitePicker::class,
-        'flat-picker' => TakiElias\TablarKit\Components\Forms\Inputs\FlatPicker::class,
-        'form' => TakiElias\TablarKit\Components\Forms\Form::class,
-        'form-button' => TakiElias\TablarKit\Components\Buttons\FormButton::class,
-        'input' => TakiElias\TablarKit\Components\Forms\Inputs\Input::class,
-        'label' => TakiElias\TablarKit\Components\Forms\Label::class,
-        'logout' => TakiElias\TablarKit\Components\Buttons\Logout::class,
-        'password' => TakiElias\TablarKit\Components\Forms\Inputs\Password::class,
-        'textarea' => TakiElias\TablarKit\Components\Forms\Inputs\Textarea::class,
-        'jodit' => TakiElias\TablarKit\Components\Editors\Jodit::class,
+        'alert' => Alert::class,
+        'button' => Button::class,
+        'card' => Card::class,
+        'card-header' => CardHeader::class,
+        'card-body' => CardBody::class,
+        'card-footer' => CardFooter::class,
+        'card-stamp' => CardStamp::class,
+        'card-button' => CardButton::class,
+        'card-ribbon' => CardRibbon::class,
+        'checkbox' => Checkbox::class,
+        'filepond' => FilePond::class,
+        'radio' => Radio::class,
+        'tabulator' => Tabulator::class,
+        'toggle' => Toggle::class,
+        'select' => Select::class,
+        'dependent-select' => DependentSelect::class,
+        'tom-select' => TomSelect::class,
+        'email' => Email::class,
+        'modal' => Modal::class,
+        'modal-form' => ModalForm::class,
+        'confirm-modal' => ConfirmModal::class,
+        'confirm' => Confirm::class,
+        'error' => Error::class,
+        'lite-picker' => LitePicker::class,
+        'flat-picker' => FlatPicker::class,
+        'form' => Form::class,
+        'form-button' => FormButton::class,
+        'input' => Input::class,
+        'label' => Label::class,
+        'logout' => Logout::class,
+        'password' => Password::class,
+        'textarea' => Textarea::class,
+        'jodit' => Jodit::class,
     ],
-
 
     'default-class' => 'form-control',
 
@@ -61,6 +108,21 @@ return [
     'prefix' => '',
 
     /* --------------------------------------------------------------------------------------------
+    * Confirm Modal
+    * --------------------------------------------------------------------------------------------
+    * Settings for the <x-confirm-modal /> singleton + its <x-confirm> trigger.
+    *
+    * `toast` — when true (default), the JS layer pops a Bootstrap toast on
+    * successful confirm using `response.message` if present. Set false to
+    * suppress all toasts globally; consumers can still listen to the
+    * `tablar-kit:confirm:success` event and render their own UX.
+    */
+
+    'confirm' => [
+        'toast' => true,
+    ],
+
+    /* --------------------------------------------------------------------------------------------
     * Jodit Editor Configuration
     * --------------------------------------------------------------------------------------------
     * Specific settings for the Jodit Editor component, including root directories, middleware,
@@ -74,7 +136,6 @@ return [
      */
 
     'root_name' => 'default',
-
 
     'middleware' => [
         'web', 'auth',
@@ -97,8 +158,8 @@ return [
             'gif',
             'png',
             'bmp',
-            'svg'
-        ]
+            'svg',
+        ],
     ],
 
     'cache' => [
@@ -119,7 +180,7 @@ return [
     ),
 
     'thumb' => [
-        'dir_url' => env('APP_URL') . '/assets/images/jodit/',
+        'dir_url' => env('APP_URL').'/assets/images/jodit/',
 
         'mask' => 'thumb-%s.svg',
 
@@ -135,7 +196,6 @@ return [
         ),
     ],
 
-
     /*
      * Directory nesting limit
      */
@@ -143,22 +203,21 @@ return [
     'nesting_limit' => 3,
 
     'upload_actions' => [
-        TakiElias\TablarKit\Actions\FileUploadAction::class,
+        FileUploadAction::class,
     ],
 
     'file_actions' => [
-        TakiElias\TablarKit\Actions\Files::class,
-        TakiElias\TablarKit\Actions\FileRename::class,
-        TakiElias\TablarKit\Actions\FileMove::class,
-        TakiElias\TablarKit\Actions\FileRemove::class,
-        TakiElias\TablarKit\Actions\Folders::class,
-        TakiElias\TablarKit\Actions\FolderCreate::class,
-        TakiElias\TablarKit\Actions\FolderMove::class,
-        TakiElias\TablarKit\Actions\FolderRemove::class,
-        TakiElias\TablarKit\Actions\FolderRename::class,
-        TakiElias\TablarKit\Actions\Permissions::class,
+        Files::class,
+        FileRename::class,
+        FileMove::class,
+        FileRemove::class,
+        Folders::class,
+        FolderCreate::class,
+        FolderMove::class,
+        FolderRemove::class,
+        FolderRename::class,
+        Permissions::class,
     ],
-
 
     /* --------------------------------------------------------------------------------------------
     * FilePond Configuration
@@ -174,7 +233,7 @@ return [
         'disk' => env('FILEPOND_DISK', 'public'),
         'temp_disk' => 'local',
         'temp_folder' => 'filepond/temp',
-        'controller' => TakiElias\TablarKit\Http\Controllers\FilePondController::class,
+        'controller' => FilePondController::class,
     ],
 
 ];

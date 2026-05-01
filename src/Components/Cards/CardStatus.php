@@ -7,6 +7,7 @@ namespace TakiElias\TablarKit\Components\Cards;
 class CardStatus extends CardBase
 {
     public $color;
+
     public $position;
 
     public function render()

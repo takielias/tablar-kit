@@ -12,6 +12,7 @@ class SelectField extends BaseField
     use FieldTrait;
 
     protected array $options;
+
     protected ?string $placeholder = null;
 
     public function __construct(string $name, string $label = '', array $config = [])
@@ -26,12 +27,14 @@ class SelectField extends BaseField
     public function options(array $options): self
     {
         $this->options = $options;
+
         return $this;
     }
 
     public function placeholder(string $placeholder): self
     {
         $this->placeholder = $placeholder;
+
         return $this;
     }
 
@@ -51,10 +54,9 @@ class SelectField extends BaseField
             ->with([
                 'placeholder' => $this->placeholder ?? '',
                 'options' => $this->options,
-                'attributes' => new ComponentAttributeBag($attributes)
+                'attributes' => new ComponentAttributeBag($attributes),
             ])
             ->render();
 
     }
 }
-

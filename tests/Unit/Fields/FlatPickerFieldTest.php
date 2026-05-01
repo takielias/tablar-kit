@@ -2,9 +2,9 @@
 
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
+use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
 use TakiElias\TablarKit\Fields\FlatPickerField;
-use Illuminate\Support\Facades\View;
 
 class FlatPickerFieldTest extends TestCase
 {

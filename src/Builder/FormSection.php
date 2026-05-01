@@ -7,7 +7,9 @@ use Illuminate\Support\Collection;
 class FormSection
 {
     protected string $title;
+
     protected Collection $fields;
+
     protected array $config;
 
     public function __construct(string $title, array $config = [])
@@ -20,6 +22,7 @@ class FormSection
     public function setFields(Collection $fields): self
     {
         $this->fields = $fields;
+
         return $this;
     }
 
@@ -38,7 +41,7 @@ class FormSection
     {
         return [
             'title' => $this->title,
-            'fields' => $this->fields->map(fn($field) => method_exists($field, 'toArray') ? $field->toArray() : [])->toArray(),
+            'fields' => $this->fields->map(fn ($field) => method_exists($field, 'toArray') ? $field->toArray() : [])->toArray(),
             'config' => $this->config,
         ];
     }

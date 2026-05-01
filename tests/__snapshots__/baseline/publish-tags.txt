@@ -1,0 +1,7 @@
+laravel-errors
+laravel-mail
+laravel-notifications
+laravel-pagination
+tablar-kit-config
+tablar-kit-views
+tablar-kit.config

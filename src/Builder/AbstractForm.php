@@ -7,8 +7,11 @@ use TakiElias\TablarKit\Fields\CardField;
 abstract class AbstractForm
 {
     protected FormBuilder $form;
+
     protected array $data = [];
+
     protected array $rules = [];
+
     protected array $messages = [];
 
     public function __construct()
@@ -49,6 +52,7 @@ abstract class AbstractForm
     {
         $this->data = $data;
         $this->form->data($data);
+
         return $this;
     }
 
@@ -59,6 +63,7 @@ abstract class AbstractForm
     {
         $this->rules = $rules;
         $this->form->rules($rules);
+
         return $this;
     }
 
@@ -68,6 +73,7 @@ abstract class AbstractForm
     public function messages(array $messages): self
     {
         $this->messages = $messages;
+
         return $this;
     }
 
@@ -116,6 +122,6 @@ abstract class AbstractForm
      */
     public static function make(): static
     {
-        return new static();
+        return new static;
     }
 }
