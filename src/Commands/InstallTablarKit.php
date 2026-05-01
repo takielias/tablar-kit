@@ -135,6 +135,7 @@ class InstallTablarKit extends Command
             "//import '../../vendor/takielias/tablar-kit/resources/js/plugins/jspdf.js';\n",
             "\n // Modal components' JavaScript dependencies. \n",
             "//import '../../vendor/takielias/tablar-kit/resources/js/plugins/modal.js';\n",
+            "//import '../../vendor/takielias/tablar-kit/resources/js/plugins/confirm-modal.js';\n",
             "\n // Common JavaScript dependencies. \n",
             "import '../../vendor/takielias/tablar-kit/resources/js/plugins/common.js';\n",
         ];
