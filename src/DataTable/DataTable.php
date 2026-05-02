@@ -41,18 +41,20 @@ class DataTable
     {
         if ($source instanceof Builder) {
             $this->fromQuery($source);
-        } else if ($source instanceof Collection) {
+        } elseif ($source instanceof Collection) {
             $this->fromCollection($source);
         } else {
             $this->fromArray($source);
         }
+
         return $this;
     }
 
     // Function to set multiple export types
     public function setExportTypes(array $types): static
     {
-        $this->exportTypes = array_map(fn(ExportType $type) => $type->value, $types);
+        $this->exportTypes = array_map(fn (ExportType $type) => $type->value, $types);
+
         return $this;
     }
 
@@ -81,24 +83,25 @@ class DataTable
     public function hideColumns(array $columns): self
     {
         $this->hiddenColumns = array_merge($this->hiddenColumns, $columns);
+
         return $this;
     }
 
-    public function column(string                $name,
-                           string                $title,
-                                                 $callback = null,
-                           string                $formatter = 'plaintext',
-                           array                 $formatterParams = [],
-                           bool                  $search = false,
-                           ?string               $width = '200',
-                           bool                  $download = true,
-                           BottomCalculationType $bottomCalc = null,
-                           bool                  $hidden = false // Add hidden parameter
-    ): self
-    {
+    public function column(string $name,
+        string $title,
+        $callback = null,
+        string $formatter = 'plaintext',
+        array $formatterParams = [],
+        bool $search = false,
+        ?string $width = '200',
+        bool $download = true,
+        ?BottomCalculationType $bottomCalc = null,
+        bool $hidden = false // Add hidden parameter
+    ): self {
         // If a column is marked as hidden, add to a hidden columns array
         if ($hidden) {
             $this->hiddenColumns[] = $name;
+
             return $this;
         }
 
@@ -113,7 +116,7 @@ class DataTable
             'bottomCalc' => $bottomCalc?->value,
         ];
 
-        if (!empty($formatterParams)) {
+        if (! empty($formatterParams)) {
             $column['formatterParams'] = $formatterParams;
         }
 
@@ -130,6 +133,7 @@ class DataTable
         if ($request->expectsJson()) {
             return $this->getData($request);
         }
+
         return view($view, [
             'baseUrl' => $request->url(),
             'rows' => $this->getData($request),
@@ -154,6 +158,7 @@ class DataTable
                     $formatted[$field] = $callback($item);
                 }
             }
+
             return $formatted;
         });
     }
@@ -168,7 +173,7 @@ class DataTable
                 $type = $filter['type'];
                 // Assuming 'search' is a flag indicating whether the column is searchable
                 // You might need to adjust this part based on your actual column data structure
-                if (!empty($filter['field'])) {
+                if (! empty($filter['field'])) {
                     $columns = [['id' => $filter['field'], 'search' => true]];
                 } else {
                     $columns = $this->columns;
@@ -194,7 +199,7 @@ class DataTable
             }
         }
 
-        if (!empty($orders) && !empty($dirs)) {
+        if (! empty($orders) && ! empty($dirs)) {
             $this->dataSource->sort($orders, $dirs);
         }
 
@@ -212,7 +217,6 @@ class DataTable
     }
 
     /**
-     * @param Request $request
      * @return array
      */
     public function getData(Request $request)
@@ -232,7 +236,7 @@ class DataTable
             'bottomCalc' => $request->bottomCalc,
             'order' => $request->order,
             'dir' => $request->dir,
-            'limit' => $paginator->perPage()
+            'limit' => $paginator->perPage(),
         ];
     }
 }

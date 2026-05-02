@@ -8,18 +8,31 @@ use TakiElias\TablarKit\Components\TablarComponent;
 abstract class BaseField extends TablarComponent
 {
     protected string $name;
+
     protected ?string $label;
+
     protected array $config;
+
     protected $value;
+
     protected array $data;
+
     protected array $validationRules;
+
     protected array $validationMessages;
+
     protected bool $required;
+
     protected bool $isHidden = false;
+
     protected ?string $help;
+
     protected ?string $topGap;
+
     protected ?string $placeholder;
+
     protected array $conditions;
+
     protected ?int $columnWidth = null;
 
     protected $max = null;
@@ -51,12 +64,13 @@ abstract class BaseField extends TablarComponent
     public function setData(array $data): self
     {
         $this->data = array_merge($this->data, $data);
+
         return $this;
     }
 
     protected function initializeFromConfig(): void
     {
-        if (!empty($this->config)) {
+        if (! empty($this->config)) {
             $this->label = $this->config['label'] ?? $this->label;
             $this->required = $this->config['required'] ?? false;
             $this->help = $this->config['help'] ?? null;
@@ -80,35 +94,31 @@ abstract class BaseField extends TablarComponent
 
     /**
      * Set a single attribute
-     *
-     * @param string $key
-     * @param mixed $value
-     * @return self
      */
     public function setAttribute(string $key, mixed $value): self
     {
         $this->attributes[$key] = $value;
+
         return $this;
     }
 
     /**
      * Set multiple attributes at once
-     *
-     * @param array $attributes
-     * @return self
      */
     public function setAttributes(array $attributes): self
     {
         foreach ($attributes as $key => $value) {
             $this->setAttribute($key, $value);
         }
+
         return $this;
     }
 
     // Fluent interface methods
-    public function label(string|null $label): self
+    public function label(?string $label): self
     {
         $this->label = $label;
+
         return $this;
     }
 
@@ -122,13 +132,13 @@ abstract class BaseField extends TablarComponent
         return $this->isHidden ?? false;
     }
 
-
     public function required(bool $required = true): self
     {
         $this->required = $required;
-        if ($required && !in_array('required', $this->validationRules)) {
+        if ($required && ! in_array('required', $this->validationRules)) {
             $this->validationRules[] = 'required';
         }
+
         return $this;
     }
 
@@ -136,37 +146,43 @@ abstract class BaseField extends TablarComponent
     {
         $this->placeholder = $placeholder;
         $this->attributes['placeholder'] = $placeholder;
+
         return $this;
     }
 
     public function help(string $help): self
     {
         $this->help = $help;
+
         return $this;
     }
 
     public function value($value): self
     {
         $this->value = $value;
+
         return $this;
     }
 
     public function attributes(array $attributes): self
     {
         $this->attributes = array_merge($this->attributes, $attributes);
+
         return $this;
     }
 
     public function addClass(string $class): self
     {
         $currentClass = $this->attributes['class'] ?? '';
-        $this->attributes['class'] = trim($currentClass . ' ' . $class);
+        $this->attributes['class'] = trim($currentClass.' '.$class);
+
         return $this;
     }
 
     public function id(string $id): self
     {
         $this->attributes['id'] = $id;
+
         return $this;
     }
 
@@ -177,6 +193,7 @@ abstract class BaseField extends TablarComponent
         } else {
             unset($this->attributes['disabled']);
         }
+
         return $this;
     }
 
@@ -187,6 +204,7 @@ abstract class BaseField extends TablarComponent
         } else {
             unset($this->attributes['readonly']);
         }
+
         return $this;
     }
 
@@ -195,7 +213,8 @@ abstract class BaseField extends TablarComponent
         if (is_string($rules)) {
             $rules = explode('|', $rules);
         }
-        $this->validationRules = array_merge($this->validationRules, (array)$rules);
+        $this->validationRules = array_merge($this->validationRules, (array) $rules);
+
         return $this;
     }
 
@@ -205,7 +224,7 @@ abstract class BaseField extends TablarComponent
         return $this->name;
     }
 
-    public function getLabel(): string|null
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -235,6 +254,7 @@ abstract class BaseField extends TablarComponent
     public function setTopGap(string $topGap): self
     {
         $this->topGap = $topGap;
+
         return $this;
     }
 
@@ -257,13 +277,14 @@ abstract class BaseField extends TablarComponent
 
     public function getId(): string
     {
-        return $this->attributes['id'] ?? $this->id ?? $this->name . '_' . uniqid();
+        return $this->attributes['id'] ?? $this->id ?? $this->name.'_'.uniqid();
     }
 
     public function getFieldValue($value = null): string
     {
         $fieldValue = $value ?? $this->value ?? old($this->name) ?? '';
-        return is_array($fieldValue) ? '' : (string)$fieldValue;
+
+        return is_array($fieldValue) ? '' : (string) $fieldValue;
     }
 
     public function getColumnWidth(): ?int
@@ -274,12 +295,14 @@ abstract class BaseField extends TablarComponent
     public function columnWidth(int $width): self
     {
         $this->columnWidth = $width;
+
         return $this;
     }
 
     public function max($max): self
     {
         $this->max = $max;
+
         return $this;
     }
 
@@ -304,4 +327,3 @@ abstract class BaseField extends TablarComponent
         ];
     }
 }
-

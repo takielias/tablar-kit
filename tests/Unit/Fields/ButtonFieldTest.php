@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\TablarKit\Fields;
 
+use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
 use TakiElias\TablarKit\Fields\ButtonField;
-use Illuminate\Support\Facades\View;
 use TakiElias\TablarKit\Tests\Fake\FakeButtonField;
 
 class ButtonFieldTest extends TestCase
@@ -28,7 +28,6 @@ class ButtonFieldTest extends TestCase
         parent::tearDown();
     }
 
-
     /** @test */
     public function it_can_create_button_field()
     {
@@ -40,7 +39,7 @@ class ButtonFieldTest extends TestCase
     /** @test */
     public function it_can_create_button_with_auto_generated_label()
     {
-        $field = new ButtonField();
+        $field = new ButtonField;
         $this->assertEquals('Click', $field->getText());
     }
 

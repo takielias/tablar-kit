@@ -2,7 +2,6 @@
 
 namespace TakiElias\TablarKit\Fields;
 
-
 use Illuminate\Support\Facades\View;
 use Illuminate\View\ComponentAttributeBag;
 use TakiElias\TablarKit\Components\Forms\Inputs\DependentSelect;
@@ -11,11 +10,14 @@ use TakiElias\TablarKit\Traits\FieldTrait;
 class DependentSelectField extends BaseField
 {
     use FieldTrait;
-    protected string $targetDropdown;
-    protected ?string $targetDataRoute = null;
-    protected array $options;
-    protected ?string $placeholder = null;
 
+    protected string $targetDropdown;
+
+    protected ?string $targetDataRoute = null;
+
+    protected array $options;
+
+    protected ?string $placeholder = null;
 
     public function __construct(string $name, string $targetDropdown = '', array $config = [])
     {
@@ -27,24 +29,28 @@ class DependentSelectField extends BaseField
     public function targetDropdown(string $target): self
     {
         $this->targetDropdown = $target;
+
         return $this;
     }
 
     public function targetDataRoute(string $route): self
     {
         $this->targetDataRoute = $route;
+
         return $this;
     }
 
     public function options(array $options): self
     {
         $this->options = $options;
+
         return $this;
     }
 
     public function placeholder(string $placeholder): self
     {
         $this->placeholder = $placeholder;
+
         return $this;
     }
 
@@ -64,7 +70,7 @@ class DependentSelectField extends BaseField
 
         return View::make($dependentComponent->render()->name(), $dependentComponent->data())
             ->with([
-                'attributes' => new ComponentAttributeBag($attributes)
+                'attributes' => new ComponentAttributeBag($attributes),
             ])
             ->render();
     }

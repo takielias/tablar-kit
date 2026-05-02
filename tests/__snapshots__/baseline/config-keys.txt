@@ -1,0 +1,17 @@
+cache
+components
+confirm
+default-class
+duplicate_file
+file_actions
+file_size_accuracy
+filepond
+jodit_broken_extension
+middleware
+mimetypes
+nesting_limit
+prefix
+root
+root_name
+thumb
+upload_actions

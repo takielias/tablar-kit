@@ -29,7 +29,7 @@ class FileBrowserRequest extends FormRequest
     {
         return [
             'action' => ['required', 'string'],
-            'path' => ['nullable', 'string', new PathValidator()],
+            'path' => ['nullable', 'string', new PathValidator],
             'source' => ['required', 'string'],
             'from' => ['sometimes', 'string'],
             'name' => [$this->nameRule(), 'string'],
@@ -40,7 +40,7 @@ class FileBrowserRequest extends FormRequest
     private function nameRule(): string
     {
         return 'required_if:action,'
-            . implode(
+            .implode(
                 ',',
                 [
                     FolderCreate::getActionName(),
@@ -51,7 +51,7 @@ class FileBrowserRequest extends FormRequest
 
     private function newNameRule(): string
     {
-        return 'required_if:action,' . FolderRename::getActionName();
+        return 'required_if:action,'.FolderRename::getActionName();
     }
 
     public function getDto(): FileBrowserDto
@@ -65,7 +65,7 @@ class FileBrowserRequest extends FormRequest
             'success' => false,
             'data' => [
                 'code' => 422,
-                'messages' => $validator->errors()->all() // This returns a flat array of messages
+                'messages' => $validator->errors()->all(), // This returns a flat array of messages
             ],
         ], 422);
 

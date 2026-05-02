@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 class FormRow extends BaseField
 {
     protected Collection $fields;
+
     protected array $columns = [];
 
     public function __construct(array $config = [])
@@ -18,6 +19,7 @@ class FormRow extends BaseField
     public function setFields(Collection $fields): self
     {
         $this->fields = $fields;
+
         return $this;
     }
 
@@ -31,12 +33,14 @@ class FormRow extends BaseField
         $column = new FormColumn($size);
         $callback($column);
         $this->addColumn($column);
+
         return $column;
     }
 
     public function setData(array $data): self
     {
         $this->data = array_merge($this->data, $data);
+
         return $this;
     }
 

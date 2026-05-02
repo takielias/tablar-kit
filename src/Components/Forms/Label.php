@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Components\Forms;
 
-use TakiElias\TablarKit\Components\TablarComponent;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
+use TakiElias\TablarKit\Components\TablarComponent;
 
 class Label extends TablarComponent
 {
-    /** @var string */
     public string $for;
 
     public function __construct(string $for)

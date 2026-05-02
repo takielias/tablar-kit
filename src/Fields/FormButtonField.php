@@ -7,6 +7,7 @@ use Illuminate\View\ComponentAttributeBag;
 class FormButtonField extends BaseField
 {
     protected string $text;
+
     protected ?string $action;
 
     public function __construct(string $text, ?string $action = null, array $config = [])
@@ -33,6 +34,4 @@ class FormButtonField extends BaseField
     {
         return new static($text, $action, $config);
     }
-
 }
-

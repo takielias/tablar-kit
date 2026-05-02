@@ -7,7 +7,9 @@ namespace TakiElias\TablarKit\Components\Cards;
 class CardRibbon extends CardBase
 {
     public $content;
+
     public $color;
+
     public $position;
 
     public function render()

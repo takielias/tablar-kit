@@ -8,11 +8,11 @@ use Illuminate\Contracts\View\View;
 
 class Select extends Input
 {
-    /** @var array */
     public array $options;
+
     public ?string $placeholder;
 
-    public function __construct(string $name, string $id = null, ?string $value = '', array $options = [], ?string $placeholder = '')
+    public function __construct(string $name, ?string $id = null, ?string $value = '', array $options = [], ?string $placeholder = '')
     {
         parent::__construct($name, $id, 'select', $value);
 
@@ -40,5 +40,4 @@ class Select extends Input
             'value' => $this->value,
         ];
     }
-
 }

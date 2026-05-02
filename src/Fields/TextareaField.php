@@ -21,6 +21,7 @@ class TextareaField extends BaseField
     public function rows(int $rows): self
     {
         $this->attributes['rows'] = $rows;
+
         return $this;
     }
 
@@ -44,9 +45,8 @@ class TextareaField extends BaseField
         return View::make($component->render()->name(), $component->data())
             ->with([
                 'slot' => $fieldValue,
-                'attributes' => new ComponentAttributeBag($attributes)
+                'attributes' => new ComponentAttributeBag($attributes),
             ])
             ->render();
     }
 }
-

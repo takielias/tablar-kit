@@ -17,7 +17,7 @@ class PathValidator extends AbstractPathValidator
 
     public function message(): string
     {
-        return ':attribute - error! ' . __('Can\'t write file below root directory');
+        return ':attribute - error! '.__('Can\'t write file below root directory');
     }
 
     public function validate(string $attribute, mixed $value, Closure $fail): void
@@ -29,5 +29,4 @@ class PathValidator extends AbstractPathValidator
             $fail("The {$attribute} has invalid directory nesting.");
         }
     }
-
 }

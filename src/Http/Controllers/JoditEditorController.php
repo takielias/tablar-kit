@@ -3,12 +3,12 @@
 namespace TakiElias\TablarKit\Http\Controllers;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Routing\Controller;
 use TakiElias\TablarKit\Factories\FileManipulationFactory;
 use TakiElias\TablarKit\Factories\FileUploadFactory;
 use TakiElias\TablarKit\Factories\NotFoundActionException;
 use TakiElias\TablarKit\Http\Requests\FileBrowserRequest;
 use TakiElias\TablarKit\Http\Requests\FileUploadRequest;
-use Illuminate\Routing\Controller;
 
 class JoditEditorController extends Controller
 {

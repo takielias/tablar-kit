@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace TakiElias\TablarKit\Dto;
 
 use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Support\Facades\Auth;
 
 final class FolderDto implements Arrayable
 {
@@ -26,20 +25,16 @@ final class FolderDto implements Arrayable
     private array $subFolders;
 
     /**
-     * @param string $name
-     * @param string $baseUrl
-     * @param string[] $subFolders
-     * @param FileDto[] $files
-     * @param string|null $path
+     * @param  string[]  $subFolders
+     * @param  FileDto[]  $files
      */
     private function __construct(
         string $name,
         string $baseUrl,
-        array  $subFolders,
-        array  $files,
-        string $path = null,
-    )
-    {
+        array $subFolders,
+        array $files,
+        ?string $path = null,
+    ) {
         $this->name = $name;
         $this->baseUrl = $baseUrl;
         $this->subFolders = $subFolders;
@@ -50,11 +45,10 @@ final class FolderDto implements Arrayable
     public static function byParams(
         string $name,
         string $baseUrl,
-        array  $subFolders = [],
-        array  $files = [],
+        array $subFolders = [],
+        array $files = [],
         string $path = '',
-    ): self
-    {
+    ): self {
         return new self(
             $name,
             $baseUrl,
@@ -71,7 +65,7 @@ final class FolderDto implements Arrayable
             'path' => $this->hasPath() ? $this->getPath() : '',
             'files' => collect($this->getFiles())->toArray(),
             'folders' => $this->getSubFolders(),
-            'name' => $this->hasPath() ? $this->getPath() : 'default'
+            'name' => $this->hasPath() ? $this->getPath() : 'default',
         ];
     }
 
@@ -82,7 +76,7 @@ final class FolderDto implements Arrayable
 
     public function hasPath(): bool
     {
-        return (bool)$this->path;
+        return (bool) $this->path;
     }
 
     public function getPath(): string

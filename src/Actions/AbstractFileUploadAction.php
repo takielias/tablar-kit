@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace TakiElias\TablarKit\Actions;
 
-use TakiElias\TablarKit\Dto\FileUploadDto;
 use Illuminate\Support\Str;
+use TakiElias\TablarKit\Dto\FileUploadDto;
 
 abstract class AbstractFileUploadAction extends AbstractBasicAction implements FileBrowserAction
 {
     protected FileUploadDto $dto;
+
     public function __construct(FileUploadDto $dto)
     {
         parent::__construct();
@@ -31,8 +32,8 @@ abstract class AbstractFileUploadAction extends AbstractBasicAction implements F
 
         $filename = $this->fileBrowser->getFileName($name);
 
-        if (!empty($extension)) {
-            $filename = preg_replace("/$extension$/", '.' . $extension, $filename);
+        if (! empty($extension)) {
+            $filename = preg_replace("/$extension$/", '.'.$extension, $filename);
         }
 
         return $filename;
@@ -45,7 +46,7 @@ abstract class AbstractFileUploadAction extends AbstractBasicAction implements F
     {
         $extension = $this->fileBrowser->getExtension($name);
 
-        if (!in_array($extension, config('tablar-kit.jodit_broken_extension'), true)) {
+        if (! in_array($extension, config('tablar-kit.jodit_broken_extension'), true)) {
             return $name;
         }
 

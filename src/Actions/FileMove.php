@@ -5,19 +5,14 @@ declare(strict_types=1);
 namespace TakiElias\TablarKit\Actions;
 
 use TakiElias\TablarKit\Http\Resources\SuccessActionResource;
-use Exception;
 
 class FileMove extends AbstractFileBrowserAction
 {
-
-    /**
-     * @return FileBrowserAction
-     */
     public function handle(): FileBrowserAction
     {
         $from = $this->getFrom();
         $fileName = $this->fileBrowser->getNameByPath($this->getFrom());
-        $to = $this->getPath() . DIRECTORY_SEPARATOR . $fileName;
+        $to = $this->getPath().DIRECTORY_SEPARATOR.$fileName;
 
         $this->checkPathExists($to);
 

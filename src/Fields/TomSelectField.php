@@ -12,20 +12,31 @@ class TomSelectField extends BaseField
     use FieldTrait;
 
     protected bool $remoteData = false;
+
     protected ?string $itemSearchRoute = null;
 
     public string $id;
 
     protected array $options = [];
+
     protected ?string $placeholder = null;
+
     protected ?string $valueField = null;
+
     protected ?string $searchField = null;
+
     protected ?string $labelField = null;
+
     protected ?string $sortField = null;
+
     protected ?bool $create = null;
+
     protected ?int $maxItems = null;
+
     protected ?bool $hideSelected = null;
+
     protected ?bool $allowEmptyOption = null;
+
     protected ?bool $createOnBlur = null;
 
     public function __construct(string $name, string $label = '', array $config = [])
@@ -39,12 +50,14 @@ class TomSelectField extends BaseField
     public function remoteData(bool $remote = true): self
     {
         $this->remoteData = $remote;
+
         return $this;
     }
 
     public function itemSearchRoute(string $route): self
     {
         $this->itemSearchRoute = $route;
+
         return $this;
     }
 
@@ -78,9 +91,8 @@ class TomSelectField extends BaseField
         return View::make($componentView->name(), $component->data())
             ->with([
                 'tomSelectOptions' => $tomSelectOptions,
-                'attributes' => new ComponentAttributeBag($attributes)
+                'attributes' => new ComponentAttributeBag($attributes),
             ])
             ->render();
     }
 }
-

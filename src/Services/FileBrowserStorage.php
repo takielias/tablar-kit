@@ -2,10 +2,10 @@
 
 namespace TakiElias\TablarKit\Services;
 
-use TakiElias\TablarKit\Entities\PathInfo;
+use Exception;
 use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Support\Facades\File;
-use Exception;
+use TakiElias\TablarKit\Entities\PathInfo;
 
 class FileBrowserStorage
 {
@@ -28,9 +28,10 @@ class FileBrowserStorage
         $rootPath = config('tablar-kit.root');
 
         if (str_starts_with($path, $rootPath)) {
-            return remove_trailing_slashes(DIRECTORY_SEPARATOR . $path);
+            return remove_trailing_slashes(DIRECTORY_SEPARATOR.$path);
         }
-        return $rootPath . DIRECTORY_SEPARATOR . remove_trailing_slashes($path);
+
+        return $rootPath.DIRECTORY_SEPARATOR.remove_trailing_slashes($path);
     }
 
     public function hasRootDirectory(): bool
@@ -47,12 +48,6 @@ class FileBrowserStorage
         );
     }
 
-    /**
-     * @param string $path
-     * @param string|File $content
-     * @param array $options
-     * @return bool
-     */
     public function put(string $path, File|string $content, array $options = []): bool
     {
         $path = $this->getFullRoot($path);
@@ -84,9 +79,6 @@ class FileBrowserStorage
     }
 
     /**
-     * @param string $from
-     * @param string $to
-     * @return bool
      * @throws Exception
      */
     public function moveDirectory(string $from, string $to): bool
@@ -111,13 +103,13 @@ class FileBrowserStorage
         foreach ($this->fs->files($fullPathFrom) as $file) {
             $fileName = $this->getNameByPath($file);
 
-            $this->fs->move($file, $fullPathTo . DIRECTORY_SEPARATOR . $fileName);
+            $this->fs->move($file, $fullPathTo.DIRECTORY_SEPARATOR.$fileName);
         }
 
         foreach ($this->fs->directories($fullPathFrom) as $directory) {
             $dirName = $this->getNameByPath($directory);
 
-            $this->moveDirectoryRaw($directory, $fullPathTo . DIRECTORY_SEPARATOR . $dirName);
+            $this->moveDirectoryRaw($directory, $fullPathTo.DIRECTORY_SEPARATOR.$dirName);
         }
 
         $this->fs->deleteDirectory($fullPathFrom);
@@ -236,11 +228,12 @@ class FileBrowserStorage
         if ($this->fs->exists($path)) {
             $pathInfo = pathinfo($path);
 
+            $extension = $pathInfo['extension'] ?? '';
+
             $path = $pathInfo['dirname']
-            . DIRECTORY_SEPARATOR
-            . $pathInfo['filename'] . '1'
-            . '.'
-            . $pathInfo['extension'] ?? '';
+                .DIRECTORY_SEPARATOR
+                .$pathInfo['filename'].'1'
+                .($extension !== '' ? '.'.$extension : '');
 
             return $this->renameIfExistsRaw($path);
         }
@@ -257,5 +250,4 @@ class FileBrowserStorage
     {
         return PathInfo::byPath($path)->getExtension();
     }
-
 }

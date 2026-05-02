@@ -7,7 +7,9 @@ namespace TakiElias\TablarKit\Components\Cards;
 class CardButton extends CardBase
 {
     public $href;
+
     public $text;
+
     public $variant;
 
     public function render()

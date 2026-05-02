@@ -12,7 +12,9 @@ use TakiElias\TablarKit\Fields\ToggleField;
 class RepeaterBuilder
 {
     private array $fields = [];
+
     private string $prefix;
+
     private int $index;
 
     public function __construct(string $prefix, int $index)
@@ -25,13 +27,16 @@ class RepeaterBuilder
     {
         $field = new InputField("{$this->prefix}[{$this->index}][{$name}]", $label);
         $this->fields[] = $field;
+
         return $field;
     }
 
     public function select(string $name, array $options = [], string $label = ''): SelectField
     {
-        $field = new SelectField("{$this->prefix}[{$this->index}][{$name}]", $options, $label);
+        $field = new SelectField("{$this->prefix}[{$this->index}][{$name}]", $label);
+        $field->options($options);
         $this->fields[] = $field;
+
         return $field;
     }
 
@@ -39,6 +44,7 @@ class RepeaterBuilder
     {
         $field = new TextareaField("{$this->prefix}[{$this->index}][{$name}]", $label);
         $this->fields[] = $field;
+
         return $field;
     }
 
@@ -46,16 +52,18 @@ class RepeaterBuilder
     {
         $field = new ToggleField("{$this->prefix}[{$this->index}][{$name}]", $label);
         $this->fields[] = $field;
+
         return $field;
     }
 
     public function row(callable $callback): RepeaterBuilder
     {
-        $row = new FormRow();
+        $row = new FormRow;
         $builder = new RepeaterBuilder($this->prefix, $this->index);
         $callback($builder);
         $row->setFields(collect($builder->getFields()));
         $this->fields[] = $row;
+
         return $this;
     }
 
@@ -66,6 +74,7 @@ class RepeaterBuilder
         $callback($builder);
         $column->setFields(collect($builder->getFields()));
         $this->fields[] = $column;
+
         return $this;
     }
 

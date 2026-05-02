@@ -8,46 +8,55 @@ use Illuminate\Contracts\View\View;
 
 class TomSelect extends Input
 {
-    /** @var array */
     public array $options;
 
     public ?string $placeholder;
 
     public ?string $itemSearchRoute;
+
     public ?string $valueField;
+
     public ?string $searchField;
+
     public ?string $labelField;
+
     public ?string $sortField;
+
     public bool $remoteData = false;
+
     public ?bool $hideSelected = false;
+
     public ?bool $duplicates = true;
 
     public ?bool $create = false;
+
     public ?bool $allowEmptyOption = false;
+
     public ?bool $persist = false;
+
     public ?bool $createOnBlur = false;
-    public int|null $maxItems = 3;
+
+    public ?int $maxItems = 3;
 
     public function __construct(
-        string   $name,
-        string   $id = null,
-        ?string  $value = '',
-        array    $options = [],
-        ?string  $placeholder = null,
-        bool     $remoteData = false,
-        string   $itemSearchRoute = null,
-        bool     $create = false,
-        int|null $maxItems = null,
-        string   $valueField = null,
-        string   $searchField = null,
-        string   $labelField = null,
-        string   $sortField = null,
-        bool     $hideSelected = false,
-        bool     $allowEmptyOption = false,
-        bool     $createOnBlur = false,
-    )
-    {
-        $this->id = $id ?? 'id_' . uniqid();
+        string $name,
+        ?string $id = null,
+        ?string $value = '',
+        array $options = [],
+        ?string $placeholder = null,
+        bool $remoteData = false,
+        ?string $itemSearchRoute = null,
+        bool $create = false,
+        ?int $maxItems = null,
+        ?string $valueField = null,
+        ?string $searchField = null,
+        ?string $labelField = null,
+        ?string $sortField = null,
+        bool $hideSelected = false,
+        bool $allowEmptyOption = false,
+        bool $createOnBlur = false,
+    ) {
+        $this->id = $id ?? 'id_'.uniqid();
 
         parent::__construct($name, $this->id, 'select', $value);
 
@@ -83,12 +92,11 @@ class TomSelect extends Input
         ];
 
         $tomSelectOptions = array_filter($dynamicProperties, function ($value) {
-            return !is_null($value) && $value !== '';
+            return ! is_null($value) && $value !== '';
         });
 
         return view('tablar-kit::components.forms.inputs.tom-select', compact('tomSelectOptions'));
     }
-
 
     public function options(): array
     {
@@ -118,5 +126,4 @@ class TomSelect extends Input
             'duplicates' => $this->duplicates,
         ];
     }
-
 }

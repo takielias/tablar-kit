@@ -7,7 +7,9 @@ use Illuminate\Support\Collection;
 class FormTab
 {
     protected string $title;
+
     protected Collection $fields;
+
     protected array $config;
 
     public function __construct(string $title, array $config = [])
@@ -20,6 +22,7 @@ class FormTab
     public function setFields(Collection $fields): self
     {
         $this->fields = $fields;
+
         return $this;
     }
 
@@ -42,9 +45,8 @@ class FormTab
     {
         return [
             'title' => $this->title,
-            'fields' => $this->fields->map(fn($field) => method_exists($field, 'toArray') ? $field->toArray() : [])->toArray(),
+            'fields' => $this->fields->map(fn ($field) => method_exists($field, 'toArray') ? $field->toArray() : [])->toArray(),
             'config' => $this->config,
         ];
     }
 }
-

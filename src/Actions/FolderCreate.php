@@ -20,13 +20,13 @@ class FolderCreate extends AbstractFileBrowserAction
         $path = $this->getPath();
 
         $directoryNestingValidator = new DirectoryNestingValidator(config('tablar-kit.nesting_limit'));
-        if (!$directoryNestingValidator->passes('path', $path)) {
+        if (! $directoryNestingValidator->passes('path', $path)) {
             $this->addError($directoryNestingValidator->message());
 
             return $this;
         }
 
-        $newFolderPath = $path . DIRECTORY_SEPARATOR . $this->getName();
+        $newFolderPath = $path.DIRECTORY_SEPARATOR.$this->getName();
         $this->fileBrowser->makeDirectory($newFolderPath);
 
         return $this;

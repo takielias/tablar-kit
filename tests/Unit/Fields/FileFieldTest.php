@@ -2,15 +2,17 @@
 
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
 use TakiElias\TablarKit\Fields\FileField;
-use Illuminate\Support\Facades\View;
+use TakiElias\TablarKit\TablarKitServiceProvider;
 
 class FileFieldTest extends TestCase
 {
     protected function getPackageProviders($app)
     {
-        return [\TakiElias\TablarKit\TablarKitServiceProvider::class];
+        return [TablarKitServiceProvider::class];
     }
 
     protected function setUp(): void
@@ -22,7 +24,7 @@ class FileFieldTest extends TestCase
         $mockView->shouldReceive('with')->andReturnSelf();
         $mockView->shouldReceive('render')->andReturn('<input type="file">');
 
-        $mockFactory = \Mockery::mock(\Illuminate\Contracts\View\Factory::class);
+        $mockFactory = \Mockery::mock(Factory::class);
         $mockFactory->shouldReceive('make')->andReturn($mockView);
 
         $this->app->instance('view', $mockFactory);
@@ -52,7 +54,7 @@ class FileFieldTest extends TestCase
         $config = [
             'label' => 'Profile Photo',
             'required' => true,
-            'help' => 'Upload your profile picture'
+            'help' => 'Upload your profile picture',
         ];
 
         $field = new FileField('avatar', '', $config);

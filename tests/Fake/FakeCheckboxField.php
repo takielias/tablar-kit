@@ -23,4 +23,3 @@ class FakeCheckboxField extends CheckboxField
         return $mockComponent;
     }
 }
-

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace TakiElias\TablarKit\Enums;
 
 enum ExportType: string

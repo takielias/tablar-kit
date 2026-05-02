@@ -8,8 +8,11 @@ use TakiElias\TablarKit\Fields\CardField;
 class CardBuilder
 {
     protected string $title;
+
     protected array $config;
+
     protected FormBuilder $formBuilder;
+
     protected Collection $fields;
 
     public function __construct(string $title, array $config, FormBuilder $formBuilder)
@@ -23,7 +26,7 @@ class CardBuilder
 
     public function fields(callable $callback): FormBuilder
     {
-        $builder = new FormBuilder();
+        $builder = new FormBuilder;
         $callback($builder);
         $this->fields = $builder->getFields();
 
@@ -31,6 +34,7 @@ class CardBuilder
         $cardField->setFields($this->fields);
 
         $this->formBuilder->addField($cardField);
+
         return $this->formBuilder;
     }
 }

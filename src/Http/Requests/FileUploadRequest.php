@@ -24,7 +24,7 @@ class FileUploadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'path' => ['nullable', 'string', new PathValidator()],
+            'path' => ['nullable', 'string', new PathValidator],
             'source' => ['required', 'string'],
             'files' => ['sometimes', 'array'],
             'files.*' => ['sometimes', 'file'],

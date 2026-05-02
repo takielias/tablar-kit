@@ -26,7 +26,6 @@ class CheckboxFieldTest extends TestCase
         parent::tearDown();
     }
 
-
     /** @test */
     public function it_can_create_checkbox_field()
     {

@@ -2,15 +2,17 @@
 
 namespace TakiElias\TablarKit\Tests\Unit\Fields;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\Facades\View;
 use Orchestra\Testbench\TestCase;
 use TakiElias\TablarKit\Fields\FormButtonField;
-use Illuminate\Support\Facades\View;
+use TakiElias\TablarKit\TablarKitServiceProvider;
 
 class FormButtonFieldTest extends TestCase
 {
     protected function getPackageProviders($app)
     {
-        return [\TakiElias\TablarKit\TablarKitServiceProvider::class];
+        return [TablarKitServiceProvider::class];
     }
 
     protected function setUp(): void
@@ -22,7 +24,7 @@ class FormButtonFieldTest extends TestCase
         $mockView->shouldReceive('with')->andReturnSelf();
         $mockView->shouldReceive('render')->andReturn('<button>Test</button>');
 
-        $mockFactory = \Mockery::mock(\Illuminate\Contracts\View\Factory::class);
+        $mockFactory = \Mockery::mock(Factory::class);
         $mockFactory->shouldReceive('make')->andReturn($mockView);
 
         $this->app->instance('view', $mockFactory);
@@ -50,7 +52,7 @@ class FormButtonFieldTest extends TestCase
     {
         $config = [
             'class' => 'btn-success',
-            'type' => 'button'
+            'type' => 'button',
         ];
 
         $field = new FormButtonField('Submit', '/action', $config);

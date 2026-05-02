@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace TakiElias\TablarKit\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Str;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Str;
 
 final class FilePondController extends Controller
 {
@@ -44,7 +44,7 @@ final class FilePondController extends Controller
         // Store the file in a temporary location and return the location
         // for FilePond to use.
         return $file->store(
-            path: 'tmp/' . now()->timestamp . '-' . Str::random(20)
+            path: 'tmp/'.now()->timestamp.'-'.Str::random(20)
         );
     }
 
@@ -57,5 +57,4 @@ final class FilePondController extends Controller
     {
         return Response::make('Ok', 200, ['content-type' => 'text/plain']);
     }
-
 }

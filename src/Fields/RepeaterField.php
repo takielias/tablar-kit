@@ -7,14 +7,20 @@ use TakiElias\TablarKit\Builder\RepeaterBuilder;
 class RepeaterField extends BaseField
 {
     protected $callback;
+
     protected array $items = [];
+
     protected int $minItems = 0;
+
     protected ?int $maxItems = null;
+
     protected string $addButtonText = 'Add Item';
+
     protected string $removeButtonText = 'Remove';
+
     protected bool $sortable = false;
 
-    public function __construct(string $name, callable $callback = null, array $config = [])
+    public function __construct(string $name, ?callable $callback = null, array $config = [])
     {
         parent::__construct($name, '', $config);
         $this->callback = $callback;
@@ -25,45 +31,52 @@ class RepeaterField extends BaseField
         $this->callback = function ($index, $item) use ($callback) {
             $builder = new RepeaterBuilder($this->name, $index);
             $callback($builder, $item);
+
             return $builder->getFields();
         };
+
         return $this;
     }
-
 
     public function items(array $items): self
     {
         $this->items = $items;
+
         return $this;
     }
 
     public function minItems(int $min): self
     {
         $this->minItems = $min;
+
         return $this;
     }
 
     public function maxItems(int $max): self
     {
         $this->maxItems = $max;
+
         return $this;
     }
 
     public function addButtonText(string $text): self
     {
         $this->addButtonText = $text;
+
         return $this;
     }
 
     public function removeButtonText(string $text): self
     {
         $this->removeButtonText = $text;
+
         return $this;
     }
 
     public function sortable(bool $sortable = true): self
     {
         $this->sortable = $sortable;
+
         return $this;
     }
 

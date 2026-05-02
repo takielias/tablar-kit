@@ -17,6 +17,6 @@ abstract class CardBase extends TablarComponent
 
     public function render()
     {
-        return view('tablar-kit::components.cards.' . str_replace('\\', '.', get_class($this)));
+        return view('tablar-kit::components.cards.'.str_replace('\\', '.', get_class($this)));
     }
 }
