@@ -18,15 +18,15 @@
     "minimum-stability": "stable",
     "require": {
         "php": "^8.3",
-        "illuminate/filesystem": "^11.0|^12.0|^13.0",
-        "illuminate/support": "^11.0|^12.0|^13.0",
-        "illuminate/view": "^11.0|^12.0|^13.0",
+        "illuminate/filesystem": "^12.0|^13.0",
+        "illuminate/support": "^12.0|^13.0",
+        "illuminate/view": "^12.0|^13.0",
         "nesbot/carbon": "^3.0",
-        "takielias/tablar": "*",
-        "takielias/lab": "*"
+        "takielias/tablar": "^13.5",
+        "takielias/lab": "^1.1"
     },
     "require-dev": {
-        "orchestra/testbench": "^9.0|^10.0|^11.0",
+        "orchestra/testbench": "^10.0|^11.0",
         "gajus/dindent": "^2.0",
         "phpunit/phpunit": "^11.0|^12.0",
         "laravel/pint": "^1.0"

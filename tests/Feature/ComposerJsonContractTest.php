@@ -33,7 +33,7 @@ class ComposerJsonContractTest extends TestCase
 
         foreach (['illuminate/filesystem', 'illuminate/support', 'illuminate/view'] as $pkg) {
             $constraint = $require[$pkg] ?? '';
-            foreach (['^11.0', '^12.0', '^13.0'] as $required) {
+            foreach (['^12.0', '^13.0'] as $required) {
                 $this->assertStringContainsString(
                     $required,
                     $constraint,
@@ -66,11 +66,11 @@ class ComposerJsonContractTest extends TestCase
         $this->assertStringContainsString('^11.0', $constraint);
     }
 
-    public function test_testbench_supports_l11_l12_l13(): void
+    public function test_testbench_supports_l12_l13(): void
     {
         $constraint = $this->composer()['require-dev']['orchestra/testbench'] ?? '';
 
-        foreach (['^9.0', '^10.0', '^11.0'] as $required) {
+        foreach (['^10.0', '^11.0'] as $required) {
             $this->assertStringContainsString(
                 $required,
                 $constraint,
@@ -81,8 +81,6 @@ class ComposerJsonContractTest extends TestCase
 
     public function test_composer_validate_succeeds(): void
     {
-        // `--strict` would fail on the takielias/tablar + takielias/lab "*" sibling
-        // constraints, which are deliberate for path-repo local linking.
         $output = [];
         $exit = 0;
         exec('cd '.escapeshellarg(realpath(__DIR__.'/../..')).' && composer validate 2>&1', $output, $exit);
