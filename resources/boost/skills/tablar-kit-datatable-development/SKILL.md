@@ -10,7 +10,7 @@ description: Build server-side data tables with takielias/tablar-kit — DataTab
 - Building a paginated table with search + sort.
 - Adding row-level actions (edit, delete with confirm).
 - Custom column rendering (HTML, badges, action buttons).
-- Exporting visible data to CSV / XLS / PDF.
+- Exporting visible data to CSV / XLS / HTML.
 
 ## Architecture
 
@@ -45,7 +45,7 @@ class ProductTable extends DataTable
                 callback: fn ($item) => view('common.action', ['item' => $item])->render(),
                 formatter: 'html'
             )
-            ->setExportTypes([ExportType::CSV, ExportType::PDF, ExportType::XLS])
+            ->setExportTypes([ExportType::CSV, ExportType::XLS])
             ->paginate(10);
     }
 }
@@ -95,10 +95,10 @@ The component handles the Tabulator initialization, AJAX paging, search, and exp
 ```php
 use TakiElias\TablarKit\Enums\ExportType;
 
-$this->setExportTypes([ExportType::CSV, ExportType::XLS, ExportType::PDF, ExportType::HTML]);
+$this->setExportTypes([ExportType::CSV, ExportType::XLS, ExportType::HTML]);
 ```
 
-`ExportType` enum cases: `CSV`, `XLS`, `PDF`, `HTML`.
+`ExportType` enum cases: `CSV`, `XLS`, `HTML`.
 
 Component renders an export dropdown automatically. Each format pulls from current visible rows (respects search + pagination).
 

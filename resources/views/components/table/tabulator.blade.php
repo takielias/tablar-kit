@@ -149,16 +149,6 @@
                 table_{{$id}}.download("xlsx", filename, {sheetName: '{{ class_basename($table) }}'});
             });
             @endif
-            //trigger download of data.pdf file
-            @if(in_array('pdf', $export_types))
-            document.getElementById("download-pdf").addEventListener("click", function () {
-                const filename = generateFilename("{{ class_basename($table) }}", "pdf");
-                table_{{$id}}.download("pdf", filename, {
-                    orientation: "portrait", //set page orientation to portrait
-                    title: "{{ class_basename($table) }}", //add title to report
-                });
-            });
-            @endif
             //trigger download of data.html file
             @if(in_array('html', $export_types))
             document.getElementById("download-html").addEventListener("click", function () {
