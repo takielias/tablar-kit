@@ -33,7 +33,7 @@
     "components\/modals\/confirm.blade.php": "7ff8667735c50d264e15f72721bebbb96e1b58cc97b85fa9497839f501b392fa",
     "components\/modals\/form.blade.php": "40d8f0cf893d103c21433c4785ef306d274fb17d70e0b4f84e2def38871b9d01",
     "components\/modals\/modal.blade.php": "250e012b12fde9b26fea2a9c9040b5b6e9dc4f9327464f6861b81fc5281453cd",
-    "components\/table\/tabulator.blade.php": "a54249596c0971e19982378a9da04d64405d3d0a102da746cfb570063ac0c77d",
+    "components\/table\/tabulator.blade.php": "98d28bc03f0b7cee397212283fa629ae077484176c9c209571294c1784a6480f",
     "form-builder\/fields\/card-body.blade.php": "e69becd33eba693d83d8ba6b73af0b44a1008a78645aa36743c485ffbbf18a26",
     "form-builder\/fields\/card.blade.php": "44fcc501fb6404d5f2ffe9ab72a6a5b870fa71b49286e231fec23080e5034013",
     "form-builder\/fields\/editor.blade.php": "041e293195b4fc4c1add6deaaf4ca4df9475066a59a3a3db2118b445f619df52",

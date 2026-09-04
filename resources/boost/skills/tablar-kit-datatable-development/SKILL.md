@@ -10,7 +10,7 @@ description: Build server-side data tables with takielias/tablar-kit — DataTab
 - Building a paginated table with search + sort.
 - Adding row-level actions (edit, delete with confirm).
 - Custom column rendering (HTML, badges, action buttons).
-- Exporting visible data to CSV / XLS / HTML.
+- Exporting visible data to CSV / HTML.
 
 ## Architecture
 
@@ -45,7 +45,7 @@ class ProductTable extends DataTable
                 callback: fn ($item) => view('common.action', ['item' => $item])->render(),
                 formatter: 'html'
             )
-            ->setExportTypes([ExportType::CSV, ExportType::XLS])
+            ->setExportTypes([ExportType::CSV])
             ->paginate(10);
     }
 }
@@ -95,10 +95,10 @@ The component handles the Tabulator initialization, AJAX paging, search, and exp
 ```php
 use TakiElias\TablarKit\Enums\ExportType;
 
-$this->setExportTypes([ExportType::CSV, ExportType::XLS, ExportType::HTML]);
+$this->setExportTypes([ExportType::CSV, ExportType::HTML]);
 ```
 
-`ExportType` enum cases: `CSV`, `XLS`, `HTML`.
+`ExportType` enum cases: `CSV`, `HTML`.
 
 Component renders an export dropdown automatically. Each format pulls from current visible rows (respects search + pagination).
 
@@ -157,7 +157,7 @@ In the table:
 
 `formatter: 'html'` is REQUIRED — without it, Tabulator escapes the HTML and renders raw markup.
 
-`download: false` excludes the action column from CSV/XLS/PDF exports.
+`download: false` excludes the action column from CSV and HTML exports.
 
 The confirm-modal singleton (`<x-confirm-modal />`) must already be mounted in the layout — see `tablar-kit-confirm-modal-development`.
 
