@@ -49,9 +49,9 @@ rm public/storage
 ln -s ../storage/app/public public/storage
 ```
 
-## Step 2 — Carbon cache allowlist (Laravel 11+)
+## Step 2 — Carbon cache allowlist
 
-`FileDto` carries `Carbon\Carbon` properties. Laravel 11+ rejects deserializing arbitrary classes via `cache.serializable_classes`. Whitelist them:
+`FileDto` carries `Carbon\Carbon` properties. Laravel rejects deserializing arbitrary classes via `cache.serializable_classes`. Whitelist them:
 
 ```php
 // config/cache.php
