@@ -19,7 +19,7 @@
 @push('js')
     <script type="module">
         document.addEventListener("DOMContentLoaded", function () {
-            let el = $('#{{$id}}');
+            let el = document.getElementById('{{$id}}');
             let customTomSelectOptions = @json($tomSelectOptions);
 
             let tomSelectOptions = {
@@ -54,8 +54,7 @@
             // Merge customTomSelectOptions into tomSelectOptions
             let mergedOptions = {...tomSelectOptions, ...customTomSelectOptions};
 
-            // Initialize TomSelect with merged options
-            if (window.TomSelect) {
+            if (el && window.TomSelect) {
                 new window.TomSelect(el, mergedOptions);
             }
         });
