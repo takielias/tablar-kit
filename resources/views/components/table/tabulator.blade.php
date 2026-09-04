@@ -142,13 +142,6 @@
             });
             @endif
 
-            //trigger download of data.xlsx file
-            @if(in_array('xls', $export_types))
-            document.getElementById("download-xls").addEventListener("click", function () {
-                const filename = generateFilename("{{ class_basename($table) }}", "xlsx");
-                table_{{$id}}.download("xlsx", filename, {sheetName: '{{ class_basename($table) }}'});
-            });
-            @endif
             //trigger download of data.html file
             @if(in_array('html', $export_types))
             document.getElementById("download-html").addEventListener("click", function () {
