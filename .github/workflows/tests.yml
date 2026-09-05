@@ -2,9 +2,9 @@ name: tests
 
 on:
   push:
-    branches: [ master, "[0-9]+.x" ]
+    branches: [ main, master, "[0-9]+.x" ]
   pull_request:
-    branches: [ master, "[0-9]+.x" ]
+    branches: [ main, master, "[0-9]+.x" ]
 
 jobs:
   matrix:
@@ -41,11 +41,20 @@ jobs:
             vendor
           key: composer-${{ runner.os }}-${{ matrix.php }}-${{ matrix.laravel }}-${{ hashFiles('composer.json') }}
 
+      - name: Snapshot composer.json (contract tests assert the composite constraints)
+        run: cp composer.json composer.json.snapshot
+
       - name: Install dependencies
         run: |
           composer require "laravel/framework:${{ matrix.laravel }}" "${{ matrix.testbench }}" \
             --no-interaction --no-update --dev
           composer update --prefer-dist --no-interaction --no-progress
+
+      - name: Restore composer.json (matrix install collapses composite constraints)
+        run: mv composer.json.snapshot composer.json
+
+      - name: Refresh composer.lock content-hash
+        run: composer update --lock --no-interaction --no-progress
 
       - name: Run PHPUnit
         env:
