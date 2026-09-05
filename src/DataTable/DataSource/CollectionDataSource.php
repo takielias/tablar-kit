@@ -20,7 +20,7 @@ class CollectionDataSource implements TableDataContract
         $this->processedData = $data;
     }
 
-    public function search(?string $search, array $columns): void
+    public function search(?string $search, string $type, array $columns): void
     {
         $this->processedData = $this->data->filter(function ($item) use ($search, $columns) {
             foreach ($columns as $column) {

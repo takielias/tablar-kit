@@ -52,14 +52,21 @@ class MakeTableCommand extends GeneratorCommand
     {
         $stub = parent::buildClass($name);
 
-        $tableModel = Str::singular(class_basename($name));
+        $class = class_basename($name);
+        $tableModel = Str::singular($class);
 
         $fullModel = $this->userProviderModel();
         $model = Str::afterLast($fullModel, '\\');
 
+        $import = $tableModel === $class
+            ? "{$tableModel} as {$tableModel}Model;"
+            : "{$tableModel};";
+
+        $reference = $tableModel === $class ? "{$tableModel}Model" : $tableModel;
+
         return str_replace(
             ["{$model};", '{{ tableModel }}'],
-            ["{$tableModel};", $tableModel],
+            [$import, $reference],
             $stub
         );
     }
