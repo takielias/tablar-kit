@@ -229,7 +229,7 @@ class DataTable
 
         return [
             'data' => $this->format($paginator->items()),
-            'total_rows' => round($paginator->total() / $limit),
+            'total_rows' => (int) ceil($paginator->total() / $limit),
             'currentPage' => $paginator->currentPage(),
             'search' => $request->search,
             'download' => $request->download,
