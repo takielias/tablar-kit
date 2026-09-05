@@ -19,11 +19,11 @@ class DataTable
 
     protected TableDataContract $dataSource;
 
-    public array $columns;
+    public array $columns = [];
 
-    public array $exportTypes;
+    public array $exportTypes = [];
 
-    protected array $callbacks;
+    protected array $callbacks = [];
 
     protected int $limit = 10;
 
